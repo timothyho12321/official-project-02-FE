@@ -1,19 +1,32 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 
 export default function CarPost(props) {
     return (
-        <div className="card-body">
-            <h3 className="card-title">Brand: {props.car.brand}</h3>
-            <p>Model: {props.car.name_of_model}</p>
-            <p>Type: {props.car.type}</p>
+        
+            <Card 
+                   bg = {"secondary"}
+                   text = {"white"}
+                   style={{ width: '50vw' }}>
+                <Card.Img variant="top" src={props.car.image}/>
+                <Card.Body>
+                    <Card.Title>Brand: {props.car.brand}</Card.Title>
+                    <Card.Text>
+                        <p>Model: {props.car.name_of_model}</p>
+                        <p>Type: {props.car.type}</p>
 
-            <p>Year of Launch: {props.car.year_of_launch}</p>
+                        <p>Year of Launch: {props.car.year_of_launch}</p>
+                        <p>Rating: {props.car.rating} Stars</p>
+                        <p>Price: $ {props.car.cost_price} </p>
+                    </Card.Text>
+                    <Button variant="primary">See details</Button>
+                </Card.Body>
+            </Card>
+
+
             
-
-
-
-        </div>
 
 
     )

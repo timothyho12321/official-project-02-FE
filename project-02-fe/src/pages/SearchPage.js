@@ -38,14 +38,14 @@ export default class SearchPage extends React.Component {
     onlyBrandSearch = async () => {
         //RESET THE STATE WHEN RECLICK ONLYBRANDSEARCH
         this.setState({
-            data:[],
+            data: [],
             searchType: "",
             searchYear: "",
             searchPrice: "",
             searchRating: ""
         })
 
-        
+
         const response = await axios.get(this.BASE_API_URL + "car", {
             params: {
                 brand: this.state.searchBrand,
@@ -53,7 +53,7 @@ export default class SearchPage extends React.Component {
             }
 
         })
-        
+
 
         this.setState({
             data: response.data
@@ -62,11 +62,14 @@ export default class SearchPage extends React.Component {
 
     filterSearch = async () => {
 
-       
+
         const response = await axios.get(this.BASE_API_URL + "car", {
             params: {
                 brand: this.state.searchBrand,
-                type: this.state.searchType
+                year_of_launch: this.state.searchYear,
+                type: this.state.searchType,
+                cost_price: this.state.searchPrice,
+                rating: this.state.searchRating
             }
 
         })
