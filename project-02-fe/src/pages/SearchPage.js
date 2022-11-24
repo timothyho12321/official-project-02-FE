@@ -9,8 +9,10 @@ export default class SearchPage extends React.Component {
     state = {
         data: [],
         searchBrand: "",
+        searchType: "",
+        searchYear: "",
         searchPrice: "",
-        searchYear: ""
+        searchRating: ""
     }
 
     BASE_API_URL = "http://localhost:3080/"
@@ -33,13 +35,39 @@ export default class SearchPage extends React.Component {
 
     }
 
+    onlyBrandSearch = async () => {
+        //RESET THE STATE WHEN RECLICK ONLYBRANDSEARCH
+        this.setState({
+            data:[],
+            searchType: "",
+            searchYear: "",
+            searchPrice: "",
+            searchRating: ""
+        })
+
+        
+        const response = await axios.get(this.BASE_API_URL + "car", {
+            params: {
+                brand: this.state.searchBrand,
+
+            }
+
+        })
+        
+
+        this.setState({
+            data: response.data
+        })
+    }
+
     filterSearch = async () => {
 
-        // const response = await axios.get(this.BASE_API_URL + "car" + "?brand=" + this.searchBrand)
-
-
+       
         const response = await axios.get(this.BASE_API_URL + "car", {
-            params: { brand: this.state.searchBrand }
+            params: {
+                brand: this.state.searchBrand,
+                type: this.state.searchType
+            }
 
         })
 
@@ -69,22 +97,25 @@ export default class SearchPage extends React.Component {
 
                 <div className='button-search-div mt-3'>
                     <button className='btn btn-primary '
-                        onClick={this.filterSearch}
+                        onClick={this.onlyBrandSearch}
 
-                    >Search</button>
+                    >Brand Search</button>
 
-                    <div className='OffCanvas-div'> 
-                    
-                    <OffCanvas 
-                    searchBrand = {this.state.searchBrand}
-                    searchPrice = {this.state.searchPrice}
-                    searchYear = {this.state.searchYear}
-                    updateFormField = {this.updateFormField}
-                    />
-                    
+                    <div className='OffCanvas-div'>
+
+                        <OffCanvas
+                            searchBrand={this.state.searchBrand}
+                            searchType={this.state.searchType}
+                            searchYear={this.state.searchYear}
+                            searchPrice={this.state.searchPrice}
+                            searchRating={this.state.searchRating}
+                            updateFormField={this.updateFormField}
+                            filterSearch={this.filterSearch}
+                        />
+
                     </div>
-                   
-                    </div>
+
+                </div>
 
                 {
                     this.state.data.map(c =>
