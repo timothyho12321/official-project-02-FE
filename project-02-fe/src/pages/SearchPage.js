@@ -1,11 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 import CarPost from '../components/CarPost'
+import OffCanvas from '../components/OffCanvas'
+import css from './SearchPage.css';
+
 export default class SearchPage extends React.Component {
 
     state = {
         data: [],
-        searchBrand: ""
+        searchBrand: "",
+        searchPrice: "",
+        searchYear: ""
     }
 
     BASE_API_URL = "http://localhost:3080/"
@@ -62,10 +67,25 @@ export default class SearchPage extends React.Component {
                     name="searchBrand"
                     onChange={this.updateFormField} />
 
-                <button className='btn btn-primary mt-3'
-                    onClick={this.filterSearch}
+                <div className='button-search-div mt-3'>
+                    <button className='btn btn-primary '
+                        onClick={this.filterSearch}
 
-                >Search</button>
+                    >Search</button>
+
+                    <div className='OffCanvas-div'> 
+                    
+                    <OffCanvas 
+                    searchBrand = {this.state.searchBrand}
+                    searchPrice = {this.state.searchPrice}
+                    searchYear = {this.state.searchYear}
+                    updateFormField = {this.updateFormField}
+                    />
+                    
+                    </div>
+                   
+                    </div>
+
                 {
                     this.state.data.map(c =>
                         <div className="card mt-3" key={c._id}>
