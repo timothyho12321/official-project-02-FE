@@ -120,11 +120,22 @@ export default class SearchPage extends React.Component {
 
                 </div>
 
-<div className='container'>
+                <div className='container'>
 
-</div>
+                    <div className='row'>
+                        {
+                            this.state.data.map(c =>
+                                <CarPost car={c} />)
 
-                
+
+                        }
+
+                    </div>
+
+
+                </div>
+
+
 
             </React.Fragment>
         )

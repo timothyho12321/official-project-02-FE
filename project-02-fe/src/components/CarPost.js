@@ -9,7 +9,8 @@ export default function CarPost(props) {
             <Card 
                    bg = {"secondary"}
                    text = {"white"}
-                   className ="car-card-style"
+                   className ="car-card-style mt-3 col-6
+                   col-sm-6 col-md-5"
                 //    style={{ width: '50vw' }}
                    >
                 <Card.Img variant="top" src={props.car.image}/>
