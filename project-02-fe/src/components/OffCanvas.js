@@ -37,6 +37,10 @@ export default function OffCanvas(props) {
                             value={props.searchType}
                             onChange={props.updateFormField}>
                             <option value="please-select" >Choose one type</option>
+
+
+                            <option value="S" >SUV</option>
+
                             <option value="SUV" >SUV</option>
                             <option value="Sports Car" >Sports Car</option>
                             <option value="Sedan">Sedan</option>
@@ -46,12 +50,14 @@ export default function OffCanvas(props) {
 
                     <div className='search-year-div mt-3'>
                         <label>Year Launch or after</label>
-                        <input type="text"
+                        <input type="number"
                             className='form-control'
                             value={props.searchYear}
                             name="searchYear"
                             onChange={props.updateFormField} />
                     </div>
+
+                    {props.yearError ? <p className='error-message-style'>Enter less than 2022</p> : null}
 
                     <label>Price</label>
                     <input type="text"
@@ -76,7 +82,7 @@ export default function OffCanvas(props) {
 
 
                     <button className='btn btn-primary mt-3'
-                    onClick={props.filterSearch}
+                        onClick={props.filterSearch}
 
                     >Submit Search</button>
 

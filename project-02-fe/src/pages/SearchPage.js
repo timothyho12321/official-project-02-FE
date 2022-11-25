@@ -12,15 +12,30 @@ export default class SearchPage extends React.Component {
         searchType: "",
         searchYear: "",
         searchPrice: "",
-        searchRating: ""
+        searchRating: "",
+        yearError: false,
+        carTypes: [],
+
     }
 
     BASE_API_URL = "http://localhost:3080/"
 
     async componentDidMount() {
         const response = await axios.get(this.BASE_API_URL + "car")
+
+        let carData = response.data;
+        let carTypes = [];
+        for (let car of carData) {
+            carTypes.push(car.type)
+        }
+        // console.log(carTypes)
+        carTypes = [...new Set(carTypes)];
+        // console.log(carTypes);
+
+
         this.setState({
-            data: response.data
+            data: response.data,
+            carTypes: carTypes
         })
         // console.log(this.state.data)
     }
@@ -62,6 +77,25 @@ export default class SearchPage extends React.Component {
 
     filterSearch = async () => {
 
+        // this.setState({
+        //     yearError: false
+        // })
+
+
+
+        if (parseInt(this.state.searchYear) >= 2022) {
+            this.setState({
+                yearError: true
+            })
+        } else {
+            this.setState({
+                yearError: false
+            })
+        }
+
+
+
+
 
         const response = await axios.get(this.BASE_API_URL + "car", {
             params: {
@@ -82,7 +116,11 @@ export default class SearchPage extends React.Component {
 
     }
 
-
+    yearError = () => {
+        this.setState({
+            yearError: true
+        })
+    }
 
     render() {
 
@@ -114,6 +152,7 @@ export default class SearchPage extends React.Component {
                             searchRating={this.state.searchRating}
                             updateFormField={this.updateFormField}
                             filterSearch={this.filterSearch}
+                            yearError={this.state.yearError}
                         />
 
                     </div>
@@ -122,7 +161,7 @@ export default class SearchPage extends React.Component {
 
                 <div className='container'>
 
-                    <div className='row'>
+                    <div className='row test_center' >
                         {
                             this.state.data.map(c =>
                                 <CarPost car={c} />)

@@ -1,7 +1,15 @@
-.car-card-style{
+/* .car-card-style{
 margin-right: 3px;
 
 
 
+} */
+.row>*{
+    padding: 12px !important;
+    background-color: white !important;
+    border: none !important;
 }
 
+.card-body{
+    background-color: aquamarine !important;
+}
