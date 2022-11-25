@@ -120,16 +120,11 @@ export default class SearchPage extends React.Component {
 
                 </div>
 
-                {
-                    this.state.data.map(c =>
-                        <div className="card mt-3" key={c._id}>
-                            <CarPost car={c} />
+<div className='container'>
 
+</div>
 
-                        </div>)
-
-
-                }
+                
 
             </React.Fragment>
         )
