@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-
+import css from './CarPost.css'
 
 export default function CarPost(props) {
     return (
@@ -9,7 +9,9 @@ export default function CarPost(props) {
             <Card 
                    bg = {"secondary"}
                    text = {"white"}
-                   style={{ width: '50vw' }}>
+                   className ="car-card-style"
+                //    style={{ width: '50vw' }}
+                   >
                 <Card.Img variant="top" src={props.car.image}/>
                 <Card.Body>
                     <Card.Title>Brand: {props.car.brand}</Card.Title>

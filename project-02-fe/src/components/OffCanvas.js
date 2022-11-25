@@ -38,7 +38,7 @@ export default function OffCanvas(props) {
                             onChange={props.updateFormField}>
                             <option value="please-select" >Choose one type</option>
                             <option value="SUV" >SUV</option>
-                            <option value="Sportscar" >Sportscar</option>
+                            <option value="Sports Car" >Sports Car</option>
                             <option value="Sedan">Sedan</option>
                             <option value="Hatchback">Hatchback</option>
                         </select></div>
