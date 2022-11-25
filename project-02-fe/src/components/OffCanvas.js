@@ -46,10 +46,7 @@ export default function OffCanvas(props) {
 
 
 
-                            {/* <option value="SUV" >SUV</option>
-                            <option value="Sports Car" >Sports Car</option>
-                            <option value="Sedan">Sedan</option>
-                            <option value="Hatchback">Hatchback</option> */}
+                            
                         </select></div>
 
 
