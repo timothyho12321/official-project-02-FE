@@ -13,31 +13,59 @@ export default class SearchPage extends React.Component {
         searchYear: "",
         searchPrice: "",
         searchRating: "",
-        yearError: false,
-        carTypes: [],
+        existingCarTypes: [],
+        existingCarBrand: [],
+        makeAutoYear: null,
+        yearGreaterError: false,
+        yearLengthError: false
 
     }
 
     BASE_API_URL = "http://localhost:3080/"
 
     async componentDidMount() {
+
         const response = await axios.get(this.BASE_API_URL + "car")
 
-        let carData = response.data;
-        let carTypes = [];
+        //setting existingCarBrands to the current brands in Mongodb
+
+        let carData = response.data
+        let existingCarBrand = []
         for (let car of carData) {
-            carTypes.push(car.type)
+            existingCarBrand.push(car.brand)
+        }
+        
+        existingCarBrand = [...new Set(existingCarBrand)]
+        // console.log(existingCarBrand)
+
+        //setting existingCarTypes to current type of cars in Mongo
+        let carData2 = response.data;
+        let existingCarTypes = [];
+        for (let car of carData2) {
+            existingCarTypes.push(car.type)
         }
         // console.log(carTypes)
-        carTypes = [...new Set(carTypes)];
+
+        existingCarTypes = [...new Set(existingCarTypes)];
         // console.log(carTypes);
 
 
         this.setState({
             data: response.data,
-            carTypes: carTypes
+            existingCarTypes: existingCarTypes,
+            existingCarBrand: existingCarBrand
         })
         // console.log(this.state.data)
+
+
+        // SET THE CURRENT YEAR FOR VALIDATION 
+        let makeAutoYear = new Date()
+        makeAutoYear = makeAutoYear.getFullYear()
+        console.log(makeAutoYear)
+        this.setState({
+            makeAutoYear: makeAutoYear
+        })
+
     }
 
     updateFormField = (event) => {
@@ -77,19 +105,33 @@ export default class SearchPage extends React.Component {
 
     filterSearch = async () => {
 
-        // this.setState({
-        //     yearError: false
-        // })
+        
+        // Make yearError come out if number greater than current year is 
+        // keyed in 
+        // if ((parseInt(this.state.searchYear) >= this.state.makeAutoYear) 
+        // || parseInt(this.state.searchYear).length !== 4 )
+
+        if (parseInt(this.state.searchYear) > this.state.makeAutoYear) {
 
 
-
-        if (parseInt(this.state.searchYear) >= 2022) {
             this.setState({
-                yearError: true
+                yearGreaterError: true,
             })
         } else {
             this.setState({
-                yearError: false
+                yearGreaterError: false
+            })
+        }
+
+        if (parseInt(this.state.searchYear).toString().length !== 4) {
+
+
+            this.setState({
+                yearLengthError: true,
+            })
+        } else {
+            this.setState({
+                yearLengthError: false
             })
         }
 
@@ -152,7 +194,11 @@ export default class SearchPage extends React.Component {
                             searchRating={this.state.searchRating}
                             updateFormField={this.updateFormField}
                             filterSearch={this.filterSearch}
-                            yearError={this.state.yearError}
+                            yearGreaterError={this.state.yearGreaterError}
+                            yearLengthError={this.state.yearLengthError}
+                            makeAutoYear={this.state.makeAutoYear}
+                            existingCarTypes={this.state.existingCarTypes}
+                            existingCarBrand={this.state.existingCarBrand}
                         />
 
                     </div>
@@ -164,7 +210,9 @@ export default class SearchPage extends React.Component {
                     <div className='row test_center' >
                         {
                             this.state.data.map(c =>
-                                <CarPost car={c} />)
+                                <CarPost 
+                                key={c._id}
+                                car={c} />)
 
 
                         }

@@ -36,15 +36,20 @@ export default function OffCanvas(props) {
                             name="searchType"
                             value={props.searchType}
                             onChange={props.updateFormField}>
+
+
+
                             <option value="please-select" >Choose one type</option>
 
+                            {props.existingCarTypes.map(c =>
+                                <option key={c} value={c} >{c}</option>)}
 
-                            <option value="S" >SUV</option>
 
-                            <option value="SUV" >SUV</option>
+
+                            {/* <option value="SUV" >SUV</option>
                             <option value="Sports Car" >Sports Car</option>
                             <option value="Sedan">Sedan</option>
-                            <option value="Hatchback">Hatchback</option>
+                            <option value="Hatchback">Hatchback</option> */}
                         </select></div>
 
 
@@ -57,7 +62,26 @@ export default function OffCanvas(props) {
                             onChange={props.updateFormField} />
                     </div>
 
-                    {props.yearError ? <p className='error-message-style'>Enter less than 2022</p> : null}
+                    {props.yearGreaterError ? <p className='error-message-style'>Enter year equal to or less than {props.makeAutoYear}</p> : ""}
+                    {props.yearLengthError ? <p className='error-message-style'>Enter 4 digits minimal</p> : ""}
+
+
+                    <div>
+                        <label>Select Maximum Price</label>
+                        <select name="searchPrice"
+                                value={parseInt(props.searchPrice)}
+                                onChange={props.updateFormField}
+                        >
+                            <option value={40000}>Max $40,000</option>
+                            <option value={60000}>Max $60,000</option>
+                            <option value={80000}>Max $80,000</option>
+                            <option value={100000}>Max $100,000</option>
+                            <option value={120000}>Max $120,000</option>
+                            
+                        </select>
+
+
+                    </div>
 
                     <label>Price</label>
                     <input type="text"
@@ -73,11 +97,11 @@ export default function OffCanvas(props) {
                             value={parseInt(props.searchRating)}
                             onChange={props.updateFormField}>
                             <option value="please-select" >Choose one type</option>
-                            <option value="1">1</option>
-                            <option value="2" >2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
+                            <option value={1}>1</option>
+                            <option value={2} >2</option>
+                            <option value={3}>3</option>
+                            <option value={4}>4</option>
+                            <option value={5}>5</option>
                         </select></div>
 
 
