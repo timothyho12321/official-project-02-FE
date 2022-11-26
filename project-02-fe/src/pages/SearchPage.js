@@ -12,17 +12,60 @@ export default class SearchPage extends React.Component {
         searchType: "",
         searchYear: "",
         searchPrice: "",
-        searchRating: ""
+        searchRating: "",
+        existingCarTypes: [],
+        existingCarBrand: [],
+        makeAutoYear: null,
+        yearGreaterError: false,
+        yearLengthError: false
+
     }
 
     BASE_API_URL = "http://localhost:3080/"
 
     async componentDidMount() {
+
         const response = await axios.get(this.BASE_API_URL + "car")
+
+        //setting existingCarBrands to the current brands in Mongodb
+
+        let carData = response.data
+        let existingCarBrand = []
+        for (let car of carData) {
+            existingCarBrand.push(car.brand)
+        }
+        
+        existingCarBrand = [...new Set(existingCarBrand)]
+        // console.log(existingCarBrand)
+
+        //setting existingCarTypes to current type of cars in Mongo
+        let carData2 = response.data;
+        let existingCarTypes = [];
+        for (let car of carData2) {
+            existingCarTypes.push(car.type)
+        }
+        // console.log(carTypes)
+
+        existingCarTypes = [...new Set(existingCarTypes)];
+        // console.log(carTypes);
+
+
         this.setState({
-            data: response.data
+            data: response.data,
+            existingCarTypes: existingCarTypes,
+            existingCarBrand: existingCarBrand
         })
         // console.log(this.state.data)
+
+
+        // SET THE CURRENT YEAR FOR VALIDATION 
+        let makeAutoYear = new Date()
+        makeAutoYear = makeAutoYear.getFullYear()
+        console.log(makeAutoYear)
+        this.setState({
+            makeAutoYear: makeAutoYear
+        })
+
     }
 
     updateFormField = (event) => {
@@ -62,6 +105,39 @@ export default class SearchPage extends React.Component {
 
     filterSearch = async () => {
 
+        
+        // Make yearError come out if number greater than current year is 
+        // keyed in 
+        // if ((parseInt(this.state.searchYear) >= this.state.makeAutoYear) 
+        // || parseInt(this.state.searchYear).length !== 4 )
+
+        if (parseInt(this.state.searchYear) > this.state.makeAutoYear) {
+
+
+            this.setState({
+                yearGreaterError: true,
+            })
+        } else {
+            this.setState({
+                yearGreaterError: false
+            })
+        }
+
+        if (parseInt(this.state.searchYear).toString().length !== 4) {
+
+
+            this.setState({
+                yearLengthError: true,
+            })
+        } else {
+            this.setState({
+                yearLengthError: false
+            })
+        }
+
+
+
+
 
         const response = await axios.get(this.BASE_API_URL + "car", {
             params: {
@@ -82,7 +158,11 @@ export default class SearchPage extends React.Component {
 
     }
 
-
+    yearError = () => {
+        this.setState({
+            yearError: true
+        })
+    }
 
     render() {
 
@@ -114,18 +194,35 @@ export default class SearchPage extends React.Component {
                             searchRating={this.state.searchRating}
                             updateFormField={this.updateFormField}
                             filterSearch={this.filterSearch}
+                            yearGreaterError={this.state.yearGreaterError}
+                            yearLengthError={this.state.yearLengthError}
+                            makeAutoYear={this.state.makeAutoYear}
+                            existingCarTypes={this.state.existingCarTypes}
+                            existingCarBrand={this.state.existingCarBrand}
                         />
 
                     </div>
 
                 </div>
 
-                {
-                    this.state.data.map(c =>
-                            <CarPost car={c} />)
+                <div className='container'>
+
+                    <div className='row test_center' >
+                        {
+                            this.state.data.map(c =>
+                                <CarPost 
+                                key={c._id}
+                                car={c} />)
 
 
-                }
+                        }
+
+                    </div>
+
+
+                </div>
+
+
 
             </React.Fragment>
         )
