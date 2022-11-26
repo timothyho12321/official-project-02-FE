@@ -232,15 +232,14 @@ export default class SearchPage extends React.Component {
                                 <CarPost
                                     key={c._id}
                                     car={c}
-                                    openModalDetail={() => { this.openModalDetail(c) }
-                                    }
+                                    
                                 />)
 
 
                         }
 
                     </div>
-                    <Modal2 />
+                    
 
 
                 </div>

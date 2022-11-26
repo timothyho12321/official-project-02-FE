@@ -25,11 +25,15 @@ export default function CarPost(props) {
                     <p>Rating: {props.car.rating} Stars</p>
                     <p>Price: $ {props.car.cost_price} </p>
                 </Card.Text>
-                <Button variant="light"
-                        onClick={props.openModalDetail}
+
+
+                {/* <Button variant="light"
+                    onClick={props.openModalDetail}
                 >
-                    See details</Button>
-                    <Modal2 />
+                    See details
+                </Button> */}
+
+                <Modal2 carStore = {props.car} />
             </Card.Body>
         </Card>
 
