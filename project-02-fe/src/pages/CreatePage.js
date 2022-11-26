@@ -93,7 +93,7 @@ console.log(this.BASE_API_URL + "newcarandengine")
                 year_of_launch: parseInt(this.state.yearOfLaunch),
                 brand: this.state.brandOfCar,
                 type: this.state.typeOfCar,
-                seats: this.state.seatNumber,
+                seats: parseInt(this.state.seatNumber),
                 // // KEY INTO PARAMS AS OBJECT IN FRONT END FOR COLOR (NAME AND SHADE)
                 color: {
                         "name": this.state.color,
@@ -107,41 +107,12 @@ console.log(this.BASE_API_URL + "newcarandengine")
                 cost_price: parseInt(this.state.price),
                 image: this.state.image,
 
-                engine_name: "A1",
-                top_speed: 60,
-                engine_power: 20,
-                oil_consumption: 1,
+                engine_name: this.state.engineName,
+                top_speed: 70,
+                engine_power: 30,
+                oil_consumption: 2,
 
-                comfort_features_id: ["637b79c39b9228988ebddfdd"]
-
-
-
-//////////////////////HARD CODE CAR POST IN//////////////////////////////
-                // name_of_model: "Series TestCarType3",
-                // year_of_launch: 2018,
-                // brand: "Nissan",
-                // type: "Superlow",
-                // seats: 4,
-
-                // KEY INTO PARAMS AS OBJECT IN FRONT END FOR COLOR (NAME AND SHADE)
-                // color: {
-                //     "name": "Blue",
-                //     "shade": "Matte"
-                // },
-                // land_terrain: "urban road",
-                // username: "Timothy",
-                // email: "timothyho@gmail.com",
-                // rating: 5,
-                // description: "Best Spongebob car",
-                // cost_price: 60000,
-                // image: "www.bing.com",
-
-                // engine_name: "A1",
-                // top_speed: 60,
-                // engine_power: 20,
-                // oil_consumption: 1,
-
-                // comfort_features_id: ["637b79c39b9228988ebddfdd"]
+                comfort_features_id: this.state.comfortFeatures
 
 
 
