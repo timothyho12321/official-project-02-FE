@@ -1,9 +1,11 @@
+import axios from 'axios'
 import React from 'react'
 import css from './CreatePage.css'
 
 export default class CreatePage extends React.Component {
 
     state = {
+        currentEngineDB: [],
         nameOfModel: "",
         yearOfLaunch: null,
         brandOfCar: "",
@@ -20,7 +22,7 @@ export default class CreatePage extends React.Component {
         price: null,
         engineName: "",
         comfortFeatures: []
-        
+
         //FOR USING TO CHECK CHECKBOXES COMFORT FEATURES--- TO DELETE
         // ["Blind Spot Monitoring",
         //     "Premium Sound System",
@@ -31,6 +33,26 @@ export default class CreatePage extends React.Component {
 
     }
 
+    BASE_API_URL = "http://localhost:3080/"
+
+    async componentDidMount() {
+
+
+        //Setting currentEngineDB into array and setState
+        // currentEngine in mongoDB is a fixed list
+        const response = await axios.get(this.BASE_API_URL + "engine")
+        
+        // console.log(response.data)
+
+        // for (let e of response.data){
+        //     console.log(e.engine_name)
+        // }
+
+        this.setState({
+            currentEngineDB: response.data
+        })
+    }
+
     updateFormField = (event) => {
         this.setState({
             [event.target.name]: event.target.value
@@ -38,6 +60,94 @@ export default class CreatePage extends React.Component {
 
     }
 
+    updateCheckBoxes = (event) => {
+        if (!this.state.comfortFeatures.includes(event.target.value)) {
+            let modified = [...this.state.comfortFeatures, event.target.value]
+
+            // console.log(modified);
+            this.setState({
+                comfortFeatures: modified
+            })
+
+        } else {
+
+            let indexToReplace = this.state.comfortFeatures.indexOf(event.target.value)
+
+            // console.log(indexToReplace);
+            this.setState({
+                comfortFeatures: [...this.state.comfortFeatures.slice(0, indexToReplace)
+                    , ...this.state.comfortFeatures.slice(indexToReplace + 1)]
+            })
+        }
+
+    }
+
+    createCarPost = async () => {
+
+alert("Japan")
+console.log(this.BASE_API_URL + "newcarandengine")
+
+        const response = await axios.post(this.BASE_API_URL + "newcarandengine", {
+           
+                // name_of_model: this.state.nameOfModel,
+                // year_of_launch: this.state.yearOfLaunch,
+                // brand: this.state.brandOfCar,
+                // type: this.state.typeOfCar,
+                // seats: this.state.seatNumber,
+                // // KEY INTO PARAMS AS OBJECT IN FRONT END FOR COLOR (NAME AND SHADE)
+                // color: this.state.color,
+                // land_terrain: this.state.landTerrain,
+                // username: this.state.userName,
+                // email: this.state.email,
+                // rating: this.state.rating,
+                // description: this.state.description,
+                // cost_price: this.state.price,
+                // image: this.state.image,
+
+                // engine_name: this.state.engineName,
+                // top_speed: 60,
+                // engine_power: 20,
+                // oil_consumption: 1,
+
+                // comfort_features_id: ["637b79c39b9228988ebddfdd"]
+
+
+                //HARD CODE EVERYTHING IN
+                name_of_model: "Series TestCarType3",
+                year_of_launch: 2018,
+                brand: "Nissan",
+                type: "Superlow",
+                seats: 4,
+                // KEY INTO PARAMS AS OBJECT IN FRONT END FOR COLOR (NAME AND SHADE)
+                color: {
+                    "name": "Blue",
+                    "shade": "Matte"
+                },
+                land_terrain: "urban road",
+                username: "Timothy",
+                email: "timothyho@gmail.com",
+                rating: 5,
+                description: "Best Spongebob car",
+                cost_price: 60000,
+                image: "www.bing.com",
+
+                engine_name: "A1",
+                top_speed: 60,
+                engine_power: 20,
+                oil_consumption: 1,
+
+                comfort_features_id: ["637b79c39b9228988ebddfdd"]
+
+
+
+            
+
+        })
+        console.log(response)
+
+
+
+    }
     render() {
 
         return (
@@ -204,28 +314,16 @@ export default class CreatePage extends React.Component {
                         onChange={this.updateFormField}
                         className="space-engine-dropdown-tab"
                     >
-                        <option value="A1">A1</option>
-                        <option value="A2">A2</option>
-                        <option value="A3">A3</option>
-                        <option value="A4">A4</option>
-                        <option value="A5">A5</option>
-                        <option value="A6">A6</option>
-                        <option value="A7">A7</option>
+
+                        {this.state.currentEngineDB.map(e =>
+                            <option value={e.engine_name} key={e._id}>
+                                Engine Name: {e.engine_name} |
+                                Top Speed: {e.top_speed} |
+                                Engine Power: {e.engine_power} |
+                                Oil Consumption: {e.oil_consumption}
+                            </option>)}
 
                     </select>
-                </div>
-                <div>
-                    <label>Top Speed</label>
-                    <div>To autopopulate - fill in </div>
-                </div>
-                <div>
-                    <label>Engine Power</label>
-                    <div>To autopopulate - fill in </div>
-                </div>
-
-                <div>
-                    <label>Oil Consumption</label>
-                    <div>To autopopulate - fill in </div>
                 </div>
 
                 <div>
@@ -234,6 +332,7 @@ export default class CreatePage extends React.Component {
                         value="Blind Spot Monitoring"
                         checked={this.state.comfortFeatures.includes
                             ("Blind Spot Monitoring")}
+                        onChange={this.updateCheckBoxes}
                     />
                     <label>Blind Spot Monitoring</label>
                     <input type="checkbox"
@@ -241,6 +340,7 @@ export default class CreatePage extends React.Component {
                         value="Premium Sound System"
                         checked={this.state.comfortFeatures.includes
                             ("Premium Sound System")}
+                        onChange={this.updateCheckBoxes}
                     />
                     <label>Premium Sound System</label>
                     <input type="checkbox"
@@ -248,29 +348,42 @@ export default class CreatePage extends React.Component {
                         value="Wireless Connectivity"
                         checked={this.state.comfortFeatures.includes
                             ("Wireless Connectivity")}
+                        onChange={this.updateCheckBoxes}
                     />
                     <label>Wireless Connectivity</label>
-                    <input type="checkbox"
-                        name="comfortFeatures"
-                        value="Digital Keys"
-                        checked={this.state.comfortFeatures.includes
-                            ("Digital Keys")}
-                    />
-                    <label>Digital Keys</label>
-                    <input type="checkbox"
-                        name="comfortFeatures"
-                        value="AI Bot Alexa Enabled"
-                        checked={this.state.comfortFeatures.includes
-                            ("AI Bot Alexa Enabled")}
-                    />
-                    <label>AI Bot Alexa Enabled</label>
-                    <input type="checkbox"
-                        name="comfortFeatures"
-                        value="Ventilated Seats"
-                        checked={this.state.comfortFeatures.includes
-                            ("Ventilated Seats")}
-                    />
-                    <label>Ventilated Seats</label>
+
+                    <div>
+                        <input type="checkbox"
+                            name="comfortFeatures"
+                            value="Digital Keys"
+                            checked={this.state.comfortFeatures.includes
+                                ("Digital Keys")}
+                            onChange={this.updateCheckBoxes}
+                        />
+                        <label>Digital Keys</label>
+                        <input type="checkbox"
+                            name="comfortFeatures"
+                            value="AI Bot Alexa Enabled"
+                            checked={this.state.comfortFeatures.includes
+                                ("AI Bot Alexa Enabled")}
+                            onChange={this.updateCheckBoxes}
+                        />
+                        <label>AI Bot Alexa Enabled</label>
+                        <input type="checkbox"
+                            name="comfortFeatures"
+                            value="Ventilated Seats"
+                            checked={this.state.comfortFeatures.includes
+                                ("Ventilated Seats")}
+                            onChange={this.updateCheckBoxes}
+                        />
+                        <label>Ventilated Seats</label></div>
+
+                    <div>
+                        <button className='btn btn-light'
+                            onClick={this.createCarPost}
+                        >Confirm Create Car Post</button>
+                    </div>
+
 
                 </div>
             </React.Fragment>
