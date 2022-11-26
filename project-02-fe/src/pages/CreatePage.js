@@ -89,47 +89,23 @@ console.log(this.BASE_API_URL + "newcarandengine")
 
         const response = await axios.post(this.BASE_API_URL + "newcarandengine", {
            
-                // name_of_model: this.state.nameOfModel,
-                // year_of_launch: this.state.yearOfLaunch,
-                // brand: this.state.brandOfCar,
-                // type: this.state.typeOfCar,
-                // seats: this.state.seatNumber,
+                name_of_model: this.state.nameOfModel,
+                year_of_launch: parseInt(this.state.yearOfLaunch),
+                brand: this.state.brandOfCar,
+                type: this.state.typeOfCar,
+                seats: this.state.seatNumber,
                 // // KEY INTO PARAMS AS OBJECT IN FRONT END FOR COLOR (NAME AND SHADE)
-                // color: this.state.color,
-                // land_terrain: this.state.landTerrain,
-                // username: this.state.userName,
-                // email: this.state.email,
-                // rating: this.state.rating,
-                // description: this.state.description,
-                // cost_price: this.state.price,
-                // image: this.state.image,
-
-                // engine_name: this.state.engineName,
-                // top_speed: 60,
-                // engine_power: 20,
-                // oil_consumption: 1,
-
-                // comfort_features_id: ["637b79c39b9228988ebddfdd"]
-
-
-                //HARD CODE EVERYTHING IN
-                name_of_model: "Series TestCarType3",
-                year_of_launch: 2018,
-                brand: "Nissan",
-                type: "Superlow",
-                seats: 4,
-                // KEY INTO PARAMS AS OBJECT IN FRONT END FOR COLOR (NAME AND SHADE)
                 color: {
-                    "name": "Blue",
-                    "shade": "Matte"
-                },
-                land_terrain: "urban road",
-                username: "Timothy",
-                email: "timothyho@gmail.com",
-                rating: 5,
-                description: "Best Spongebob car",
-                cost_price: 60000,
-                image: "www.bing.com",
+                        "name": this.state.color,
+                        "shade": this.state.colorShade
+                    },
+                land_terrain: this.state.landTerrain,
+                username: this.state.userName,
+                email: this.state.email,
+                rating: this.state.rating,
+                description: this.state.description,
+                cost_price: parseInt(this.state.price),
+                image: this.state.image,
 
                 engine_name: "A1",
                 top_speed: 60,
@@ -137,6 +113,35 @@ console.log(this.BASE_API_URL + "newcarandengine")
                 oil_consumption: 1,
 
                 comfort_features_id: ["637b79c39b9228988ebddfdd"]
+
+
+
+//////////////////////HARD CODE CAR POST IN//////////////////////////////
+                // name_of_model: "Series TestCarType3",
+                // year_of_launch: 2018,
+                // brand: "Nissan",
+                // type: "Superlow",
+                // seats: 4,
+
+                // KEY INTO PARAMS AS OBJECT IN FRONT END FOR COLOR (NAME AND SHADE)
+                // color: {
+                //     "name": "Blue",
+                //     "shade": "Matte"
+                // },
+                // land_terrain: "urban road",
+                // username: "Timothy",
+                // email: "timothyho@gmail.com",
+                // rating: 5,
+                // description: "Best Spongebob car",
+                // cost_price: 60000,
+                // image: "www.bing.com",
+
+                // engine_name: "A1",
+                // top_speed: 60,
+                // engine_power: 20,
+                // oil_consumption: 1,
+
+                // comfort_features_id: ["637b79c39b9228988ebddfdd"]
 
 
 
@@ -329,25 +334,25 @@ console.log(this.BASE_API_URL + "newcarandengine")
                 <div>
                     <input type="checkbox"
                         name="comfortFeatures"
-                        value="Blind Spot Monitoring"
+                        value="637b79c39b9228988ebddfdd"
                         checked={this.state.comfortFeatures.includes
-                            ("Blind Spot Monitoring")}
+                            ("637b79c39b9228988ebddfdd")}
                         onChange={this.updateCheckBoxes}
                     />
                     <label>Blind Spot Monitoring</label>
                     <input type="checkbox"
                         name="comfortFeatures"
-                        value="Premium Sound System"
+                        value="637b79c39b9228988ebddfde"
                         checked={this.state.comfortFeatures.includes
-                            ("Premium Sound System")}
+                            ("637b79c39b9228988ebddfde")}
                         onChange={this.updateCheckBoxes}
                     />
                     <label>Premium Sound System</label>
                     <input type="checkbox"
                         name="comfortFeatures"
-                        value="Wireless Connectivity"
+                        value="637b79c39b9228988ebddfdf"
                         checked={this.state.comfortFeatures.includes
-                            ("Wireless Connectivity")}
+                            ("637b79c39b9228988ebddfdf")}
                         onChange={this.updateCheckBoxes}
                     />
                     <label>Wireless Connectivity</label>
@@ -355,25 +360,25 @@ console.log(this.BASE_API_URL + "newcarandengine")
                     <div>
                         <input type="checkbox"
                             name="comfortFeatures"
-                            value="Digital Keys"
+                            value="637b79c39b9228988ebddfe0"
                             checked={this.state.comfortFeatures.includes
-                                ("Digital Keys")}
+                                ("637b79c39b9228988ebddfe0")}
                             onChange={this.updateCheckBoxes}
                         />
                         <label>Digital Keys</label>
                         <input type="checkbox"
                             name="comfortFeatures"
-                            value="AI Bot Alexa Enabled"
+                            value="637b79c39b9228988ebddfe1"
                             checked={this.state.comfortFeatures.includes
-                                ("AI Bot Alexa Enabled")}
+                                ("637b79c39b9228988ebddfe1")}
                             onChange={this.updateCheckBoxes}
                         />
                         <label>AI Bot Alexa Enabled</label>
                         <input type="checkbox"
                             name="comfortFeatures"
-                            value="Ventilated Seats"
+                            value="637b79c39b9228988ebddfe2"
                             checked={this.state.comfortFeatures.includes
-                                ("Ventilated Seats")}
+                                ("637b79c39b9228988ebddfe2")}
                             onChange={this.updateCheckBoxes}
                         />
                         <label>Ventilated Seats</label></div>
