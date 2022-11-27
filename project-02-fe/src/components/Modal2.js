@@ -58,10 +58,6 @@ export default function Modal2(props) {
             </div>
 
             <div>
-              <p>Price: ${props.carStore.cost_price}</p>
-            </div>
-
-            <div>
               <p>Type: {props.carStore.type}</p>
             </div>
             <div>
@@ -85,7 +81,21 @@ export default function Modal2(props) {
                 <FontAwesomeIcon icon={faStar} />
               </p>
             </div>
-
+            <div>
+              <p>Description: {props.carStore.description}</p>
+            </div>
+            <div>
+              <p>Price: ${props.carStore.cost_price}</p>
+            </div>
+            <div>
+              <p>Engine Name: {props.carStore.engine_id}</p>
+            </div>
+            <div>
+              <p>Comfort Features: 
+                {props.carStore.comfort_features_id.map(c=>
+                  <span className='badge bg-secondary ms-2'>
+                    {c}</span>)}</p>
+            </div>
 
 
 
@@ -97,54 +107,7 @@ export default function Modal2(props) {
           { /* 
           
             
-            <div>
-              <label>Car rating:</label>
-              <select name="rating"
-                value={this.state.rating}
-                onChange={this.updateFormField}
-              >
-                <option>Select one</option>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-              </select>
-            </div>
-
-            <div>
-              <label>Description</label>
-              <input type="text"
-                placeholder='Fill in details of car recommendation'
-
-                className='form-control'
-                name="description"
-                value={this.state.description}
-                onChange={this.updateFormField} />
-            </div>
-            <div>
-              <label>Image</label>
-              <input type="text"
-                placeholder='Type URL link of car image'
-                className='form-control'
-                name="image"
-                value={this.state.image}
-                onChange={this.updateFormField} />
-            </div>
-            <div>
-              <label>Select Price Estimate</label>
-              <select name="price"
-                value={parseInt(this.state.price)}
-                onChange={this.updateFormField}
-              >
-                <option value={40000}>Max $40,000</option>
-                <option value={60000}>Max $60,000</option>
-                <option value={80000}>Max $80,000</option>
-                <option value={100000}>Max $100,000</option>
-                <option value={120000}>Max $120,000</option>
-
-              </select>
-            </div>
+           
             <div className='space-create-form-input-section'>
               <label>Engine Name</label>
               <select name="engineName"
