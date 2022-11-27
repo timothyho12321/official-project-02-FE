@@ -2,7 +2,10 @@ import axios from 'axios'
 import React from 'react'
 
 import css from './MyPosts.css'
+
 import CarPost2 from '../components/CarPost2.js'
+
+
 
 export default class MyPosts extends React.Component {
 
@@ -43,13 +46,17 @@ export default class MyPosts extends React.Component {
 
     deleteCar = async (c) => {
 
-        console.log(c._id);
+        alert("This car will be deleted")
+        // console.log(c._id);
         let savedId = c._id;
-        console.log("Saved", savedId)
+        // console.log("Saved", savedId)
 
         //BUG IS HERE. HOW TO KEY IN PARAMS AS ID INTO HEADER..
-        let response = await axios.delete(this.BASE_API_URL + 
-            "car/"+savedId)
+        let response = await axios.delete(this.BASE_API_URL +
+            "car/" + savedId)
+
+        // console.log(response)
+        this.searchEmailPost()
 
     }
 
@@ -77,9 +84,9 @@ export default class MyPosts extends React.Component {
 
                     <React.Fragment>
                         <h1>Display searched posts if success</h1>
-                        <div>
+                        <div className='row'>
                             {this.state.data.map(c =>
-                                <div>
+                                <div >
                                     <CarPost2 key={c._id}
                                         car={c}
                                         deleteCar={() => {
