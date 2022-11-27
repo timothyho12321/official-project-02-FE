@@ -1,0 +1,11 @@
+.text-and-button-div{
+
+    width: 600px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 8px;
+}
+
+.search-button {
+    margin-left: 8px;
+}

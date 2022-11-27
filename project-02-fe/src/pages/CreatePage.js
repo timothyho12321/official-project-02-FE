@@ -41,7 +41,7 @@ export default class CreatePage extends React.Component {
         //Setting currentEngineDB into array and setState
         // currentEngine in mongoDB is a fixed list
         const response = await axios.get(this.BASE_API_URL + "engine")
-        
+
         // console.log(response.data)
 
         // for (let e of response.data){
@@ -84,39 +84,38 @@ export default class CreatePage extends React.Component {
 
     createCarPost = async () => {
 
-alert("Japan")
-console.log(this.BASE_API_URL + "newcarandengine")
+        console.log(this.BASE_API_URL + "newcarandengine")
 
         const response = await axios.post(this.BASE_API_URL + "newcarandengine", {
-           
-                name_of_model: this.state.nameOfModel,
-                year_of_launch: parseInt(this.state.yearOfLaunch),
-                brand: this.state.brandOfCar,
-                type: this.state.typeOfCar,
-                seats: parseInt(this.state.seatNumber),
-                // // KEY INTO PARAMS AS OBJECT IN FRONT END FOR COLOR (NAME AND SHADE)
-                color: {
-                        "name": this.state.color,
-                        "shade": this.state.colorShade
-                    },
-                land_terrain: this.state.landTerrain,
-                username: this.state.userName,
-                email: this.state.email,
-                rating: this.state.rating,
-                description: this.state.description,
-                cost_price: parseInt(this.state.price),
-                image: this.state.image,
 
-                engine_name: this.state.engineName,
-                top_speed: 70,
-                engine_power: 30,
-                oil_consumption: 2,
+            name_of_model: this.state.nameOfModel,
+            year_of_launch: parseInt(this.state.yearOfLaunch),
+            brand: this.state.brandOfCar,
+            type: this.state.typeOfCar,
+            seats: parseInt(this.state.seatNumber),
+            // // KEY INTO PARAMS AS OBJECT IN FRONT END FOR COLOR (NAME AND SHADE)
+            color: {
+                "name": this.state.color,
+                "shade": this.state.colorShade
+            },
+            land_terrain: this.state.landTerrain,
+            username: this.state.userName,
+            email: this.state.email,
+            rating: this.state.rating,
+            description: this.state.description,
+            cost_price: parseInt(this.state.price),
+            image: this.state.image,
 
-                comfort_features_id: this.state.comfortFeatures
+            engine_name: this.state.engineName,
+            top_speed: 70,
+            engine_power: 30,
+            oil_consumption: 2,
+
+            comfort_features_id: this.state.comfortFeatures
 
 
 
-            
+
 
         })
         console.log(response)
@@ -135,30 +134,41 @@ console.log(this.BASE_API_URL + "newcarandengine")
                 <div>
                     <label>Name of Model</label>
                     <input type="text"
-                        className='form-control'
+                        className='form-control
+                        '
                         name="nameOfModel"
                         value={this.state.nameOfModel}
                         onChange={this.updateFormField} />
                 </div>
 
-                <div>
-                    <label>Year of Launch</label>
+                <div className=
+                    'create-input-div-space'
+                >
+                    <label >
+                        Year of Launch</label>
                     <input type="number"
                         className='form-control'
                         name="yearOfLaunch"
                         value={this.state.yearOfLaunch}
                         onChange={this.updateFormField} />
                 </div>
-                <div>
-                    <label>Car Brand</label>
+                <div className=
+                    'create-input-div-space'
+                >
+                    <label>
+                        Car Brand</label>
                     <input type="text"
                         className='form-control'
                         name="brandOfCar"
                         value={this.state.brandOfCar}
                         onChange={this.updateFormField} />
                 </div>
-                <div>
-                    <label>Car Type</label>
+                <div className=
+                    'create-input-div-space'
+                >
+                    <label>
+                        Car Type
+                    </label>
                     <input type="text"
                         className='form-control'
                         name="typeOfCar"
@@ -166,8 +176,11 @@ console.log(this.BASE_API_URL + "newcarandengine")
                         onChange={this.updateFormField} />
                 </div>
 
-                <div>
-                    <div>Seat Number</div>
+                <div className=
+                    'create-input-div-space'
+                >
+                    <div>
+                        Seat Number</div>
                     <input type="radio"
                         name="seatNumber"
                         value={2}
@@ -192,16 +205,22 @@ console.log(this.BASE_API_URL + "newcarandengine")
 
 
                 </div>
-                <div>
-                    <label>Color</label>
+                <div className=
+                    'create-input-div-space'
+                >
+                    <label>
+                        Color</label>
                     <input type="text"
                         className='form-control'
                         name="color"
                         value={this.state.color}
                         onChange={this.updateFormField} />
                 </div>
-                <div>
-                    <label>Color Shade</label>
+                <div className=
+                    'create-input-div-space'
+                >
+                    <label>
+                        Color Shade</label>
                     <input type="text"
                         className='form-control'
                         name="colorShade"
@@ -209,8 +228,11 @@ console.log(this.BASE_API_URL + "newcarandengine")
                         onChange={this.updateFormField} />
                 </div>
 
-                <div>
-                    <label>Land Terrain</label>
+                <div className=
+                    'create-input-div-space'
+                >
+                    <label>
+                        Land Terrain</label>
                     <input type="text"
                         className='form-control'
                         name="landTerrain"
@@ -218,8 +240,12 @@ console.log(this.BASE_API_URL + "newcarandengine")
                         onChange={this.updateFormField} />
                 </div>
 
-                <div>
-                    <label>Username</label>
+                <div className=
+                    'create-input-div-space'
+                >
+                    <label>
+                        Username
+                    </label>
                     <input type="text"
                         className='form-control'
                         name="userName"
@@ -227,16 +253,23 @@ console.log(this.BASE_API_URL + "newcarandengine")
                         onChange={this.updateFormField} />
                 </div>
 
-                <div>
-                    <label>Email</label>
+                <div className=
+                    'create-input-div-space'
+                >
+                    <label>
+                        Email</label>
                     <input type="text"
                         className='form-control'
                         name="email"
                         value={this.state.email}
                         onChange={this.updateFormField} />
                 </div>
-                <div>
-                    <label>Car rating:</label>
+                <div className=
+                    'create-input-div-space'
+                >
+
+                    <label >
+                        Car rating:</label>
                     <select name="rating"
                         value={this.state.rating}
                         onChange={this.updateFormField}
@@ -250,7 +283,9 @@ console.log(this.BASE_API_URL + "newcarandengine")
                     </select>
                 </div>
 
-                <div>
+                <div className=
+                    'create-input-div-space'
+                >
                     <label>Description</label>
                     <input type="text"
                         placeholder='Fill in details of car recommendation'
@@ -260,7 +295,9 @@ console.log(this.BASE_API_URL + "newcarandengine")
                         value={this.state.description}
                         onChange={this.updateFormField} />
                 </div>
-                <div>
+                <div className=
+                    'create-input-div-space'
+                >
                     <label>Image</label>
                     <input type="text"
                         placeholder='Type URL link of car image'
@@ -269,7 +306,9 @@ console.log(this.BASE_API_URL + "newcarandengine")
                         value={this.state.image}
                         onChange={this.updateFormField} />
                 </div>
-                <div>
+                <div className=
+                    'create-input-div-space'
+                >
                     <label>Select Price Estimate</label>
                     <select name="price"
                         value={parseInt(this.state.price)}
@@ -283,14 +322,17 @@ console.log(this.BASE_API_URL + "newcarandengine")
 
                     </select>
                 </div>
-                <div className='space-create-form-input-section'>
+                <div className=
+                    'create-input-div-space'
+                >
+
                     <label>Engine Name</label>
                     <select name="engineName"
                         value={this.state.engineName}
                         onChange={this.updateFormField}
                         className="space-engine-dropdown-tab"
                     >
-
+                        <option> Please select one</option>
                         {this.state.currentEngineDB.map(e =>
                             <option value={e.engine_name} key={e._id}>
                                 Engine Name: {e.engine_name} |
@@ -302,7 +344,9 @@ console.log(this.BASE_API_URL + "newcarandengine")
                     </select>
                 </div>
 
-                <div>
+                <div className=
+                    'create-input-div-space'
+                >
                     <input type="checkbox"
                         name="comfortFeatures"
                         value="637b79c39b9228988ebddfdd"
@@ -313,30 +357,36 @@ console.log(this.BASE_API_URL + "newcarandengine")
                     <label>Blind Spot Monitoring</label>
                     <input type="checkbox"
                         name="comfortFeatures"
+                        className='checkbox-style'
                         value="637b79c39b9228988ebddfde"
                         checked={this.state.comfortFeatures.includes
                             ("637b79c39b9228988ebddfde")}
                         onChange={this.updateCheckBoxes}
                     />
                     <label>Premium Sound System</label>
-                    <input type="checkbox"
-                        name="comfortFeatures"
-                        value="637b79c39b9228988ebddfdf"
-                        checked={this.state.comfortFeatures.includes
-                            ("637b79c39b9228988ebddfdf")}
-                        onChange={this.updateCheckBoxes}
-                    />
-                    <label>Wireless Connectivity</label>
 
                     <div>
                         <input type="checkbox"
                             name="comfortFeatures"
+                            value="637b79c39b9228988ebddfdf"
+                            checked={this.state.comfortFeatures.includes
+                                ("637b79c39b9228988ebddfdf")}
+                            onChange={this.updateCheckBoxes}
+                        />
+                        <label>Wireless Connectivity</label>
+
+                        <input type="checkbox"
+                            name="comfortFeatures"
+                            className='checkbox-style'
                             value="637b79c39b9228988ebddfe0"
                             checked={this.state.comfortFeatures.includes
                                 ("637b79c39b9228988ebddfe0")}
                             onChange={this.updateCheckBoxes}
                         />
                         <label>Digital Keys</label>
+                    </div>
+
+                    <div>
                         <input type="checkbox"
                             name="comfortFeatures"
                             value="637b79c39b9228988ebddfe1"
@@ -347,14 +397,20 @@ console.log(this.BASE_API_URL + "newcarandengine")
                         <label>AI Bot Alexa Enabled</label>
                         <input type="checkbox"
                             name="comfortFeatures"
+                            className='checkbox-style'
                             value="637b79c39b9228988ebddfe2"
                             checked={this.state.comfortFeatures.includes
                                 ("637b79c39b9228988ebddfe2")}
                             onChange={this.updateCheckBoxes}
                         />
-                        <label>Ventilated Seats</label></div>
+                        <label>Ventilated Seats</label>
 
-                    <div>
+                    </div>
+
+
+                    <div className=
+                        'create-input-div-space'
+                    >
                         <button className='btn btn-light'
                             onClick={this.createCarPost}
                         >Confirm Create Car Post</button>
