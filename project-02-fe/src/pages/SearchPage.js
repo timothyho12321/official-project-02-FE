@@ -3,6 +3,7 @@ import axios from 'axios';
 import CarPost from '../components/CarPost'
 import OffCanvas from '../components/OffCanvas'
 import css from './SearchPage.css';
+import Modal2 from '../components/Modal2'
 
 export default class SearchPage extends React.Component {
 
@@ -34,7 +35,7 @@ export default class SearchPage extends React.Component {
         for (let car of carData) {
             existingCarBrand.push(car.brand)
         }
-        
+
         existingCarBrand = [...new Set(existingCarBrand)]
         // console.log(existingCarBrand)
 
@@ -105,7 +106,7 @@ export default class SearchPage extends React.Component {
 
     filterSearch = async () => {
 
-        
+
         // Make yearError come out if number greater than current year is 
         // keyed in 
         // if ((parseInt(this.state.searchYear) >= this.state.makeAutoYear) 
@@ -158,10 +159,28 @@ export default class SearchPage extends React.Component {
 
     }
 
-    yearError = () => {
-        this.setState({
-            yearError: true
-        })
+
+    /////////////DELETE////////////////////
+    // yearError = () => {
+    //     this.setState({
+    //         yearError: true
+    //     })
+    // }
+
+    openModalDetail = (c) => {
+        alert("Checking Modal Function")
+        return (
+            <React.Fragment>
+                {console.log("return ran")}
+                <Modal2 />
+
+            </React.Fragment>
+
+        )
+
+
+
+
     }
 
     render() {
@@ -210,14 +229,17 @@ export default class SearchPage extends React.Component {
                     <div className='row test_center' >
                         {
                             this.state.data.map(c =>
-                                <CarPost 
-                                key={c._id}
-                                car={c} />)
+                                <CarPost
+                                    key={c._id}
+                                    car={c}
+                                    
+                                />)
 
 
                         }
 
                     </div>
+                    
 
 
                 </div>
