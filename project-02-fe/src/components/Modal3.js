@@ -21,7 +21,7 @@ export default function Modal3(props) {
   return (
     <>
       {values.map((v, idx) => (
-        <Button key={idx} className="me-2" variant ="light" onClick={() => handleShow(v)}>
+        <Button key={idx} className="me-2" variant="light" onClick={() => handleShow(v)}>
           Edit own car
           {typeof v === 'string' && `below ${v.split('-')[0]}`}
         </Button>
@@ -38,7 +38,22 @@ export default function Modal3(props) {
 
 
 
-            <div><h4>Car Details: </h4></div>
+            <div><h4>Edit Car Details: </h4></div>
+
+            <div>
+              {/* DELETE THIS */}
+              <input type="number"
+                     className='form-control'
+                     name="editYearOfLaunch"
+                     value={props.editYearOfLaunch2}
+                     onChange={props.updateFormField}
+                     />
+                    
+              <label>
+                Year of Launch filled
+              </label>
+
+            </div>
             <div>
               Name of car poster: {props.carStore.username}
 
@@ -91,8 +106,8 @@ export default function Modal3(props) {
               <p>Engine Name: {props.carStore.engine_id}</p>
             </div>
             <div>
-              <p>Comfort Features: 
-                {props.carStore.comfort_features_id.map(c=>
+              <p>Comfort Features:
+                {props.carStore.comfort_features_id.map(c =>
                   <span className='badge bg-secondary ms-2'>
                     {c}</span>)}</p>
             </div>

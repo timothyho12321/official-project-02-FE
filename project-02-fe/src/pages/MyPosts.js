@@ -12,7 +12,8 @@ export default class MyPosts extends React.Component {
     state = {
         data: [],
         searchEmail: "",
-        searchByEmailSuccess: false
+        searchByEmailSuccess: false,
+        editYearOfLaunch: null
     }
 
     updateFormField = (event) => {
@@ -93,6 +94,9 @@ export default class MyPosts extends React.Component {
                                             this.deleteCar(c)
                                         }
                                         }
+                                        editYearOfLaunch={this.state.editYearOfLaunch}
+                                        updateFormField={this.updateFormField}
+
                                     />
 
 

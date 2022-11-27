@@ -27,7 +27,12 @@ export default function CarPost2(props) {
                 </Card.Text>
 
                 <div>
-                    <Modal3 carStore={props.car} />
+                    <Modal3 carStore={props.car}
+                            editYearOfLaunch2={props.editYearOfLaunch}
+                            updateFormField={props.updateFormField}
+                    />
+                    
+                    
                     <Button variant="light"
                             onClick={props.deleteCar}
                     >
