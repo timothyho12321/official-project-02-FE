@@ -267,7 +267,6 @@ export default class CreatePage extends React.Component {
                 <div className=
                     'create-input-div-space'
                 >
-
                     <label >
                         Car rating:</label>
                     <select name="rating"
