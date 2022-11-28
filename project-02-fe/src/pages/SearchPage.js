@@ -229,7 +229,7 @@ export default class SearchPage extends React.Component {
                                     car={c}
                                     
                                 />)
-
+ 
 
                         }
 
