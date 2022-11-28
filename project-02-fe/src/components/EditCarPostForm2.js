@@ -8,7 +8,7 @@ import Modal from 'react-bootstrap/Modal';
 
 
 
-export default function Modal3(props) {
+export default function EditCarPostForm(props) {
   const values = [true]
   const [fullscreen, setFullscreen] = useState(true);
   const [show, setShow] = useState(false);
@@ -21,12 +21,24 @@ export default function Modal3(props) {
   return (
     <>
       {values.map((v, idx) => (
-        <Button key={idx} className="me-2" 
-                variant="light" 
-                onClick={() => {handleShow(v)}
-                
-                  }
-                >
+        <Button key={idx} className="me-2"
+          variant="light"
+          onClick={
+
+
+            () => {
+              handleShow(v)
+
+            }
+          }
+          onMouseDown={
+
+            props.changeStateToEachCarYear
+
+
+
+          }
+        >
           Edit own car
           {typeof v === 'string' && `below ${v.split('-')[0]}`}
         </Button>
@@ -48,13 +60,13 @@ export default function Modal3(props) {
             <div>
               {/* DELETE THIS */}
               <input type="number"
-                     className='form-control'
-                     name="editYearOfLaunch"
+                className='form-control'
+                name="editYearOfLaunch"
 
-                     value={props.editYearOfLaunch2}
-                     onChange={props.updateFormField}
-                     />
-                    
+                value={props.editYearOfLaunch2}
+                onChange={props.updateFormField}
+              />
+
               <label>
                 Year of Launch filled
               </label>
