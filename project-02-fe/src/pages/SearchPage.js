@@ -1,4 +1,5 @@
 import React from 'react';
+
 import axios from 'axios';
 import CarPost from '../components/CarPost'
 import OffCanvas from '../components/OffCanvas'
@@ -160,34 +161,28 @@ export default class SearchPage extends React.Component {
     }
 
 
-    /////////////DELETE////////////////////
-    // yearError = () => {
-    //     this.setState({
-    //         yearError: true
-    //     })
+
+    // openModalDetail = (c) => {
+    //     alert("Checking Modal Function")
+    //     return (
+    //         <React.Fragment>
+    //             {console.log("return ran")}
+    //             <Modal2 />
+
+    //         </React.Fragment>
+
+    //     )
+
+
+
+
     // }
-
-    openModalDetail = (c) => {
-        alert("Checking Modal Function")
-        return (
-            <React.Fragment>
-                {console.log("return ran")}
-                <Modal2 />
-
-            </React.Fragment>
-
-        )
-
-
-
-
-    }
 
     render() {
 
         return (
             <React.Fragment>
-                <h1>This is the SearchPage</h1>
+                <h1>Find your car today!</h1>
 
 
                 <label>Brand</label>
