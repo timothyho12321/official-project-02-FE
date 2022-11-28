@@ -6,13 +6,17 @@ import { faStar, faTachographDigital, faTruckField } from '@fortawesome/free-sol
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
+import axios from 'axios';
+
 
 
 export default class EditCarPostForm extends React.Component {
   state = {
+    data: [],
     show: false,
     values: [true],
     fullscreen: true,
+    editYearOfLaunch: null
   }
 
   handleShow(breakpoint) {
@@ -22,7 +26,6 @@ export default class EditCarPostForm extends React.Component {
     })
   }
 
-
   // const values = [true]
   // const [fullscreen, setFullscreen] = useState(true);
   // const [show, setShow] = useState(false);
@@ -31,6 +34,35 @@ export default class EditCarPostForm extends React.Component {
   //   setFullscreen(breakpoint);
   //   setShow(true);
   // }
+
+  BASE_API_URL = "http://localhost:3080/"
+
+  searchEachCarDetailsById = async () => {
+
+    // console.log("Search ran")
+    let response = await axios.get(this.BASE_API_URL + "car/" + this.props.carStore._id)
+    // console.log(response.data);
+
+    this.setState({
+      data: response.data,
+      editYearOfLaunch: response.data[0].year_of_launch
+    })
+  }
+
+  updateFormField = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+
+  }
+
+  updateFormNumber = (event) => {
+    this.setState({
+      [event.target.name]: parseInt(event.target.value)
+    })
+
+  }
+
 
   render() {
     return (
@@ -48,7 +80,9 @@ export default class EditCarPostForm extends React.Component {
             }
             onMouseDown={
 
-              this.props.changeStateToEachCarYear
+              // this.props.changeStateToEachCarYear
+
+              this.searchEachCarDetailsById
 
 
 
@@ -58,7 +92,7 @@ export default class EditCarPostForm extends React.Component {
             {typeof v === 'string' && `below ${v.split('-')[0]}`}
           </Button>
         ))}
-        <Modal show={this.state.show} fullscreen={this.state.fullscreen} onHide={() => {this.setState({show:false})}}>
+        <Modal show={this.state.show} fullscreen={this.state.fullscreen} onHide={() => { this.setState({ show: false }) }}>
           <Modal.Header closeButton>
             <Modal.Title>
               <p>{this.props.carStore.brand} {this.props.carStore.name_of_model}</p>
@@ -68,18 +102,16 @@ export default class EditCarPostForm extends React.Component {
 
             <div>
 
-
-
               <div><h4>Edit Car Details: </h4></div>
 
               <div>
-                {/* DELETE THIS */}
+
                 <input type="number"
                   className='form-control'
                   name="editYearOfLaunch"
 
-                  value={this.props.editYearOfLaunch2}
-                  onChange={this.props.updateFormField}
+                  value={this.state.editYearOfLaunch}
+                  onChange={this.updateFormNumber}
                 />
 
                 <label>
@@ -241,8 +273,8 @@ export default class EditCarPostForm extends React.Component {
 
           </Modal.Body>
         </Modal>
-      </React.Fragment> 
-        
+      </React.Fragment>
+
     );
   }
 

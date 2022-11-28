@@ -119,7 +119,7 @@ export default class MyPosts extends React.Component {
                 {this.state.searchByEmailSuccess ?
 
                     <React.Fragment>
-                        <h1>Display searched posts if success</h1>
+                        
                         <div className='row'>
                             {this.state.data.map(c =>
 
