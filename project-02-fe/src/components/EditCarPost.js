@@ -40,9 +40,9 @@ export default class EditCarPost extends React.Component {
                         <EditCarPostForm
                             key={this.props.car._id}
                             carStore={this.props.car}
-                            editYearOfLaunch2={this.props.editYearOfLaunch}
-                            updateFormField={this.props.updateFormField}
-                            changeStateToEachCarYear={this.props.changeStateToEachCarYear}
+                            
+                            
+                            
 
 
 

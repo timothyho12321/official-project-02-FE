@@ -46,6 +46,9 @@ export default class EditCarPostForm extends React.Component {
     this.setState({
       data: response.data,
       editYearOfLaunch: response.data[0].year_of_launch
+
+
+      
     })
   }
 

@@ -76,13 +76,7 @@ export default class MyPosts extends React.Component {
 
     }
 
-    changeStateToEachCarYear = (c) => {
-        this.setState({
-            editYearOfLaunch: c.year_of_launch
-        })
-    }
-
-
+    
 
 
     // TO DELETE THIS. THIRD ATTEMPT AT CREATE OWN BUTTON TO EDIT CAR POST
@@ -131,12 +125,9 @@ export default class MyPosts extends React.Component {
                                     }
                                     }
 
-                                    editYearOfLaunch={this.state.editYearOfLaunch}
+                                    
                                     updateFormField={this.updateFormField}
-                                    changeStateToEachCarYear={
-                                        () => {
-                                            this.changeStateToEachCarYear(c)
-                                        }}
+                                  
                                     sendModal3={this.sendModal3}
                                 />
 
