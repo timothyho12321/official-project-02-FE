@@ -21,7 +21,12 @@ export default function Modal3(props) {
   return (
     <>
       {values.map((v, idx) => (
-        <Button key={idx} className="me-2" variant="light" onClick={() => handleShow(v)}>
+        <Button key={idx} className="me-2" 
+                variant="light" 
+                onClick={() => {handleShow(v)}
+                
+                  }
+                >
           Edit own car
           {typeof v === 'string' && `below ${v.split('-')[0]}`}
         </Button>
@@ -45,6 +50,7 @@ export default function Modal3(props) {
               <input type="number"
                      className='form-control'
                      name="editYearOfLaunch"
+
                      value={props.editYearOfLaunch2}
                      onChange={props.updateFormField}
                      />
