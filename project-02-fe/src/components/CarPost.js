@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import css from './CarPost.css'
+import './CarPost.css'
 import Modal2 from '../components/Modal2'
 
 export default function CarPost(props) {

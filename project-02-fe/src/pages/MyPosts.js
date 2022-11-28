@@ -3,8 +3,8 @@ import React from 'react'
 
 import css from './MyPosts.css'
 
-import CarPost2 from '../components/CarPost2.js'
-
+import EditCarPost from '../components/EditCarPost.js'
+import Modal3 from '../components/EditCarPostForm'
 
 
 export default class MyPosts extends React.Component {
@@ -13,13 +13,28 @@ export default class MyPosts extends React.Component {
         data: [],
         searchEmail: "",
         searchByEmailSuccess: false,
-        editYearOfLaunch: null
+        eachCarYear: null,
+        editYearOfLaunch: null,
+
     }
 
     updateFormField = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         })
+        
+        // if (!(event.target.name === "editYearOfLaunch")) {
+        //     this.setState({
+        //         [event.target.name]: event.target.value
+        //     })
+        // }
+        // else {
+        //     console.log("editYearOfLaunch")
+        //     this.setState({
+        //         [event.target.name]: parseInt(event.target.value)
+        //     })
+        // }
+
 
     }
 
@@ -61,6 +76,26 @@ export default class MyPosts extends React.Component {
 
     }
 
+    changeStateToEachCarYear = (c) => {
+        this.setState({
+            editYearOfLaunch: c.year_of_launch
+        })
+    }
+
+
+
+
+    // TO DELETE THIS. THIRD ATTEMPT AT CREATE OWN BUTTON TO EDIT CAR POST
+    sendModal3 = () => {
+        return (
+            <React.Fragment>
+                <Modal3 />
+
+            </React.Fragment>
+        )
+
+    }
+
     render() {
 
         return (
@@ -87,20 +122,27 @@ export default class MyPosts extends React.Component {
                         <h1>Display searched posts if success</h1>
                         <div className='row'>
                             {this.state.data.map(c =>
-                                <div >
-                                    <CarPost2 key={c._id}
-                                        car={c}
-                                        deleteCar={() => {
-                                            this.deleteCar(c)
-                                        }
-                                        }
-                                        editYearOfLaunch={this.state.editYearOfLaunch}
-                                        updateFormField={this.updateFormField}
 
-                                    />
+                                <EditCarPost 
+                                className="mt-3 col-12 col-lg-4 col-md-6" key={c._id}
+                                    car={c}
+                                    deleteCar={() => {
+                                        this.deleteCar(c)
+                                    }
+                                    }
+
+                                    editYearOfLaunch={this.state.editYearOfLaunch}
+                                    updateFormField={this.updateFormField}
+                                    changeStateToEachCarYear={
+                                        () => {
+                                            this.changeStateToEachCarYear(c)
+                                        }}
+                                    sendModal3={this.sendModal3}
+                                />
 
 
-                                </div>)}
+
+                            )}
                         </div>
 
 
