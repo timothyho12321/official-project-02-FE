@@ -30,7 +30,8 @@ export default class EditCarPostForm extends React.Component {
     editDescription: "",
     editImage: "",
     editEngineName: "",
-    
+    editComfortFeatures: []
+
   }
 
   BASE_API_URL = "http://localhost:3080/"
@@ -71,7 +72,7 @@ export default class EditCarPostForm extends React.Component {
 
 
     //THIS RETURNS AN ARRAY OF THE CURRENT ENGINE DETAILS BY ID FROM ENGINE COLLECTION IN MONGODB
-    let findCarEngineByName = await axios.get(this.BASE_API_URL+"engine/"+this.props.carStore.engine_id)
+    let findCarEngineByName = await axios.get(this.BASE_API_URL + "engine/" + this.props.carStore.engine_id)
     // console.log("EngineName",findCarEngineByName.data)
 
     this.setState({
@@ -90,6 +91,7 @@ export default class EditCarPostForm extends React.Component {
       editDescription: response.data[0].description,
       editImage: response.data[0].image,
       editEngineName: findCarEngineByName.data[0].engine_name,
+      editComfortFeatures: response.data[0].comfort_features_id,
     })
   }
 
@@ -104,6 +106,75 @@ export default class EditCarPostForm extends React.Component {
     this.setState({
       [event.target.name]: parseInt(event.target.value)
     })
+
+  }
+
+  updateCheckBoxes = (event) => {
+
+    if (!this.state.editComfortFeatures.includes(event.target.value)) {
+
+      this.setState({
+        editComfortFeatures: [...this.state.editComfortFeatures, event.target.value]
+      })
+
+    } else {
+
+      let indexToReplace = this.state.editComfortFeatures.indexOf(event.target.value)
+
+      this.setState({
+        editComfortFeatures: [...this.state.editComfortFeatures.slice(0, indexToReplace),
+        ...this.state.editComfortFeatures.slice(indexToReplace + 1)]
+      })
+
+    }
+
+
+  }
+
+
+  editCarPost = async () => {
+
+    try {
+
+      let response = await axios.put(this.BASE_API_URL + "car/"
+        + this.props.carStore._id, {
+
+        name_of_model: this.state.editNameOfModel,
+        year_of_launch: this.state.editYearOfLaunch,
+        brand: this.state.editBrandOfCar,
+        type: this.state.editTypeOfCar,
+        seats: this.state.editSeatNumber,
+        color: {
+          "name": this.state.editColor,
+          "shade": this.state.editColorShade
+        },
+        land_terrain: this.state.editLandTerrain,
+        username: this.state.editUserName,
+        email: this.props.carStore.email,
+        rating: this.state.editRating,
+        description: this.state.editDescription,
+        cost_price: 80000,
+        image: this.state.editImage,
+
+        engine_name: this.state.editEngineName,
+
+
+        comfort_features_id: this.state.editComfortFeatures
+
+      }
+
+      )
+
+      console.log(response)
+
+    } catch (e) {
+
+      console.log(e)
+    }
+
+
+
+
 
   }
 
@@ -321,7 +392,7 @@ export default class EditCarPostForm extends React.Component {
                   'create-input-div-space'
                 >
 
-                  <label>Engine Name</label>
+                  <label>Engine Name (with performance specification)</label>
                   <select name="editEngineName"
                     value={this.state.editEngineName}
                     onChange={this.updateFormField}
@@ -330,31 +401,101 @@ export default class EditCarPostForm extends React.Component {
                     <option> Please select one</option>
                     {this.state.currentEngineDB.map(e =>
                       <option value={e.engine_name} key={e._id}>
-                        Engine Name: {e.engine_name} |
-                        Top Speed: {e.top_speed} |
-                        Engine Power: {e.engine_power} |
-                        Oil Consumption: {e.oil_consumption}
+                        E-Name: {e.engine_name} |
+                        Speed: {e.top_speed} |
+                        Power: {e.engine_power} |
+                        Oil: {e.oil_consumption}
                       </option>)}
 
                   </select>
                 </div>
 
 
+                <div>
+                  <div className=
+                    'create-input-div-space'
+                  >
+                    <input type="checkbox"
+                      name="editComfortFeatures"
+                      value="637b79c39b9228988ebddfdd"
+                      checked={this.state.editComfortFeatures.includes
+                        ("637b79c39b9228988ebddfdd")}
+                      onChange={this.updateCheckBoxes}
+                    />
+                    <label>Blind Spot Monitoring</label>
+                    <input type="checkbox"
+                      name="editComfortFeatures"
+                      className='checkbox-style'
+                      value="637b79c39b9228988ebddfde"
+                      checked={this.state.editComfortFeatures.includes
+                        ("637b79c39b9228988ebddfde")}
+                      onChange={this.updateCheckBoxes}
+                    />
+                    <label>Premium Sound System</label>
+
+                    <div>
+                      <input type="checkbox"
+                        name="editComfortFeatures"
+                        value="637b79c39b9228988ebddfdf"
+                        checked={this.state.editComfortFeatures.includes
+                          ("637b79c39b9228988ebddfdf")}
+                        onChange={this.updateCheckBoxes}
+                      />
+                      <label>Wireless Connectivity</label>
+
+                      <input type="checkbox"
+                        name="editComfortFeatures"
+                        className='checkbox-style'
+                        value="637b79c39b9228988ebddfe0"
+                        checked={this.state.editComfortFeatures.includes
+                          ("637b79c39b9228988ebddfe0")}
+                        onChange={this.updateCheckBoxes}
+                      />
+                      <label>Digital Keys</label>
+                    </div>
+
+                    <div>
+                      <input type="checkbox"
+                        name="editComfortFeatures"
+                        value="637b79c39b9228988ebddfe1"
+                        checked={this.state.editComfortFeatures.includes
+                          ("637b79c39b9228988ebddfe1")}
+                        onChange={this.updateCheckBoxes}
+                      />
+                      <label>AI Bot Alexa Enabled</label>
+                      <input type="checkbox"
+                        name="editComfortFeatures"
+                        className='checkbox-style'
+                        value="637b79c39b9228988ebddfe2"
+                        checked={this.state.editComfortFeatures.includes
+                          ("637b79c39b9228988ebddfe2")}
+                        onChange={this.updateCheckBoxes}
+                      />
+                      <label>Ventilated Seats</label>
+
+                    </div>
+
+                  </div>
+
+
+
+
+                </div>
+
+                <div className=
+                  'create-input-div-space'
+                >
+                  <button className='btn btn-light'
+                    onClick={this.editCarPost}
+                  >Confirm Edit Car Post</button>
+                </div>
 
 
 
 
               </div>
 
-              <p>{this.props.carStore.brand} {this.props.carStore.name_of_model}</p>
-
-
-
-              <div></div>
-
             </div>
-
-
 
 
 
