@@ -29,6 +29,7 @@ export default class EditCarPostForm extends React.Component {
     editRating: "",
     editDescription: "",
     editImage: "",
+    editPrice: null,
     editEngineName: "",
     editComfortFeatures: []
 
@@ -84,11 +85,11 @@ export default class EditCarPostForm extends React.Component {
       editSeatNumber: response.data[0].seats,
       editColor: response.data[0].color.name,
       editColorShade: response.data[0].color.shade,
-      editLandTerrain: response.data[0].land_terrain
-      ,
+      editLandTerrain: response.data[0].land_terrain,
       editUserName: response.data[0].username,
       editRating: response.data[0].rating,
       editDescription: response.data[0].description,
+      editPrice: response.data[0].cost_price,
       editImage: response.data[0].image,
       editEngineName: findCarEngineByName.data[0].engine_name,
       editComfortFeatures: response.data[0].comfort_features_id,
@@ -134,6 +135,8 @@ export default class EditCarPostForm extends React.Component {
 
   editCarPost = async () => {
 
+     
+
     try {
 
       let response = await axios.put(this.BASE_API_URL + "car/"
@@ -153,7 +156,7 @@ export default class EditCarPostForm extends React.Component {
         email: this.props.carStore.email,
         rating: this.state.editRating,
         description: this.state.editDescription,
-        cost_price: 80000,
+        cost_price: this.state.editPrice,
         image: this.state.editImage,
 
         engine_name: this.state.editEngineName,
@@ -167,14 +170,15 @@ export default class EditCarPostForm extends React.Component {
 
       console.log(response)
 
+      // TO debug and delete
+      // {this.props.searchEmailPost}
+
     } catch (e) {
 
       console.log(e)
     }
 
-
-
-
+    
 
   }
 
@@ -386,6 +390,23 @@ export default class EditCarPostForm extends React.Component {
                     name="editImage"
                     value={this.state.editImage}
                     onChange={this.updateFormField} />
+                </div>
+
+                <div className=
+                  'create-input-div-space'
+                >
+                  <label>Select Price Estimate</label>
+                  <select name="editPrice"
+                    value={parseInt(this.state.editPrice)}
+                    onChange={this.updateFormNumber}
+                  >
+                    <option value={40000}>Max $40,000</option>
+                    <option value={60000}>Max $60,000</option>
+                    <option value={80000}>Max $80,000</option>
+                    <option value={100000}>Max $100,000</option>
+                    <option value={120000}>Max $120,000</option>
+
+                  </select>
                 </div>
 
                 <div className=

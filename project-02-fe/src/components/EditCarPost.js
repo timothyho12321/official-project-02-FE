@@ -40,8 +40,8 @@ export default class EditCarPost extends React.Component {
                         <EditCarPostForm
                             key={this.props.car._id}
                             carStore={this.props.car}
-                            
-                            
+                            searchEmailPost={this.props.searchEmailPost}
+                            changeStateToRender={this.props.changeStateToRender}
                             
 
 

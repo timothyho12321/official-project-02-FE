@@ -15,14 +15,14 @@ export default class MyPosts extends React.Component {
         searchByEmailSuccess: false,
         eachCarYear: null,
         editYearOfLaunch: null,
-
+        changeValueToRender: null
     }
 
     updateFormField = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         })
-        
+
         // if (!(event.target.name === "editYearOfLaunch")) {
         //     this.setState({
         //         [event.target.name]: event.target.value
@@ -40,6 +40,14 @@ export default class MyPosts extends React.Component {
 
 
     BASE_API_URL = "http://localhost:3080/"
+
+
+    changeStateToRender = () => {
+        this.setState({
+            changeValueToRender: 1
+        })
+
+    }
 
     searchEmailPost = async () => {
 
@@ -76,7 +84,7 @@ export default class MyPosts extends React.Component {
 
     }
 
-    
+
 
 
     // TO DELETE THIS. THIRD ATTEMPT AT CREATE OWN BUTTON TO EDIT CAR POST
@@ -113,22 +121,25 @@ export default class MyPosts extends React.Component {
                 {this.state.searchByEmailSuccess ?
 
                     <React.Fragment>
-                        
+
                         <div className='row'>
                             {this.state.data.map(c =>
 
-                                <EditCarPost 
-                                className="mt-3 col-12 col-lg-4 col-md-6" key={c._id}
+                                <EditCarPost
+                                    className="mt-3 col-12 col-lg-4 col-md-6" key={c._id}
                                     car={c}
                                     deleteCar={() => {
                                         this.deleteCar(c)
                                     }
                                     }
 
-                                    
+
                                     updateFormField={this.updateFormField}
-                                  
-                                    sendModal3={this.sendModal3}
+                                    
+                                    // To delete if unable to utilise
+                                    searchEmailPost={this.searchEmailPost}
+
+                                    // sendModal3={this.sendModal3}
                                 />
 
 
