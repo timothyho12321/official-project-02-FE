@@ -15,7 +15,14 @@ export default class SeeDetailedPost extends React.Component {
 
                 <h2>SeeDetailedPost </h2>
 
-                <div>
+
+                <h3><div>
+                    Name of car poster: {this.props.carStore.username}
+
+                </div> </h3>
+
+
+                {/* <div>
 
 
 
@@ -83,7 +90,7 @@ export default class SeeDetailedPost extends React.Component {
 
                     <div></div>
 
-                </div>
+                </div> */}
 
 
 

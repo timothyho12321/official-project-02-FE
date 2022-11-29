@@ -4,7 +4,8 @@ import axios from 'axios';
 import CarPost from '../components/CarPost'
 import OffCanvas from '../components/OffCanvas'
 import css from './SearchPage.css';
-import Modal2 from '../components/CarPostDetails'
+import CarPostDetails from '../components/CarPostDetails'
+import SeeDetailedPost from '../components/SeeDetailedPost';
 
 export default class SearchPage extends React.Component {
 
@@ -19,7 +20,11 @@ export default class SearchPage extends React.Component {
         existingCarBrand: [],
         makeAutoYear: null,
         yearGreaterError: false,
-        yearLengthError: false
+        yearLengthError: false,
+        page: "general",
+        singleSearchSavedId: null,
+        detailedSearchPressed: false,
+        singleCarObject: {}
 
     }
 
@@ -69,6 +74,31 @@ export default class SearchPage extends React.Component {
         })
 
     }
+
+    async componentDidUpdate() {
+        if (this.state.detailedSearchPressed === true
+            && 
+            Object.keys(this.state.singleCarObject).length === 0
+            ) {
+
+            // console.log(Object.keys(this.state.singleCarObject).length)
+            let a = this.state.singleSearchSavedId
+            // console.log(a)
+            // console.log(this.BASE_API_URL + "car/" +
+            //     this.state.singleSearchSavedId)
+            let endpoint = this.BASE_API_URL + "car/" +
+                this.state.singleSearchSavedId
+
+            let response = await axios.get(endpoint)
+            // console.log("ComponentUpdate", response.data[0])
+
+            this.setState({
+                singleCarObject: response.data[0]
+            })
+        } 
+
+    }
+
 
     updateFormField = (event) => {
 
@@ -161,88 +191,169 @@ export default class SearchPage extends React.Component {
     }
 
 
+    renderPage = () => {
 
-    // openModalDetail = (c) => {
-    //     alert("Checking Modal Function")
-    //     return (
-    //         <React.Fragment>
-    //             {console.log("return ran")}
-    //             <Modal2 />
+        if (this.state.page === "single") {
 
-    //         </React.Fragment>
 
-    //     )
+//DEBUG FROM HERE 
+// CANNOT SPREAD OBJECT
+console.log({...this.state.singleCarObject})
 
 
 
+            return (
+                <React.Fragment>
+                    <SeeDetailedPost
+                        carStore={this.state.singleCarObject}
 
-    // }
+                    />
+
+                </React.Fragment>
+
+
+            )
+
+
+
+        } else if (this.state.page === "general") {
+            return (
+                <React.Fragment>
+                    <h1>Find your car today!</h1>
+
+
+                    <label>Brand</label>
+                    <input type="text"
+                        className='form-control'
+                        value={this.state.searchBrand}
+                        name="searchBrand"
+                        onChange={this.updateFormField} />
+
+                    <div className='button-search-div mt-3'>
+                        <button className='btn btn-primary '
+                            onClick={this.onlyBrandSearch}
+
+                        >Brand Search</button>
+
+                        <div className='OffCanvas-div'>
+
+                            <OffCanvas
+                                searchBrand={this.state.searchBrand}
+                                searchType={this.state.searchType}
+                                searchYear={this.state.searchYear}
+                                searchPrice={this.state.searchPrice}
+                                searchRating={this.state.searchRating}
+                                updateFormField={this.updateFormField}
+                                filterSearch={this.filterSearch}
+                                yearGreaterError={this.state.yearGreaterError}
+                                yearLengthError={this.state.yearLengthError}
+                                makeAutoYear={this.state.makeAutoYear}
+                                existingCarTypes={this.state.existingCarTypes}
+                                existingCarBrand={this.state.existingCarBrand}
+                            />
+
+                        </div>
+
+                    </div>
+
+                    <div className='container'>
+
+                        <div className='row test_center' >
+                            {
+                                this.state.data.map((c) =>
+                                    <CarPost
+                                        key={c._id}
+                                        car={c}
+
+                                        changeSearchStateDetailedPost={this.changeSearchStateDetailedPost}
+                                    />)
+
+
+                            }
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+                </React.Fragment>
+            )
+
+
+        }
+    }
+
+    changeSearchStateDetailedPost = (c) => {
+
+
+        // console.log(c);
+        // console.log("saveId to state worked")
+        this.setState({
+            "singleSearchSavedId": c,
+            "page": "single",
+            "detailedSearchPressed": true
+        })
+
+
+
+
+
+    }
+
+    callFunctionFirst = async () => {
+        console.log("detailedSearchedPressed => ", this.state.detailedSearchPressed)
+        if (this.state.detailedSearchPressed === true) {
+            // let a = this.state.singleSearchSavedId
+            // console.log(a)
+            // console.log(this.BASE_API_URL + "car/" +
+            //     this.state.singleSearchSavedId)
+            let endpoint = this.BASE_API_URL + "car/" +
+                this.state.singleSearchSavedId
+
+            // let response = await axios.get(endpoint)
+            // console.log(response.data)
+
+            // console.log("Query id", response.data)
+            return (<h2>The api function ran</h2>)
+            //return response.data
+
+
+
+
+        }
+
+    }
+
+
+
+
+
 
     render() {
 
         return (
+
+
             <React.Fragment>
-                <h1>Find your car today!</h1>
 
+                <div>
 
-                <label>Brand</label>
-                <input type="text"
-                    className='form-control'
-                    value={this.state.searchBrand}
-                    name="searchBrand"
-                    onChange={this.updateFormField} />
-
-                <div className='button-search-div mt-3'>
-                    <button className='btn btn-primary '
-                        onClick={this.onlyBrandSearch}
-
-                    >Brand Search</button>
-
-                    <div className='OffCanvas-div'>
-
-                        <OffCanvas
-                            searchBrand={this.state.searchBrand}
-                            searchType={this.state.searchType}
-                            searchYear={this.state.searchYear}
-                            searchPrice={this.state.searchPrice}
-                            searchRating={this.state.searchRating}
-                            updateFormField={this.updateFormField}
-                            filterSearch={this.filterSearch}
-                            yearGreaterError={this.state.yearGreaterError}
-                            yearLengthError={this.state.yearLengthError}
-                            makeAutoYear={this.state.makeAutoYear}
-                            existingCarTypes={this.state.existingCarTypes}
-                            existingCarBrand={this.state.existingCarBrand}
-                        />
-
-                    </div>
-
-                </div>
-
-                <div className='container'>
-
-                    <div className='row test_center' >
-                        {
-                            this.state.data.map(c =>
-                                <CarPost
-                                    key={c._id}
-                                    car={c}
-                                    changeMainStateDetailedPost={this.props.changeMainStateDetailedPost}
-                                />)
- 
-
-                        }
-
-                    </div>
-                    
-
-
+                    {this.renderPage()}
                 </div>
 
 
 
             </React.Fragment>
+
         )
+
+
+
 
     }
 

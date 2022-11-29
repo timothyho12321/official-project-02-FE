@@ -32,7 +32,8 @@ export default class Main extends React.Component {
             return <MyPosts />
         }
         if (this.state.page === "seeDetailedPost") {
-            return <SeeDetailedPost />
+            return <SeeDetailedPost 
+            />
         }
     }
 
@@ -44,12 +45,15 @@ export default class Main extends React.Component {
 
     }
 
-    changeMainStateDetailedPost = () => {
+
+    //TO DELETE THIS
+    changeMainStateDetailedPost = (c) => {
         this.setState({
 
             page: "seeDetailedPost"
         })
 
+        console.log(c)
 
 
     }
