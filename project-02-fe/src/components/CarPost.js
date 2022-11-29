@@ -40,12 +40,9 @@ export default class CarPost extends React.Component {
                             <p>Price: $ {this.props.car.cost_price} </p>
                         </Card.Text>
 
-
                         <div>
                             <CarPostDetails carStore={this.props.car} />
 
-
-                            {/* NEED TO DEBUG HERE HOW TO PASS INTO A NEW PAGE ON BUTTON CLICK  */}
                             <Button variant='light'
                                 carStore={this.props.car}
                                 // onClick={this.props.changeMainStateDetailedPost()}

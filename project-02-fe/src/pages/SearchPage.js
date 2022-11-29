@@ -196,16 +196,14 @@ export default class SearchPage extends React.Component {
         if (this.state.page === "single") {
 
 
-//DEBUG FROM HERE 
-// CANNOT SPREAD OBJECT
-console.log({...this.state.singleCarObject})
+// console.log({...this.state.singleCarObject})
 
 
 
             return (
                 <React.Fragment>
                     <SeeDetailedPost
-                        carStore={this.state.singleCarObject}
+                        {...this.state.singleCarObject}
 
                     />
 

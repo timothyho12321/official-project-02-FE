@@ -6,7 +6,6 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 export default class SeeDetailedPost extends React.Component {
 
 
-
     render() {
 
         return (
@@ -16,25 +15,20 @@ export default class SeeDetailedPost extends React.Component {
                 <h2>SeeDetailedPost </h2>
 
 
-                <h3><div>
-                    Name of car poster: {this.props.carStore.username}
 
-                </div> </h3>
-
-
-                {/* <div>
+                <div>
 
 
 
                     <div><h4>Car Details: </h4></div>
                     <div>
-                        Name of car poster: {this.props.carStore.username}
+                        Name of car poster: {this.props.username}
 
                     </div>
 
 
                     <div>
-                        <img src={this.props.carStore.image}
+                        <img src={this.props.image}
                             style={{
                                 width: "100%",
                                 height: "100%"
@@ -42,55 +36,55 @@ export default class SeeDetailedPost extends React.Component {
                     </div>
 
                     <div>
-                        <p>Year of Launch: {this.props.carStore.year_of_launch}</p>
+                        <p>Year of Launch: {this.props.year_of_launch}</p>
                     </div>
 
                     <div>
-                        <p>Type: {this.props.carStore.type}</p>
+                        <p>Type: {this.props.type}</p>
                     </div>
                     <div>
-                        <p>Seat Number: {this.props.carStore.
+                        <p>Seat Number: {this.props.
                             seats}</p>
                     </div>
                     <div>
-                        <p>Type: {this.props.carStore.type}</p>
+                        <p>Type: {this.props.type}</p>
+                    </div>
+                    {/* <div>
+                        <p>Color: {this.props.color}</p>
+                    </div> */}
+                    {/* <div>
+                        <p>Color Shade: {this.props.color.shade}</p>
+                    </div> */}
+                    <div>
+                        <p>Land Terrain: {this.props.land_terrain}</p>
                     </div>
                     <div>
-                        <p>Color: {this.props.carStore.color.name}</p>
-                    </div>
-                    <div>
-                        <p>Color Shade: {this.props.carStore.color.shade}</p>
-                    </div>
-                    <div>
-                        <p>Land Terrain: {this.props.carStore.land_terrain}</p>
-                    </div>
-                    <div>
-                        <p>Car Rating: {this.props.carStore.rating}
+                        <p>Car Rating: {this.props.rating}
                             <FontAwesomeIcon icon={faStar} />
                         </p>
                     </div>
                     <div>
-                        <p>Description: {this.props.carStore.description}</p>
+                        <p>Description: {this.props.description}</p>
                     </div>
                     <div>
-                        <p>Price: ${this.props.carStore.cost_price}</p>
+                        <p>Price: ${this.props.cost_price}</p>
                     </div>
                     <div>
-                        <p>Engine Name: {this.props.carStore.engine_id}</p>
+                        <p>Engine Name: {this.props.engine_id}</p>
                     </div>
-                    <div>
+                    {/* <div>
                         <p>Comfort Features:
-                            {this.props.carStore.comfort_features_id.map(c =>
+                            {this.props.comfort_features_id.map(c =>
                                 <span className='badge bg-secondary ms-2'>
                                     {c}</span>)}</p>
-                    </div>
+                    </div> */}
 
 
 
 
                     <div></div>
 
-                </div> */}
+                </div>
 
 
 
