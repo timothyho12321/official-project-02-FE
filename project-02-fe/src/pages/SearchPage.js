@@ -4,7 +4,7 @@ import axios from 'axios';
 import CarPost from '../components/CarPost'
 import OffCanvas from '../components/OffCanvas'
 import css from './SearchPage.css';
-import Modal2 from '../components/Modal2'
+import Modal2 from '../components/CarPostDetails'
 
 export default class SearchPage extends React.Component {
 
@@ -227,7 +227,7 @@ export default class SearchPage extends React.Component {
                                 <CarPost
                                     key={c._id}
                                     car={c}
-                                    
+                                    changeMainStateDetailedPost={this.props.changeMainStateDetailedPost}
                                 />)
  
 

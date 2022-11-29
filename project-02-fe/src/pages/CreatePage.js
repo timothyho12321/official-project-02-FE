@@ -1,6 +1,7 @@
-import axios from 'axios'
+
 import React from 'react'
 import css from './CreatePage.css'
+import axios from 'axios'
 
 export default class CreatePage extends React.Component {
 
@@ -128,8 +129,6 @@ export default class CreatePage extends React.Component {
         return (
             <React.Fragment>
                 <h3>Fill in the details to create a new car post.</h3>
-
-
 
                 <div>
                     <label>Name of Model</label>

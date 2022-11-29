@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 import CreatePage from './pages/CreatePage';
 import MyPosts from './pages/MyPosts';
-
+import SeeDetailedPost from './components/SeeDetailedPost';
 
 
 export default class Main extends React.Component {
@@ -20,13 +20,19 @@ export default class Main extends React.Component {
             return <HomePage />
         }
         if (this.state.page === "search") {
-            return <SearchPage />
+            return <SearchPage 
+                                changeMainStateDetailedPost={this.changeMainStateDetailedPost}
+            
+                    />
         }
         if (this.state.page === "create") {
             return <CreatePage />
         }
         if (this.state.page === "mypost") {
             return <MyPosts />
+        }
+        if (this.state.page === "seeDetailedPost") {
+            return <SeeDetailedPost />
         }
     }
 
@@ -35,6 +41,16 @@ export default class Main extends React.Component {
 
             page: currentPage
         })
+
+    }
+
+    changeMainStateDetailedPost = () => {
+        this.setState({
+
+            page: "seeDetailedPost"
+        })
+
+
 
     }
 
