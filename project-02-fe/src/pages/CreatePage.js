@@ -107,9 +107,9 @@ export default class CreatePage extends React.Component {
             image: this.state.image,
 
             engine_name: this.state.engineName,
-            top_speed: 70,
-            engine_power: 30,
-            oil_consumption: 2,
+            // top_speed: 70,
+            // engine_power: 30,
+            // oil_consumption: 2,
 
             comfort_features_id: this.state.comfortFeatures
 
@@ -267,7 +267,6 @@ export default class CreatePage extends React.Component {
                 <div className=
                     'create-input-div-space'
                 >
-
                     <label >
                         Car rating:</label>
                     <select name="rating"
