@@ -49,12 +49,12 @@ export default class SeeDetailedPost extends React.Component {
                     <div>
                         <p>Type: {this.props.type}</p>
                     </div>
-                    {/* <div>
-                        <p>Color: {this.props.color}</p>
-                    </div> */}
-                    {/* <div>
-                        <p>Color Shade: {this.props.color.shade}</p>
-                    </div> */}
+                    <div>
+                        <p>Color: {this.props.colorSpecial}</p>
+                    </div>
+                    <div>
+                        <p>Color Shade: {this.props.colorShadeSpecial}</p>
+                    </div>
                     <div>
                         <p>Land Terrain: {this.props.land_terrain}</p>
                     </div>

@@ -77,9 +77,9 @@ export default class SearchPage extends React.Component {
 
     async componentDidUpdate() {
         if (this.state.detailedSearchPressed === true
-            && 
+            &&
             Object.keys(this.state.singleCarObject).length === 0
-            ) {
+        ) {
 
             // console.log(Object.keys(this.state.singleCarObject).length)
             let a = this.state.singleSearchSavedId
@@ -95,7 +95,7 @@ export default class SearchPage extends React.Component {
             this.setState({
                 singleCarObject: response.data[0]
             })
-        } 
+        }
 
     }
 
@@ -195,8 +195,18 @@ export default class SearchPage extends React.Component {
 
         if (this.state.page === "single") {
 
+            // CANNOT READ INTO NESTED OBJECT UNLESS YOU TRY
+            let color = null
+            let colorShade = null
 
-// console.log({...this.state.singleCarObject})
+            try {
+                colorShade = this.state.singleCarObject.color["shade"]
+                // console.log(colorShade)
+                color = this.state.singleCarObject.color["name"]
+                // console.log(color)
+            } catch (e) {
+                console.log(e)
+            }
 
 
 
@@ -204,7 +214,8 @@ export default class SearchPage extends React.Component {
                 <React.Fragment>
                     <SeeDetailedPost
                         {...this.state.singleCarObject}
-
+                        colorShadeSpecial={colorShade}
+                        colorSpecial={color}
                     />
 
                 </React.Fragment>
