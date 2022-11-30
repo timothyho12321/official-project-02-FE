@@ -4,9 +4,10 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 
 export default class SeeDetailedPost extends React.Component {
-
+    
 
     render() {
+        let array = this.props.comfortFeaturesProp;
 
         return (
 
@@ -72,12 +73,32 @@ export default class SeeDetailedPost extends React.Component {
                     <div>
                         <p>Engine Name: {this.props.engine_id}</p>
                     </div>
+                    <div>
+                        {/* <p>Comfort Features:
+                            
+                            
+                            
+                            {this.props.comfortFeaturesProp.map(c =>
+                               
+                                <span className='badge bg-secondary ms-2'>
+                                    {c}</span>)}
+                                    
+                                    </p> */}
+
+                    </div>
+
+
+
+
+
+
                     {/* <div>
                         <p>Comfort Features:
                             {this.props.comfort_features_id.map(c =>
                                 <span className='badge bg-secondary ms-2'>
                                     {c}</span>)}</p>
                     </div> */}
+                    
 
 
 
