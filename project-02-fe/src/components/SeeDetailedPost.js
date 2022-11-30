@@ -7,7 +7,7 @@ export default class SeeDetailedPost extends React.Component {
     
 
     render() {
-        let array = this.props.comfortFeaturesProp;
+        
 
         return (
 
