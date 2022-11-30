@@ -4,10 +4,26 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 
 export default class SeeDetailedPost extends React.Component {
-    
+
+
+    renderArray = () => {
+        let a = [...this.props.comfortFeaturesProp]
+        console.log(a)
+
+        // let jsx = []
+        // for (let each of a) {
+        //     jsx.push(
+        //         <p>{each}</p>
+        //     )
+
+        // }
+        // return jsx
+    }
+
+
 
     render() {
-        
+
 
         return (
 
@@ -73,23 +89,26 @@ export default class SeeDetailedPost extends React.Component {
                     <div>
                         <p>Engine Name: {this.props.engine_id}</p>
                     </div>
+
+
                     <div>
-                        {/* <p>Comfort Features:
+                        {this.renderArray()}
+                    </div>
+
+
+                    {/* <div>
+                        <p>Comfort Features:
                             
                             
                             
-                            {this.props.comfortFeaturesProp.map(c =>
+                            {this.props.singleCarObject2.comfort_features_id.map(c =>
                                
                                 <span className='badge bg-secondary ms-2'>
                                     {c}</span>)}
                                     
-                                    </p> */}
+                                    </p>
 
-                    </div>
-
-
-
-
+                    </div> */}
 
 
                     {/* <div>
@@ -98,12 +117,12 @@ export default class SeeDetailedPost extends React.Component {
                                 <span className='badge bg-secondary ms-2'>
                                     {c}</span>)}</p>
                     </div> */}
-                    
 
 
 
 
-                    <div></div>
+
+
 
                 </div>
 

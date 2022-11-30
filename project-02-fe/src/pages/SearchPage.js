@@ -205,12 +205,12 @@ export default class SearchPage extends React.Component {
                 // console.log(colorShade)
                 color = this.state.singleCarObject.color["name"]
                 // console.log(color)
-
+                console.log("Object",this.state.singleCarObject)
                 // console.log(this.state.singleCarObject.comfort_features_id
                 // )
 
                 comfortFeaturesProp = [...this.state.singleCarObject.comfort_features_id]
-                console.log(comfortFeaturesProp)
+                // console.log("HERE",comfortFeaturesProp)
 
             } catch (e) {
                 console.log(e)
@@ -221,7 +221,7 @@ export default class SearchPage extends React.Component {
             return (
                 <React.Fragment>
                     <SeeDetailedPost
-                        {...this.state.singleCarObject}
+                        {...this.state.singleCarObject} 
                         colorShadeSpecial={colorShade}
                         colorSpecial={color}
                         comfortFeaturesProp={comfortFeaturesProp}
