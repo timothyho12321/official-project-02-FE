@@ -215,10 +215,10 @@ export default class SearchPage extends React.Component {
 
 
                 comfortFeaturesProp = Object.assign({}, this.state.singleCarObject)
-                console.log("Before pass",comfortFeaturesProp)
+                // console.log("Before pass",comfortFeaturesProp)
 
                 stringConvert = comfortFeaturesProp.comfort_features_id.join(', ')
-                console.log(stringConvert)
+                // console.log(stringConvert)
 
                 
             } catch (e) {
