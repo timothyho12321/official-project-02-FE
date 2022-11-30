@@ -5,19 +5,37 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 export default class SeeDetailedPost extends React.Component {
 
+    state = {
+        data: [],
+        comfort_features_id: []
+    }
 
     renderArray = () => {
-        let a = [...this.props.comfortFeaturesProp]
-        console.log(a)
+
+        const comfortFeaturesProp = Object.assign({}, this.props.comfortFeaturesProp)
+        console.log("After pass", comfortFeaturesProp.comfort_features_id)
+
+        console.log("String convert pass", this.props.stringConvert)
+
+
+        // DOES NOT ALLOW ME TO SPLIT 
+        // let remakeArray = variableString.split(",");
+        // console.log("Remake Array", remakeArray)
+
+
 
         // let jsx = []
-        // for (let each of a) {
+        // for (let each of comfortFeaturesProp) {
         //     jsx.push(
         //         <p>{each}</p>
         //     )
 
         // }
         // return jsx
+
+
+
+
     }
 
 
@@ -90,16 +108,27 @@ export default class SeeDetailedPost extends React.Component {
                         <p>Engine Name: {this.props.engine_id}</p>
                     </div>
 
+                    <div>
+                        <p>Comfort Features:
+                            <div style={{width:'500px', 
+                                        wordSpacing:"3px"
+                                        
+                           
+                           }}>
+                                {this.props.stringConvert}</div>
+                        </p>
+                    </div>
 
+
+                    {/* TO DELETE */}
                     <div>
                         {this.renderArray()}
                     </div>
 
 
+
                     {/* <div>
                         <p>Comfort Features:
-                            
-                            
                             
                             {this.props.singleCarObject2.comfort_features_id.map(c =>
                                
@@ -111,11 +140,14 @@ export default class SeeDetailedPost extends React.Component {
                     </div> */}
 
 
+                    {/* Debugging with the return statement same error.  */}
+
                     {/* <div>
                         <p>Comfort Features:
-                            {this.props.comfort_features_id.map(c =>
-                                <span className='badge bg-secondary ms-2'>
-                                    {c}</span>)}</p>
+                            {this.props.comfortFeaturesProp.comfort_features_id.map(c => {
+                                return <span className='badge bg-secondary ms-2'>
+                                    {c}</span>
+                            })}</p>
                     </div> */}
 
 

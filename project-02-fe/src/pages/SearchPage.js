@@ -196,9 +196,10 @@ export default class SearchPage extends React.Component {
         if (this.state.page === "single") {
 
             // CANNOT READ INTO NESTED OBJECT UNLESS YOU TRY
-            let color = null
-            let colorShade = null
-            let comfortFeaturesProp = null
+            let color = null;
+            let colorShade = null;
+            let comfortFeaturesProp = null;
+            let stringConvert = null;
 
             try {
                 colorShade = this.state.singleCarObject.color["shade"]
@@ -209,9 +210,17 @@ export default class SearchPage extends React.Component {
                 // console.log(this.state.singleCarObject.comfort_features_id
                 // )
 
-                comfortFeaturesProp = [...this.state.singleCarObject.comfort_features_id]
+                // comfortFeaturesProp = [...this.state.singleCarObject.comfort_features_id]
                 // console.log("HERE",comfortFeaturesProp)
 
+
+                comfortFeaturesProp = Object.assign({}, this.state.singleCarObject)
+                console.log("Before pass",comfortFeaturesProp)
+
+                stringConvert = comfortFeaturesProp.comfort_features_id.join(', ')
+                console.log(stringConvert)
+
+                
             } catch (e) {
                 console.log(e)
             }
@@ -225,6 +234,7 @@ export default class SearchPage extends React.Component {
                         colorShadeSpecial={colorShade}
                         colorSpecial={color}
                         comfortFeaturesProp={comfortFeaturesProp}
+                        stringConvert={stringConvert}
                     />
 
                 </React.Fragment>
