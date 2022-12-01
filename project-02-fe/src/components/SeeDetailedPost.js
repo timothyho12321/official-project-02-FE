@@ -10,33 +10,6 @@ export default class SeeDetailedPost extends React.Component {
         comfort_features_id: []
     }
 
-    renderArray = () => {
-
-        const comfortFeaturesProp = Object.assign({}, this.props.comfortFeaturesProp)
-        console.log("After pass", comfortFeaturesProp.comfort_features_id)
-
-        console.log("String convert pass", this.props.stringConvert)
-
-
-        // DOES NOT ALLOW ME TO SPLIT 
-        // let remakeArray = variableString.split(",");
-        // console.log("Remake Array", remakeArray)
-
-
-
-        // let jsx = []
-        // for (let each of comfortFeaturesProp) {
-        //     jsx.push(
-        //         <p>{each}</p>
-        //     )
-
-        // }
-        // return jsx
-
-
-
-
-    }
 
 
 
@@ -85,10 +58,10 @@ export default class SeeDetailedPost extends React.Component {
                         <p>Type: {this.props.type}</p>
                     </div>
                     <div>
-                        <p>Color: {this.props.colorSpecial}</p>
+                        <p>Color: {this.props.colorSpecial && this.props.colorSpecial}</p>
                     </div>
                     <div>
-                        <p>Color Shade: {this.props.colorShadeSpecial}</p>
+                        <p>Color Shade: {this.props.colorShadeSpecial && this.props.colorShadeSpecial}</p>
                     </div>
                     <div>
                         <p>Land Terrain: {this.props.land_terrain}</p>
@@ -108,47 +81,17 @@ export default class SeeDetailedPost extends React.Component {
                         <p>Engine Name: {this.props.engine_id}</p>
                     </div>
 
+                
+
+
                     <div>
                         <p>Comfort Features:
-                            <div style={{width:'500px', 
-                                        wordSpacing:"3px"
                                         
-                           
-                           }}>
-                                {this.props.stringConvert}</div>
-                        </p>
-                    </div>
-
-
-                    {/* TO DELETE */}
-                    <div>
-                        {this.renderArray()}
-                    </div>
-
-
-
-                    {/* <div>
-                        <p>Comfort Features:
-                            
-                            {this.props.singleCarObject2.comfort_features_id.map(c =>
-                               
-                                <span className='badge bg-secondary ms-2'>
-                                    {c}</span>)}
-                                    
-                                    </p>
-
-                    </div> */}
-
-
-                    {/* Debugging with the return statement same error.  */}
-
-                    {/* <div>
-                        <p>Comfort Features:
-                            {this.props.comfortFeaturesProp.comfort_features_id.map(c => {
+                            {this.props.comfortFeaturesProp?.comfort_features_id.map(c => {
                                 return <span className='badge bg-secondary ms-2'>
                                     {c}</span>
                             })}</p>
-                    </div> */}
+                    </div>
 
 
 

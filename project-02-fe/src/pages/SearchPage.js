@@ -202,9 +202,9 @@ export default class SearchPage extends React.Component {
             let stringConvert = null;
 
             try {
-                colorShade = this.state.singleCarObject.color["shade"]
+                colorShade = this.state.singleCarObject.color["shade"] && this.state.singleCarObject.color["shade"]
                 // console.log(colorShade)
-                color = this.state.singleCarObject.color["name"]
+                color = this.state.singleCarObject.color["name"] && this.state.singleCarObject.color["name"]
                 // console.log(color)
                 console.log("Object",this.state.singleCarObject)
                 // console.log(this.state.singleCarObject.comfort_features_id
@@ -214,7 +214,9 @@ export default class SearchPage extends React.Component {
                 // console.log("HERE",comfortFeaturesProp)
 
 
-                comfortFeaturesProp = Object.assign({}, this.state.singleCarObject)
+                
+                comfortFeaturesProp = this.state.singleCarObject
+                
                 // console.log("Before pass",comfortFeaturesProp)
 
                 stringConvert = comfortFeaturesProp.comfort_features_id.join(', ')
