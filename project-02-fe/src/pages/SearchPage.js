@@ -206,7 +206,7 @@ export default class SearchPage extends React.Component {
                 // console.log(colorShade)
                 color = this.state.singleCarObject.color["name"] && this.state.singleCarObject.color["name"]
                 // console.log(color)
-                console.log("Object",this.state.singleCarObject)
+                console.log("Object", this.state.singleCarObject)
                 // console.log(this.state.singleCarObject.comfort_features_id
                 // )
 
@@ -214,15 +214,15 @@ export default class SearchPage extends React.Component {
                 // console.log("HERE",comfortFeaturesProp)
 
 
-                
+
                 comfortFeaturesProp = this.state.singleCarObject
-                
+
                 // console.log("Before pass",comfortFeaturesProp)
 
                 stringConvert = comfortFeaturesProp.comfort_features_id.join(', ')
                 // console.log(stringConvert)
 
-                
+
             } catch (e) {
                 console.log(e)
             }
@@ -232,7 +232,7 @@ export default class SearchPage extends React.Component {
             return (
                 <React.Fragment>
                     <SeeDetailedPost
-                        {...this.state.singleCarObject} 
+                        {...this.state.singleCarObject}
                         colorShadeSpecial={colorShade}
                         colorSpecial={color}
                         comfortFeaturesProp={comfortFeaturesProp}
@@ -335,29 +335,13 @@ export default class SearchPage extends React.Component {
 
     }
 
-    callFunctionFirst = async () => {
-        console.log("detailedSearchedPressed => ", this.state.detailedSearchPressed)
-        if (this.state.detailedSearchPressed === true) {
-            // let a = this.state.singleSearchSavedId
-            // console.log(a)
-            // console.log(this.BASE_API_URL + "car/" +
-            //     this.state.singleSearchSavedId)
-            let endpoint = this.BASE_API_URL + "car/" +
-                this.state.singleSearchSavedId
+    changePreviousPage = () => {
+        console.log("Hi")
 
-            // let response = await axios.get(endpoint)
-            // console.log(response.data)
-
-            // console.log("Query id", response.data)
-            return (<h2>The api function ran</h2>)
-            //return response.data
-
-
-
-
-        }
 
     }
+
+
 
 
 
