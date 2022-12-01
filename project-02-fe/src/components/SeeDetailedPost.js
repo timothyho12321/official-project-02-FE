@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import Button from 'react-bootstrap/Button';
 
 
 export default class SeeDetailedPost extends React.Component {
@@ -81,12 +82,12 @@ export default class SeeDetailedPost extends React.Component {
                         <p>Engine Name: {this.props.engine_id}</p>
                     </div>
 
-                
+
 
 
                     <div>
                         <p>Comfort Features:
-                                        
+
                             {this.props.comfortFeaturesProp?.comfort_features_id.map(c => {
                                 return <span className='badge bg-secondary ms-2'>
                                     {c}</span>
@@ -94,7 +95,9 @@ export default class SeeDetailedPost extends React.Component {
                     </div>
 
 
-
+                    <Button variant='light'
+                            onClick={this.props.changePreviousPage}
+                    >Back Page</Button>
 
 
 

@@ -41,12 +41,14 @@ export default class CarPost extends React.Component {
                         </Card.Text>
 
                         <div>
-                            <CarPostDetails carStore={this.props.car} />
+                            <CarPostDetails carStore={this.props.car}
+                                           
+                                    
+                            />
 
                             <Button variant='light'
                                 carStore={this.props.car}
-                                // onClick={this.props.changeMainStateDetailedPost()}
-
+                                
                                 onClick={() => this.props.changeSearchStateDetailedPost(this.props.car._id)}
 
 

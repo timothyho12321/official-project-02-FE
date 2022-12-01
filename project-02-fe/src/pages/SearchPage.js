@@ -237,6 +237,8 @@ export default class SearchPage extends React.Component {
                         colorSpecial={color}
                         comfortFeaturesProp={comfortFeaturesProp}
                         stringConvert={stringConvert}
+                        changePreviousPage={this.changePreviousPage}
+                                
                     />
 
                 </React.Fragment>
@@ -296,6 +298,7 @@ export default class SearchPage extends React.Component {
                                         car={c}
 
                                         changeSearchStateDetailedPost={this.changeSearchStateDetailedPost}
+                                        changePreviousPage={this.changePreviousPage}
                                     />)
 
 
@@ -336,7 +339,10 @@ export default class SearchPage extends React.Component {
     }
 
     changePreviousPage = () => {
-        console.log("Hi")
+        this.setState({
+            page: "general"
+        })
+
 
 
     }
