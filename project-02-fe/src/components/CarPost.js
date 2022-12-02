@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+
 import { render } from 'react-dom';
 import './CarPost.css'
 import CarPostDetails from './CarPostDetails'
@@ -25,10 +26,14 @@ export default class CarPost extends React.Component {
                     bg={"secondary"}
                     text={"white"}
                     className="car-card-style mt-3 col-12
-                       col-lg-4 col-md-6"
-                //    style={{ width: '50vw' }}
+                       col-lg-6 col-md-6"
+
                 >
-                    <Card.Img variant="top" src={this.props.car.image} />
+                    <Card.Img variant="top"
+                        src={this.props.car.image}
+                        className="card-image-style"
+
+                    />
                     <Card.Body>
                         <Card.Title>Brand: {this.props.car.brand}</Card.Title>
                         <Card.Text>
@@ -42,22 +47,22 @@ export default class CarPost extends React.Component {
 
                         <div>
                             <CarPostDetails carStore={this.props.car}
-                                           
-                                    
+
+
                             />
 
                             <Button variant='light'
                                 carStore={this.props.car}
-                                
+
                                 onClick={() => this.props.changeSearchStateDetailedPost(this.props.car._id)}
 
 
                             >
-                            See Detailed Post</Button>
-                    </div>
+                                See Detailed Post</Button>
+                        </div>
 
-                </Card.Body>
-            </Card>
+                    </Card.Body>
+                </Card>
 
 
 
