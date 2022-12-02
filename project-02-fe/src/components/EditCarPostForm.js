@@ -68,7 +68,7 @@ export default class EditCarPostForm extends React.Component {
   searchEachCarDetailsById = async () => {
 
     // console.log("Search ran")
-    let response = await axios.get(this.BASE_API_URL + "car/" + this.props.carStore._id)
+    let response = await axios.get(this.BASE_API_URL + "car/comfort-feature-id-to-edit/" + this.props.carStore._id)
     // console.log(response.data);
 
 
