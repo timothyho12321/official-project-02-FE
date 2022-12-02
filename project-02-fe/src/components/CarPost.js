@@ -35,14 +35,15 @@ export default class CarPost extends React.Component {
 
                     />
                     <Card.Body>
-                        <Card.Title>Brand: {this.props.car.brand}</Card.Title>
+                        <Card.Title>{this.props.car.brand} {this.props.car.name_of_model} </Card.Title>
                         <Card.Text>
-                            <p>Model: {this.props.car.name_of_model}</p>
-                            <p>Type: {this.props.car.type}</p>
+                            <p>{this.props.car.rating}<i class="bi bi-dot"></i><i class="bi bi-star-fill"></i> </p>
 
-                            <p>Year of Launch: {this.props.car.year_of_launch}</p>
-                            <p>Rating: {this.props.car.rating} Stars</p>
-                            <p>Price: $ {this.props.car.cost_price} </p>
+                            <p><i class="bi bi-car-front-fill"></i>  {this.props.car.type}</p>
+
+                            <p><i class="bi bi-rocket-takeoff-fill"></i> Launched: {this.props.car.year_of_launch}</p>
+
+                            <p><i class="bi bi-currency-dollar"></i> {this.props.car.cost_price} </p>
                         </Card.Text>
 
                         <div>
