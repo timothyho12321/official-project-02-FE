@@ -4,7 +4,8 @@ import axios from 'axios';
 import CarPost from '../components/CarPost'
 import OffCanvas from '../components/OffCanvas'
 import css from './SearchPage.css';
-import Modal2 from '../components/Modal2'
+import CarPostDetails from '../components/CarPostDetails'
+import SeeDetailedPost from '../components/SeeDetailedPost';
 
 export default class SearchPage extends React.Component {
 
@@ -19,7 +20,11 @@ export default class SearchPage extends React.Component {
         existingCarBrand: [],
         makeAutoYear: null,
         yearGreaterError: false,
-        yearLengthError: false
+        yearLengthError: false,
+        page: "general",
+        singleSearchSavedId: null,
+        detailedSearchPressed: false,
+        singleCarObject: {}
 
     }
 
@@ -69,6 +74,31 @@ export default class SearchPage extends React.Component {
         })
 
     }
+
+    async componentDidUpdate() {
+        if (this.state.detailedSearchPressed === true
+            &&
+            Object.keys(this.state.singleCarObject).length === 0
+        ) {
+
+            // console.log(Object.keys(this.state.singleCarObject).length)
+            let a = this.state.singleSearchSavedId
+            // console.log(a)
+            // console.log(this.BASE_API_URL + "car/" +
+            //     this.state.singleSearchSavedId)
+            let endpoint = this.BASE_API_URL + "car/" +
+                this.state.singleSearchSavedId
+
+            let response = await axios.get(endpoint)
+            // console.log("ComponentUpdate", response.data[0])
+
+            this.setState({
+                singleCarObject: response.data[0]
+            })
+        }
+
+    }
+
 
     updateFormField = (event) => {
 
@@ -161,88 +191,189 @@ export default class SearchPage extends React.Component {
     }
 
 
+    renderPage = () => {
 
-    // openModalDetail = (c) => {
-    //     alert("Checking Modal Function")
-    //     return (
-    //         <React.Fragment>
-    //             {console.log("return ran")}
-    //             <Modal2 />
+        if (this.state.page === "single") {
 
-    //         </React.Fragment>
+            // CANNOT READ INTO NESTED OBJECT UNLESS YOU TRY
+            let color = null;
+            let colorShade = null;
+            let comfortFeaturesProp = null;
+            let stringConvert = null;
 
-    //     )
+            try {
+                colorShade = this.state.singleCarObject.color["shade"] && this.state.singleCarObject.color["shade"]
+                // console.log(colorShade)
+                color = this.state.singleCarObject.color["name"] && this.state.singleCarObject.color["name"]
+                // console.log(color)
+                console.log("Object", this.state.singleCarObject)
+                // console.log(this.state.singleCarObject.comfort_features_id
+                // )
+
+                // comfortFeaturesProp = [...this.state.singleCarObject.comfort_features_id]
+                // console.log("HERE",comfortFeaturesProp)
+
+
+
+                comfortFeaturesProp = this.state.singleCarObject
+
+                // console.log("Before pass",comfortFeaturesProp)
+
+                stringConvert = comfortFeaturesProp.comfort_features_id.join(', ')
+                // console.log(stringConvert)
+
+
+            } catch (e) {
+                console.log(e)
+            }
+
+
+
+            return (
+                <React.Fragment>
+                    <SeeDetailedPost
+                        {...this.state.singleCarObject}
+                        colorShadeSpecial={colorShade}
+                        colorSpecial={color}
+                        comfortFeaturesProp={comfortFeaturesProp}
+                        stringConvert={stringConvert}
+                        changePreviousPage={this.changePreviousPage}
+                                
+                    />
+
+                </React.Fragment>
+
+
+            )
+
+
+
+        } else if (this.state.page === "general") {
+            return (
+                <React.Fragment>
+                    <h1>Find your car today!</h1>
+
+
+                    <label>Brand</label>
+                    <input type="text"
+                        className='form-control'
+                        value={this.state.searchBrand}
+                        name="searchBrand"
+                        onChange={this.updateFormField} />
+
+                    <div className='button-search-div mt-3'>
+                        <button className='btn btn-primary '
+                            onClick={this.onlyBrandSearch}
+
+                        >Brand Search</button>
+
+                        <div className='OffCanvas-div'>
+
+                            <OffCanvas
+                                searchBrand={this.state.searchBrand}
+                                searchType={this.state.searchType}
+                                searchYear={this.state.searchYear}
+                                searchPrice={this.state.searchPrice}
+                                searchRating={this.state.searchRating}
+                                updateFormField={this.updateFormField}
+                                filterSearch={this.filterSearch}
+                                yearGreaterError={this.state.yearGreaterError}
+                                yearLengthError={this.state.yearLengthError}
+                                makeAutoYear={this.state.makeAutoYear}
+                                existingCarTypes={this.state.existingCarTypes}
+                                existingCarBrand={this.state.existingCarBrand}
+                            />
+
+                        </div>
+
+                    </div>
+
+                    <div className='container'>
+
+                        <div className='row test_center' >
+                            {
+                                this.state.data.map((c) =>
+                                    <CarPost
+                                        key={c._id}
+                                        car={c}
+
+                                        changeSearchStateDetailedPost={this.changeSearchStateDetailedPost}
+                                        changePreviousPage={this.changePreviousPage}
+                                    />)
+
+
+                            }
+
+                        </div>
+
+
+
+                    </div>
 
 
 
 
-    // }
+
+                </React.Fragment>
+            )
+
+
+        }
+    }
+
+    changeSearchStateDetailedPost = (c) => {
+
+
+        // console.log(c);
+        // console.log("saveId to state worked")
+        this.setState({
+            "singleSearchSavedId": c,
+            "page": "single",
+            "detailedSearchPressed": true
+        })
+
+
+
+
+
+    }
+
+    changePreviousPage = () => {
+        this.setState({
+            page: "general"
+        })
+
+
+
+    }
+
+
+
+
+
+
+
 
     render() {
 
         return (
+
+
             <React.Fragment>
-                <h1>Find your car today!</h1>
 
+                <div>
 
-                <label>Brand</label>
-                <input type="text"
-                    className='form-control'
-                    value={this.state.searchBrand}
-                    name="searchBrand"
-                    onChange={this.updateFormField} />
-
-                <div className='button-search-div mt-3'>
-                    <button className='btn btn-primary '
-                        onClick={this.onlyBrandSearch}
-
-                    >Brand Search</button>
-
-                    <div className='OffCanvas-div'>
-
-                        <OffCanvas
-                            searchBrand={this.state.searchBrand}
-                            searchType={this.state.searchType}
-                            searchYear={this.state.searchYear}
-                            searchPrice={this.state.searchPrice}
-                            searchRating={this.state.searchRating}
-                            updateFormField={this.updateFormField}
-                            filterSearch={this.filterSearch}
-                            yearGreaterError={this.state.yearGreaterError}
-                            yearLengthError={this.state.yearLengthError}
-                            makeAutoYear={this.state.makeAutoYear}
-                            existingCarTypes={this.state.existingCarTypes}
-                            existingCarBrand={this.state.existingCarBrand}
-                        />
-
-                    </div>
-
-                </div>
-
-                <div className='container'>
-
-                    <div className='row test_center' >
-                        {
-                            this.state.data.map(c =>
-                                <CarPost
-                                    key={c._id}
-                                    car={c}
-                                    
-                                />)
- 
-
-                        }
-
-                    </div>
-                    
-
-
+                    {this.renderPage()}
                 </div>
 
 
 
             </React.Fragment>
+
         )
+
+
+
 
     }
 

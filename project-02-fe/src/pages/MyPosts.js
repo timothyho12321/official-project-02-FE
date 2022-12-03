@@ -23,17 +23,7 @@ export default class MyPosts extends React.Component {
             [event.target.name]: event.target.value
         })
 
-        // if (!(event.target.name === "editYearOfLaunch")) {
-        //     this.setState({
-        //         [event.target.name]: event.target.value
-        //     })
-        // }
-        // else {
-        //     console.log("editYearOfLaunch")
-        //     this.setState({
-        //         [event.target.name]: parseInt(event.target.value)
-        //     })
-        // }
+        
 
 
     }

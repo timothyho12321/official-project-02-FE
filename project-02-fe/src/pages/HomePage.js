@@ -1,4 +1,6 @@
 import React from 'react'
+import Car from './carsvg.svg'
+import './HomePage.css';
 
 
 export default class HomePage extends React.Component {
@@ -12,9 +14,24 @@ export default class HomePage extends React.Component {
 
         return (
             <React.Fragment>
-                <h1>This is the HomePage</h1>
-                <h2>Welcome to CARousel website. Display car posts here</h2>
+                <h1 className='header-style'
+                >Welcome to CARousel</h1>
+                <div className='div-for-car-image'>
+                    {/* <img src={Car}
+                        className="car-image-style"
+                        alt="Banner image car svg"
+
+                    /> */}
+
+                    <img src={require('./car.png')}
+                         className="car-image-style"
+                         alt="Banner car image" />
                 
+
+                </div>
+
+
+
             </React.Fragment>
         )
 

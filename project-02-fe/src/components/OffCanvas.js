@@ -63,7 +63,24 @@ export default function OffCanvas(props) {
                     {props.yearLengthError ? <p className='error-message-style'>Enter 4 digits minimal</p> : ""}
 
 
-                    <div>
+                    <div className=' mt-3'>
+                        <label>Select Minimum Price</label>
+                        <select name="searchPrice"
+                                // value={parseInt(props.searchPrice)}
+                                // onChange={props.updateFormField}
+                        >
+                            <option value={40000}>Min $40,000</option>
+                            <option value={60000}>Min $60,000</option>
+                            <option value={80000}>Min $80,000</option>
+                            <option value={100000}>Min $100,000</option>
+                            <option value={120000}>Min $120,000</option>
+                            
+                        </select>
+
+
+                    </div>
+
+                    <div className=' mt-3'>
                         <label>Select Maximum Price</label>
                         <select name="searchPrice"
                                 value={parseInt(props.searchPrice)}
@@ -80,12 +97,7 @@ export default function OffCanvas(props) {
 
                     </div>
 
-                    <label>Price</label>
-                    <input type="text"
-                        className='form-control'
-                        value={props.searchPrice}
-                        name="searchPrice"
-                        onChange={props.updateFormField} />
+                    
 
                     <div className='search-rating-div mt-3'>
                         <label>Rating</label>

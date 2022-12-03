@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage';
 import SearchPage from './pages/SearchPage';
 import CreatePage from './pages/CreatePage';
 import MyPosts from './pages/MyPosts';
-
+import SeeDetailedPost from './components/SeeDetailedPost';
 
 
 export default class Main extends React.Component {
@@ -20,13 +20,20 @@ export default class Main extends React.Component {
             return <HomePage />
         }
         if (this.state.page === "search") {
-            return <SearchPage />
+            return <SearchPage 
+                                changeMainStateDetailedPost={this.changeMainStateDetailedPost}
+            
+                    />
         }
         if (this.state.page === "create") {
             return <CreatePage />
         }
         if (this.state.page === "mypost") {
             return <MyPosts />
+        }
+        if (this.state.page === "seeDetailedPost") {
+            return <SeeDetailedPost 
+            />
         }
     }
 
@@ -36,6 +43,23 @@ export default class Main extends React.Component {
             page: currentPage
         })
 
+
+
+
+
+    }
+
+
+    //TO DELETE THIS
+    changeMainStateDetailedPost = (c) => {
+        this.setState({
+
+            page: "seeDetailedPost"
+        })
+
+        console.log(c)
+
+
     }
 
     render() {
@@ -43,7 +67,7 @@ export default class Main extends React.Component {
 
         return (
             <React.Fragment>
-                <Navbar bg="light" expand="lg">
+                <Navbar collapseOnSelect bg="light" expand="lg">
                     <Container>
                         <Navbar.Brand href="#home">CARousel</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
