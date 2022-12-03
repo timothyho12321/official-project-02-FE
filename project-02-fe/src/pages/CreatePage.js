@@ -312,16 +312,9 @@ export default class CreatePage extends React.Component {
                                     value={this.state.description}
                                     onChange={this.updateFormField}
                                 >
-
-
+                                   
                                 </textarea>
-                                <input type="text"
-                                    placeholder='Fill in details of car recommendation'
-
-                                    className='form-control'
-                                    name="description"
-                                    value={this.state.description}
-                                    onChange={this.updateFormField} />
+                                
                             </div>
                         </Accordion.Body>
                     </Accordion.Item>
