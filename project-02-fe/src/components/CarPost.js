@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 
 import { render } from 'react-dom';
 import './CarPost.css'
-import CarPostDetails from './CarPostDetails'
+
 
 export default class CarPost extends React.Component {
 
@@ -47,10 +47,7 @@ export default class CarPost extends React.Component {
                         </Card.Text>
 
                         <div>
-                            <CarPostDetails carStore={this.props.car}
-
-
-                            />
+                          
 
                             <Button variant='light'
                                 carStore={this.props.car}

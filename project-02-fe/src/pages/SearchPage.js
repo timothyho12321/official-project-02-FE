@@ -4,7 +4,7 @@ import axios from 'axios';
 import CarPost from '../components/CarPost'
 import OffCanvas from '../components/OffCanvas'
 import css from './SearchPage.css';
-import CarPostDetails from '../components/CarPostDetails'
+
 import SeeDetailedPost from '../components/SeeDetailedPost';
 
 export default class SearchPage extends React.Component {
