@@ -14,7 +14,8 @@ export default class SearchPage extends React.Component {
         searchBrand: "",
         searchType: "",
         searchYear: "",
-        searchPrice: "",
+        minPrice: "",
+        maxPrice: "",
         searchRating: "",
         existingCarTypes: [],
         existingCarBrand: [],
@@ -169,21 +170,20 @@ export default class SearchPage extends React.Component {
 
 
 
-
-
         const response = await axios.get(this.BASE_API_URL + "car", {
             params: {
                 brand: this.state.searchBrand,
                 year_of_launch: this.state.searchYear,
                 type: this.state.searchType,
-                cost_price: this.state.searchPrice,
+                min_price: this.state.minPrice,
+                max_price: this.state.maxPrice,
                 rating: this.state.searchRating
             }
 
         })
 
 
-        // console.log(response.data)
+        console.log(response.data)
         this.setState({
             data: response.data
         })
@@ -238,7 +238,7 @@ export default class SearchPage extends React.Component {
                         comfortFeaturesProp={comfortFeaturesProp}
                         stringConvert={stringConvert}
                         changePreviousPage={this.changePreviousPage}
-                                
+
                     />
 
                 </React.Fragment>
@@ -273,7 +273,8 @@ export default class SearchPage extends React.Component {
                                 searchBrand={this.state.searchBrand}
                                 searchType={this.state.searchType}
                                 searchYear={this.state.searchYear}
-                                searchPrice={this.state.searchPrice}
+                                minPrice={this.state.minPrice}
+                                maxPrice={this.state.maxPrice}
                                 searchRating={this.state.searchRating}
                                 updateFormField={this.updateFormField}
                                 filterSearch={this.filterSearch}
