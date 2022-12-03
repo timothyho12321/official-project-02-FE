@@ -77,16 +77,6 @@ export default class MyPosts extends React.Component {
 
 
 
-    // TO DELETE THIS. THIRD ATTEMPT AT CREATE OWN BUTTON TO EDIT CAR POST
-    sendModal3 = () => {
-        return (
-            <React.Fragment>
-                <Modal3 />
-
-            </React.Fragment>
-        )
-
-    }
 
     render() {
 

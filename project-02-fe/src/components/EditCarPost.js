@@ -48,13 +48,7 @@ export default class EditCarPost extends React.Component {
 
                         />
 
-                        {/* Second attempt at edit button */}
-                        {/* <Button variant='light'
-                        onClick={props.sendModal3}
-                    >
-
-                        Edit this car
-                    </Button> */}
+                        
 
                         <Button variant="light"
                             onClick={this.props.deleteCar}
