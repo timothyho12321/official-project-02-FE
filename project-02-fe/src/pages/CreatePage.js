@@ -134,8 +134,8 @@ export default class CreatePage extends React.Component {
                 <h3>Create a new  car post with this form.</h3>
 
 
-                <Accordion  defaultActiveKey="0">
-                    <Accordion.Item  eventKey="0">
+                <Accordion defaultActiveKey="0">
+                    <Accordion.Item eventKey="0">
                         <Accordion.Header>Main Car Details</Accordion.Header>
                         <Accordion.Body>
                             <div>
@@ -305,6 +305,16 @@ export default class CreatePage extends React.Component {
                                 'create-input-div-space'
                             >
                                 <label>Description</label>
+                                <textarea className='form-control'
+                                    placeholder='Fill in details of car recommendation'
+                                    rows={3}
+                                    name="description"
+                                    value={this.state.description}
+                                    onChange={this.updateFormField}
+                                >
+
+
+                                </textarea>
                                 <input type="text"
                                     placeholder='Fill in details of car recommendation'
 
