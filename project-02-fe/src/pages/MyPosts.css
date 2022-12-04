@@ -1,4 +1,4 @@
-.text-and-button-div{
+.text-and-button-div {
 
     width: 100%;
     display: flex;
@@ -14,21 +14,22 @@
 /* Unable to import CSS twice in MyPosts */
 
 
-.row>*{
+.row>* {
 
-    
+
     padding: 12px !important;
-    background-color:white !important;
+    background-color: white !important;
     border: none !important;
     display: flex;
 }
 
-.card-body{
+.card-body {
     background-color: rgb(112, 121, 140) !important;
 }
 
 
-.card-img, .card-img-top{
+.card-img,
+.card-img-top {
 
     /* gives the image a rounded border */
     /* border-top-left-radius: var(--bs-card-inner-border-radius);
@@ -36,4 +37,9 @@
 
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
+}
+
+
+.display-error-message {
+    color: red
 }
