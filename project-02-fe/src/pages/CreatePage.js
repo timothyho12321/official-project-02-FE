@@ -14,7 +14,7 @@ export default class CreatePage extends React.Component {
         yearOfLaunch: null,
         brandOfCar: "",
         typeOfCar: "",
-        seatNumber: 2,
+        seatNumber: 4,
         color: "",
         colorShade: "",
         landTerrain: "",
@@ -25,15 +25,22 @@ export default class CreatePage extends React.Component {
         image: "",
         price: null,
         engineName: "",
-        comfortFeatures: []
+        comfortFeatures: [],
 
-        //FOR USING TO CHECK CHECKBOXES COMFORT FEATURES--- TO DELETE
-        // ["Blind Spot Monitoring",
-        //     "Premium Sound System",
-        //     "Wireless Connectivity",
-        //     "Digital Keys",
-        //     "AI Bot Alexa Enabled",
-        //     "Ventilated Seats"]
+        modelNameError: false,
+        yearLaunchError: false,
+        carBrandError: false,
+        carTypeError: false,
+        // seatNumberError: false,
+        colorError: false,
+        colorShadeError: false,
+        landTerrainError: false,
+        userNameError: false,
+        emailError: false,
+        carRatingError: false,
+        descriptionError: false
+
+
 
     }
 
@@ -64,6 +71,13 @@ export default class CreatePage extends React.Component {
 
     }
 
+    updateFormNumber = (event) => {
+        this.setState({
+            [event.target.name]: parseInt(event.target.value)
+        })
+
+    }
+
     updateCheckBoxes = (event) => {
         if (!this.state.comfortFeatures.includes(event.target.value)) {
             let modified = [...this.state.comfortFeatures, event.target.value]
@@ -86,47 +100,196 @@ export default class CreatePage extends React.Component {
 
     }
 
+    checkErrors = () => {
+
+        if (this.state.nameOfModel === "") {
+            this.setState({
+                modelNameError: true
+            })
+        }
+        if (this.state.yearOfLaunch === null) {
+            this.setState({
+                yearLaunchError: true
+            })
+        }
+        if (this.state.brandOfCar === "") {
+            this.setState({
+                carBrandError: true
+            })
+        }
+        if (this.state.typeOfCar === "") {
+            this.setState({
+                carTypeError: true
+            })
+        }
+        if (this.state.color === "") {
+            this.setState({
+                colorError: true
+            })
+        }
+        if (this.state.colorShade === "") {
+            this.setState({
+                colorShadeError: true
+            })
+        }
+        if (this.state.landTerrain === "") {
+            this.setState({
+                landTerrainError: true
+            })
+        }
+        if (this.state.userName === "") {
+            this.setState({
+                userNameError: true
+            })
+        }
+        if (this.state.email === "") {
+            this.setState({
+                emailError: true
+            })
+        }
+        if (this.state.rating === null) {
+            this.setState({
+                carRatingError: true
+            })
+        }
+        if (this.state.description === "") {
+            this.setState({
+                descriptionError: true
+            })
+        }
+
+
+
+
+
+
+        // set back to false when form is filled in 
+        if (this.state.nameOfModel != "") {
+            this.setState({
+                modelNameError: false
+            })
+
+        }
+        if (this.state.yearOfLaunch != null) {
+
+            this.setState({
+                yearLaunchError: false
+            })
+        }
+        if (this.state.brandOfCar != "") {
+            this.setState({
+                carBrandError: false
+            })
+        }
+        if (this.state.typeOfCar != "") {
+            this.setState({
+                carTypeError: false
+            })
+        }
+        if (this.state.color != "") {
+            this.setState({
+                colorError: false
+            })
+        }
+        if (this.state.color != "") {
+            this.setState({
+                colorShadeError: false
+            })
+        }
+        if (this.state.landTerrain != "") {
+            this.setState({
+                landTerrainError: false
+            })
+        }
+        if (this.state.userName != "") {
+            this.setState({
+                userNameError: false
+            })
+        }
+        if (this.state.email != "") {
+            this.setState({
+                emailError: false
+            })
+        }
+        if (this.state.rating != null) {
+
+            this.setState({
+                carRatingError: false
+            })
+        }
+        if (this.state.description != "") {
+            this.setState({
+                descriptionError: false
+            })
+        }
+
+    }
+
+
+
+
+
+
     createCarPost = async () => {
 
-        console.log(this.BASE_API_URL + "newcarandengine")
-
-        const response = await axios.post(this.BASE_API_URL + "newcarandengine", {
-
-            name_of_model: this.state.nameOfModel,
-            year_of_launch: parseInt(this.state.yearOfLaunch),
-            brand: this.state.brandOfCar,
-            type: this.state.typeOfCar,
-            seats: parseInt(this.state.seatNumber),
-            // // KEY INTO PARAMS AS OBJECT IN FRONT END FOR COLOR (NAME AND SHADE)
-            color: {
-                "name": this.state.color,
-                "shade": this.state.colorShade
-            },
-            land_terrain: this.state.landTerrain,
-            username: this.state.userName,
-            email: this.state.email,
-            rating: this.state.rating,
-            description: this.state.description,
-            cost_price: parseInt(this.state.price),
-            image: this.state.image,
-
-            engine_name: this.state.engineName,
-            // top_speed: 70,
-            // engine_power: 30,
-            // oil_consumption: 2,
-
-            comfort_features_id: this.state.comfortFeatures
+        if (this.state.modelNameError === false &&
+            this.state.yearLaunchError === false &&
+            this.state.carBrandError === false &&
+            this.state.carTypeError === false &&
+            this.state.colorError === false &&
+            this.state.colorShadeError === false &&
+            this.state.landTerrainError === false &&
+            this.state.userNameError === false &&
+            this.state.emailError === false &&
+            this.state.carRatingError === false &&
+            this.state.descriptionError === false
 
 
 
 
 
-        })
-        console.log(response)
+        ) {
+
+            // console.log(this.BASE_API_URL + "newcarandengine")
+            alert("Car successfully created.")
+            const response = await axios.post(this.BASE_API_URL + "newcarandengine", {
+
+                name_of_model: this.state.nameOfModel,
+                year_of_launch: parseInt(this.state.yearOfLaunch),
+                brand: this.state.brandOfCar,
+                type: this.state.typeOfCar,
+                seats: parseInt(this.state.seatNumber),
+                // // KEY INTO PARAMS AS OBJECT IN FRONT END FOR COLOR (NAME AND SHADE)
+                color: {
+                    "name": this.state.color,
+                    "shade": this.state.colorShade
+                },
+                land_terrain: this.state.landTerrain,
+                username: this.state.userName,
+                email: this.state.email,
+                rating: this.state.rating,
+                description: this.state.description,
+                cost_price: parseInt(this.state.price),
+                image: this.state.image,
+
+                engine_name: this.state.engineName,
+
+
+                comfort_features_id: this.state.comfortFeatures,
+
+
+            })
+            console.log(response)
+
+        }
+
 
 
 
     }
+
+
+
     render() {
 
         return (
@@ -147,6 +310,11 @@ export default class CreatePage extends React.Component {
                                     value={this.state.nameOfModel}
                                     onChange={this.updateFormField} />
                             </div>
+                            {this.state.modelNameError &&
+                                <div className='display-error-message-style'>
+
+                                    Please fill in name of car model.
+                                </div>}
 
                             <div className=
                                 'create-input-div-space'
@@ -157,8 +325,14 @@ export default class CreatePage extends React.Component {
                                     className='form-control'
                                     name="yearOfLaunch"
                                     value={this.state.yearOfLaunch}
-                                    onChange={this.updateFormField} />
+                                    onChange={this.updateFormNumber} />
                             </div>
+
+                            {this.state.yearLaunchError &&
+                                <div className='display-error-message-style'>
+
+                                    Please fill in year of launch.
+                                </div>}
                             <div className=
                                 'create-input-div-space'
                             >
@@ -170,6 +344,13 @@ export default class CreatePage extends React.Component {
                                     value={this.state.brandOfCar}
                                     onChange={this.updateFormField} />
                             </div>
+
+                            {this.state.carBrandError &&
+                                <div className='display-error-message-style'>
+
+                                    Please fill in brand of car.
+                                </div>}
+
                             <div className=
                                 'create-input-div-space'
                             >
@@ -182,6 +363,11 @@ export default class CreatePage extends React.Component {
                                     value={this.state.typeOfCar}
                                     onChange={this.updateFormField} />
                             </div>
+                            {this.state.carTypeError &&
+                                <div className='display-error-message-style'>
+
+                                    Please fill in type of car.
+                                </div>}
 
                         </Accordion.Body>
                     </Accordion.Item>
@@ -229,6 +415,12 @@ export default class CreatePage extends React.Component {
                                     value={this.state.color}
                                     onChange={this.updateFormField} />
                             </div>
+                            {this.state.colorError &&
+                                <div className='display-error-message-style'>
+
+                                    Please fill in color of car.
+                                </div>}
+
                             <div className=
                                 'create-input-div-space'
                             >
@@ -240,6 +432,11 @@ export default class CreatePage extends React.Component {
                                     value={this.state.colorShade}
                                     onChange={this.updateFormField} />
                             </div>
+                            {this.state.colorError &&
+                                <div className='display-error-message-style'>
+
+                                    Please fill in color shade of car.
+                                </div>}
 
                             <div className=
                                 'create-input-div-space'
@@ -252,6 +449,11 @@ export default class CreatePage extends React.Component {
                                     value={this.state.landTerrain}
                                     onChange={this.updateFormField} />
                             </div>
+                            {this.state.landTerrainError &&
+                                <div className='display-error-message-style'>
+
+                                    Please fill in land terrain for car.
+                                </div>}
 
                         </Accordion.Body>
                     </Accordion.Item>
@@ -271,6 +473,11 @@ export default class CreatePage extends React.Component {
                                     value={this.state.userName}
                                     onChange={this.updateFormField} />
                             </div>
+                            {this.state.userNameError &&
+                                <div className='display-error-message-style'>
+
+                                    Please fill in a username.
+                                </div>}
 
                             <div className=
                                 'create-input-div-space'
@@ -283,6 +490,12 @@ export default class CreatePage extends React.Component {
                                     value={this.state.email}
                                     onChange={this.updateFormField} />
                             </div>
+                            {this.state.emailError &&
+                                <div className='display-error-message-style'>
+
+                                    Please fill in an email.
+                                </div>}
+
                             <div className=
                                 'create-input-div-space'
                             >
@@ -290,7 +503,7 @@ export default class CreatePage extends React.Component {
                                     Car rating:</label>
                                 <select name="rating"
                                     value={this.state.rating}
-                                    onChange={this.updateFormField}
+                                    onChange={this.updateFormNumber}
                                 >
                                     <option>Select one</option>
                                     <option value={1}>1</option>
@@ -300,6 +513,11 @@ export default class CreatePage extends React.Component {
                                     <option value={5}>5</option>
                                 </select>
                             </div>
+                            {this.state.carRatingError &&
+                                <div className='display-error-message-style'>
+
+                                    Please fill in car rating.
+                                </div>}
 
                             <div className=
                                 'create-input-div-space'
@@ -312,10 +530,15 @@ export default class CreatePage extends React.Component {
                                     value={this.state.description}
                                     onChange={this.updateFormField}
                                 >
-                                   
+
                                 </textarea>
-                                
+
                             </div>
+                            {this.state.descriptionError &&
+                                <div className='display-error-message-style'>
+
+                                    Please fill in description.
+                                </div>}
                         </Accordion.Body>
                     </Accordion.Item>
 
@@ -447,7 +670,10 @@ export default class CreatePage extends React.Component {
                     'create-input-div-space'
                 >
                     <Button variant='light'
-                        onClick={this.createCarPost}
+                        onMouseDown={this.checkErrors}
+                        onClick={this.createCarPost
+                        }
+
                     >
                         Confirm Create Car Post
                     </Button>
