@@ -62,7 +62,7 @@ export default class MyPosts extends React.Component {
                         email: this.state.searchEmail
                     }
                 })
-                
+
                 this.setState({
                     data: response.data,
                     searchByEmailSuccess: true,
@@ -141,10 +141,12 @@ export default class MyPosts extends React.Component {
                     Key in email in correct format
                 </div>}
 
-                
 
-                {this.state.invalidEmailKeyed === "wrongEmail" && <div className='display-error-message'>
-                    No such email found. Use the same email as when creating post.
+
+                {this.state.invalidEmailKeyed === "wrongEmail" && <div className='display-error-message mt-3'>
+                    No such email found.
+                    <div className='mt-2'>Enter the same email when creating post.</div>
+                    <div className='mt-2'> Or create a new post in 'Create page'.</div>
                 </div>}
 
                 {this.state.searchByEmailSuccess ?

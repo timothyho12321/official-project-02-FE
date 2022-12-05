@@ -38,7 +38,11 @@ export default class CreatePage extends React.Component {
         userNameError: false,
         emailError: false,
         carRatingError: false,
-        descriptionError: false
+        descriptionError: false,
+        imageError: false,
+        priceError: false,
+        engineNameError: false,
+        comfortFeaturesError: false
 
 
 
@@ -157,12 +161,31 @@ export default class CreatePage extends React.Component {
                 descriptionError: true
             })
         }
+        if (this.state.image === "") {
+            this.setState({
+                imageError: true
+            })
+        }
+        if (this.state.price === null) {
+            this.setState({
+                priceError: true
+            })
+        }
+        if (this.state.engineName === "") {
+            this.setState({
+                engineNameError: true
+            })
+        }
+        if (this.state.comfortFeatures.length === 0) {
+            
+            console.log(this.state.comfortFeatures.length )
+            this.setState({
+                comfortFeaturesError: true
+            })
+        }
 
 
-
-
-
-
+       
         // set back to false when form is filled in 
         if (this.state.nameOfModel != "") {
             this.setState({
@@ -222,11 +245,37 @@ export default class CreatePage extends React.Component {
                 descriptionError: false
             })
         }
+        if (this.state.image != "") {
+            this.setState({
+                imageError: false
+            })
+        }
+        if (this.state.price != null) {
+
+            this.setState({
+                priceError: false
+            })
+        }
+        if (this.state.engineName != "") {
+            this.setState({
+                engineNameError: false
+            })
+        }
+        if (this.state.comfortFeatures.length != 0) {
+            console.log(this.state.comfortFeatures.length )
+
+            this.setState({
+                comfortFeaturesError: false
+            })
+        }
 
     }
 
 
-
+    
+    
+    
+    
 
 
 
@@ -242,7 +291,11 @@ export default class CreatePage extends React.Component {
             this.state.userNameError === false &&
             this.state.emailError === false &&
             this.state.carRatingError === false &&
-            this.state.descriptionError === false
+            this.state.descriptionError === false &&
+            this.state.imageError === false &&
+            this.state.priceError === false &&
+            this.state.engineNameError === false &&
+            this.state.comfortFeaturesError === false
 
 
 
@@ -556,13 +609,18 @@ export default class CreatePage extends React.Component {
                                     value={this.state.image}
                                     onChange={this.updateFormField} />
                             </div>
+                            {this.state.imageError &&
+                                <div className='display-error-message-style'>
+
+                                    Please fill in image url of car.
+                                </div>}
                             <div className=
                                 'create-input-div-space'
                             >
                                 <label>Select Price Estimate</label>
                                 <select name="price"
                                     value={parseInt(this.state.price)}
-                                    onChange={this.updateFormField}
+                                    onChange={this.updateFormNumber}
                                 >
                                     <option value={40000}>Max $40,000</option>
                                     <option value={60000}>Max $60,000</option>
@@ -572,6 +630,11 @@ export default class CreatePage extends React.Component {
 
                                 </select>
                             </div>
+                            {this.state.imageError &&
+                                <div className='display-error-message-style'>
+
+                                    Please select price of car.
+                                </div>}
                             <div className=
                                 'create-input-div-space'
                             >
@@ -593,6 +656,11 @@ export default class CreatePage extends React.Component {
 
                                 </select>
                             </div>
+                            {this.state.engineNameError &&
+                                <div className='display-error-message-style'>
+
+                                    Please select an engine name.
+                                </div>}
 
                             <div className=
                                 'create-input-div-space'
@@ -659,6 +727,11 @@ export default class CreatePage extends React.Component {
 
 
                             </div>
+                            {this.state.comfortFeaturesError &&
+                                <div className='display-error-message-style'>
+
+                                    Please pick one comfort feature.
+                                </div>}
 
 
                         </Accordion.Body>
