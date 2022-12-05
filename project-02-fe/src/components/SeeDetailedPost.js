@@ -88,7 +88,7 @@ export default class SeeDetailedPost extends React.Component {
                     <div>
                         <p>Comfort Features:
 
-                            {this.props.comfortFeaturesProp?.comfort_features_id.map(c => {
+                            {this.props.comfortFeaturesProp?.length && this.props.comfortFeaturesProp.comfort_features_id.map(c => {
                                 return <span className='badge bg-secondary ms-2'>
                                     {c}</span>
                             })}</p>
