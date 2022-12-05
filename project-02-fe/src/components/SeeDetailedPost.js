@@ -88,7 +88,8 @@ export default class SeeDetailedPost extends React.Component {
                     <div>
                         <p>Comfort Features:
 
-                            {this.props.comfortFeaturesProp?.length && this.props.comfortFeaturesProp.comfort_features_id.map(c => {
+                            {Array.isArray(this.props.comfortFeaturesProp?.comfort_features_id
+                            ) && this.props.comfortFeaturesProp.comfort_features_id.map(c => {
                                 return <span className='badge bg-secondary ms-2'>
                                     {c}</span>
                             })}</p>
@@ -96,7 +97,7 @@ export default class SeeDetailedPost extends React.Component {
 
 
                     <Button variant='light'
-                            onClick={this.props.changePreviousPage}
+                        onClick={this.props.changePreviousPage}
                     >Back Page</Button>
 
 

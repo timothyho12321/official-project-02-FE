@@ -206,14 +206,14 @@ export default class SearchPage extends React.Component {
                 // console.log(colorShade)
                 color = this.state.singleCarObject.color && this.state.singleCarObject.color["name"]
                 // console.log(color)
-                console.log("Object", this.state.singleCarObject)
+                // console.log("Object", this.state.singleCarObject)
                 // console.log(this.state.singleCarObject.comfort_features_id
                 // )
 
                 // comfortFeaturesProp = [...this.state.singleCarObject.comfort_features_id]
                 // console.log("HERE",comfortFeaturesProp)
 
-                comfortFeaturesProp = Array.isArray(this.state.singleCarObject) ? this.state.singleCarObject : null
+                comfortFeaturesProp = Array.isArray(this.state.singleCarObject.comfort_features_id) ? this.state.singleCarObject : null
 
                 // console.log("Before pass",comfortFeaturesProp)
 
