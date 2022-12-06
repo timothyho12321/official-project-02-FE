@@ -7,7 +7,7 @@ import Main from './Main';
 function App() {
   return (
     <React.Fragment>
-      <div className='container'>
+      <div className='container overall-div' >
         <Main />
       </div>
 

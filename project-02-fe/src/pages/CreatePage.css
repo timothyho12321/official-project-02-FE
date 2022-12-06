@@ -18,3 +18,7 @@
 
     color: red
 }
+
+.accordion-button, .accordion-body{
+    background-color: skyblue;
+}

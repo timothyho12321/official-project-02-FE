@@ -350,7 +350,7 @@ export default class CreatePage extends React.Component {
                 <h3>Create a new  car post with this form.</h3>
 
 
-                <Accordion defaultActiveKey="0">
+                <Accordion  defaultActiveKey="0">
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>Main Car Details</Accordion.Header>
                         <Accordion.Body>

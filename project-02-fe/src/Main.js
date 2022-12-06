@@ -7,6 +7,7 @@ import SearchPage from './pages/SearchPage';
 import CreatePage from './pages/CreatePage';
 import MyPosts from './pages/MyPosts';
 import SeeDetailedPost from './components/SeeDetailedPost';
+import carlogo from './pages/carlogo.png';
 import './Main.css';
 
 export default class Main extends React.Component {
@@ -68,9 +69,15 @@ export default class Main extends React.Component {
         return (
             <React.Fragment>
                 <div className='set-background-color'>
-                    <Navbar collapseOnSelect bg="light" expand="lg">
+                    <Navbar collapseOnSelect bg="blue" variant="dark" expand="lg">
                         <Container>
-                            <Navbar.Brand href="#home">CARousel</Navbar.Brand>
+                            <Navbar.Brand href="#home">
+                                <div className='div-align-title'>
+                                    <img src={carlogo} alt="site car logo" />
+                                    <span className='nav-title-spacing'>CARousel</span>
+                                </div>
+
+                            </Navbar.Brand>
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="me-auto">
