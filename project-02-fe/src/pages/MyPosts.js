@@ -15,7 +15,8 @@ export default class MyPosts extends React.Component {
         searchByEmailSuccess: false,
         eachCarYear: null,
         editYearOfLaunch: null,
-        changeValueToRender: null
+        changeValueToRender: null,
+        invalidEmailKeyed: false
     }
 
     updateFormField = (event) => {
@@ -23,7 +24,7 @@ export default class MyPosts extends React.Component {
             [event.target.name]: event.target.value
         })
 
-        
+
 
 
     }
@@ -41,19 +42,53 @@ export default class MyPosts extends React.Component {
 
     searchEmailPost = async () => {
 
-        // console.log("Search by user email ran")
-        let response = await axios.get(this.BASE_API_URL + "getposts", {
-            params: {
-                email: this.state.searchEmail
+
+
+        if (!this.state.searchEmail.includes("@") || !this.state.searchEmail.includes(".")) {
+            console.log("no search ran")
+            this.setState({
+                invalidEmailKeyed: "wrongFormat",
+                data: [],
+                searchByEmailSuccess: false
+            })
+        } else {
+
+            // console.log("Search by user email ran")
+
+            try {
+
+                let response = await axios.get(this.BASE_API_URL + "getposts", {
+                    params: {
+                        email: this.state.searchEmail
+                    }
+                })
+
+                this.setState({
+                    data: response.data,
+                    searchByEmailSuccess: true,
+                    invalidEmailKeyed: false
+                })
+
+            } catch (error) {
+                // console.log(error.response.status)
+                this.setState({
+                    data: [],
+                    searchByEmailSuccess: false,
+                    invalidEmailKeyed: "wrongEmail"
+                })
+
             }
-        })
-        // console.log(response)
 
 
-        this.setState({
-            data: response.data,
-            searchByEmailSuccess: true
-        })
+
+
+
+
+
+
+        }
+
+
 
 
     }
@@ -77,16 +112,6 @@ export default class MyPosts extends React.Component {
 
 
 
-    // TO DELETE THIS. THIRD ATTEMPT AT CREATE OWN BUTTON TO EDIT CAR POST
-    sendModal3 = () => {
-        return (
-            <React.Fragment>
-                <Modal3 />
-
-            </React.Fragment>
-        )
-
-    }
 
     render() {
 
@@ -103,17 +128,34 @@ export default class MyPosts extends React.Component {
                         value={this.state.searchEmail}
                         onChange={this.updateFormField}
                     />
+
+
                     <button className='btn btn-light search-button'
                         onClick={this.searchEmailPost}
                     >Search</button>
+
+
                 </div>
+
+                {this.state.invalidEmailKeyed === "wrongFormat" && <div className='display-error-message'>
+                    Key in email in correct format
+                </div>}
+
+
+
+                {this.state.invalidEmailKeyed === "wrongEmail" && <div className='display-error-message mt-3'>
+                    No such email found.
+                    <div className='mt-2'>Enter the same email when creating post.</div>
+                    <div className='mt-2'> Or create a new post in 'Create page'.</div>
+                </div>}
 
                 {this.state.searchByEmailSuccess ?
 
                     <React.Fragment>
 
                         <div className='row'>
-                            {this.state.data.map(c =>
+
+                            {(this.state.data.length > 0) && this.state.data.map(c =>
 
                                 <EditCarPost
                                     className="mt-3 col-12 col-lg-4 col-md-6" key={c._id}
@@ -125,11 +167,11 @@ export default class MyPosts extends React.Component {
 
 
                                     updateFormField={this.updateFormField}
-                                    
+
                                     // To delete if unable to utilise
                                     searchEmailPost={this.searchEmailPost}
 
-                                    // sendModal3={this.sendModal3}
+                                // sendModal3={this.sendModal3}
                                 />
 
 

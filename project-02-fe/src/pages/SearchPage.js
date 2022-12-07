@@ -4,7 +4,7 @@ import axios from 'axios';
 import CarPost from '../components/CarPost'
 import OffCanvas from '../components/OffCanvas'
 import css from './SearchPage.css';
-import CarPostDetails from '../components/CarPostDetails'
+
 import SeeDetailedPost from '../components/SeeDetailedPost';
 
 export default class SearchPage extends React.Component {
@@ -14,7 +14,8 @@ export default class SearchPage extends React.Component {
         searchBrand: "",
         searchType: "",
         searchYear: "",
-        searchPrice: "",
+        minPrice: "",
+        maxPrice: "",
         searchRating: "",
         existingCarTypes: [],
         existingCarBrand: [],
@@ -169,21 +170,20 @@ export default class SearchPage extends React.Component {
 
 
 
-
-
         const response = await axios.get(this.BASE_API_URL + "car", {
             params: {
                 brand: this.state.searchBrand,
                 year_of_launch: this.state.searchYear,
                 type: this.state.searchType,
-                cost_price: this.state.searchPrice,
+                min_price: this.state.minPrice,
+                max_price: this.state.maxPrice,
                 rating: this.state.searchRating
             }
 
         })
 
 
-        // console.log(response.data)
+        console.log(response.data)
         this.setState({
             data: response.data
         })
@@ -202,25 +202,22 @@ export default class SearchPage extends React.Component {
             let stringConvert = null;
 
             try {
-                colorShade = this.state.singleCarObject.color["shade"] && this.state.singleCarObject.color["shade"]
+                colorShade = this.state.singleCarObject.color && this.state.singleCarObject.color["shade"]
                 // console.log(colorShade)
-                color = this.state.singleCarObject.color["name"] && this.state.singleCarObject.color["name"]
+                color = this.state.singleCarObject.color && this.state.singleCarObject.color["name"]
                 // console.log(color)
-                console.log("Object", this.state.singleCarObject)
+                // console.log("Object", this.state.singleCarObject)
                 // console.log(this.state.singleCarObject.comfort_features_id
                 // )
 
                 // comfortFeaturesProp = [...this.state.singleCarObject.comfort_features_id]
                 // console.log("HERE",comfortFeaturesProp)
 
-
-
-                comfortFeaturesProp = this.state.singleCarObject
+                comfortFeaturesProp = Array.isArray(this.state.singleCarObject.comfort_features_id) ? this.state.singleCarObject : null
 
                 // console.log("Before pass",comfortFeaturesProp)
 
-                stringConvert = comfortFeaturesProp.comfort_features_id.join(', ')
-                // console.log(stringConvert)
+               
 
 
             } catch (e) {
@@ -238,7 +235,7 @@ export default class SearchPage extends React.Component {
                         comfortFeaturesProp={comfortFeaturesProp}
                         stringConvert={stringConvert}
                         changePreviousPage={this.changePreviousPage}
-                                
+
                     />
 
                 </React.Fragment>
@@ -273,7 +270,8 @@ export default class SearchPage extends React.Component {
                                 searchBrand={this.state.searchBrand}
                                 searchType={this.state.searchType}
                                 searchYear={this.state.searchYear}
-                                searchPrice={this.state.searchPrice}
+                                minPrice={this.state.minPrice}
+                                maxPrice={this.state.maxPrice}
                                 searchRating={this.state.searchRating}
                                 updateFormField={this.updateFormField}
                                 filterSearch={this.filterSearch}

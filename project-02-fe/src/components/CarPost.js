@@ -4,7 +4,7 @@ import Card from 'react-bootstrap/Card';
 
 import { render } from 'react-dom';
 import './CarPost.css'
-import CarPostDetails from './CarPostDetails'
+
 
 export default class CarPost extends React.Component {
 
@@ -37,7 +37,7 @@ export default class CarPost extends React.Component {
                     <Card.Body>
                         <Card.Title>{this.props.car.brand} {this.props.car.name_of_model} </Card.Title>
                         <Card.Text>
-                            <p><i className="bi bi-star-fill"></i> Rated<i className="bi bi-dot"></i>{this.props.car.rating} <i className="bi bi-stars"></i> |<i className="bi bi-pencil ms-3"></i> Post by : {this.props.car.username}</p>
+                            <p><i className="bi bi-stars"></i> Rated: {this.props.car.rating} <i className="bi bi-star-fill me-2"></i> |<i className="bi bi-pencil ms-2"></i> Post by : {this.props.car.username}</p>
 
                             <p><i className="bi bi-car-front-fill"></i>  {this.props.car.type}</p>
 
@@ -47,10 +47,7 @@ export default class CarPost extends React.Component {
                         </Card.Text>
 
                         <div>
-                            <CarPostDetails carStore={this.props.car}
-
-
-                            />
+                          
 
                             <Button variant='light'
                                 carStore={this.props.car}

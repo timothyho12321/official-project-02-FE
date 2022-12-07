@@ -7,7 +7,8 @@ import SearchPage from './pages/SearchPage';
 import CreatePage from './pages/CreatePage';
 import MyPosts from './pages/MyPosts';
 import SeeDetailedPost from './components/SeeDetailedPost';
-
+import carlogo from './pages/carlogo.png';
+import './Main.css';
 
 export default class Main extends React.Component {
 
@@ -20,10 +21,10 @@ export default class Main extends React.Component {
             return <HomePage />
         }
         if (this.state.page === "search") {
-            return <SearchPage 
-                                changeMainStateDetailedPost={this.changeMainStateDetailedPost}
-            
-                    />
+            return <SearchPage
+                changeMainStateDetailedPost={this.changeMainStateDetailedPost}
+
+            />
         }
         if (this.state.page === "create") {
             return <CreatePage />
@@ -32,7 +33,7 @@ export default class Main extends React.Component {
             return <MyPosts />
         }
         if (this.state.page === "seeDetailedPost") {
-            return <SeeDetailedPost 
+            return <SeeDetailedPost
             />
         }
     }
@@ -67,46 +68,56 @@ export default class Main extends React.Component {
 
         return (
             <React.Fragment>
-                <Navbar collapseOnSelect bg="light" expand="lg">
-                    <Container>
-                        <Navbar.Brand href="#home">CARousel</Navbar.Brand>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="me-auto">
-                                <Nav.Link href="#home"
-                                    onClick={() => {
-                                        this.switchPage("home")
-                                    }}
+                <div className='set-background-color'>
+                    <Navbar collapseOnSelect bg="blue" variant="dark" expand="lg">
+                        <Container>
+                            <Navbar.Brand href="#home">
+                                <div className='div-align-title'>
+                                    <img src={carlogo} alt="site car logo" />
+                                    <span className='nav-title-spacing'>CARousel</span>
+                                </div>
+
+                            </Navbar.Brand>
+                            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                            <Navbar.Collapse id="basic-navbar-nav">
+                                <Nav className="me-auto">
+                                    <Nav.Link href="#home"
+                                        onClick={() => {
+                                            this.switchPage("home")
+                                        }}
 
 
-                                >Home</Nav.Link>
-                                <Nav.Link href="#search"
-                                    onClick={() => {
-                                        this.switchPage("search")
-                                    }}
+                                    >Home</Nav.Link>
+                                    <Nav.Link href="#search"
+                                        onClick={() => {
+                                            this.switchPage("search")
+                                        }}
 
 
-                                >Search car</Nav.Link>
-                                <Nav.Link href="#link"
-                                    onClick={() => {
+                                    >Search car</Nav.Link>
+                                    <Nav.Link href="#link"
+                                        onClick={() => {
 
-                                        this.switchPage("create")
-                                    }}
+                                            this.switchPage("create")
+                                        }}
 
-                                >Create post</Nav.Link>
-                                <Nav.Link href="#mypost"
-                                    onClick={() => {
+                                    >Create post</Nav.Link>
+                                    <Nav.Link href="#mypost"
+                                        onClick={() => {
 
-                                        this.switchPage("mypost")
-                                    }}
-                                >My Post</Nav.Link>
+                                            this.switchPage("mypost")
+                                        }}
+                                    >My Post</Nav.Link>
 
-                            </Nav>
-                        </Navbar.Collapse>
-                    </Container>
-                </Navbar>
+                                </Nav>
+                            </Navbar.Collapse>
+                        </Container>
+                    </Navbar>
 
-                {this.renderPage()}
+                    {this.renderPage()}
+
+                </div>
+
             </React.Fragment>
 
 

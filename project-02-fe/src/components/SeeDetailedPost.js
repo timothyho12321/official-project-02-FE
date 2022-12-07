@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faChair, faDroplet, faBrush, faHillRockslide, faNoteSticky, faPlug, faPlus } from '@fortawesome/free-solid-svg-icons'
 import Button from 'react-bootstrap/Button';
 
 
@@ -21,17 +21,14 @@ export default class SeeDetailedPost extends React.Component {
 
             <React.Fragment>
 
-                <h2>SeeDetailedPost </h2>
-
-
 
                 <div>
 
 
 
-                    <div><h4>Car Details: </h4></div>
+                    <div><h4> Car Details </h4></div>
                     <div>
-                        Name of car poster: {this.props.username}
+                        <i className="bi bi-pencil ms-2"></i> Post by: {this.props.username}
 
                     </div>
 
@@ -45,50 +42,53 @@ export default class SeeDetailedPost extends React.Component {
                     </div>
 
                     <div>
-                        <p>Year of Launch: {this.props.year_of_launch}</p>
+                        <p><i className="bi bi-rocket-takeoff-fill"></i> Launch year: {this.props.year_of_launch}</p>
                     </div>
 
                     <div>
-                        <p>Type: {this.props.type}</p>
+                        <p><i className="bi bi-car-front-fill"></i> Type: {this.props.type}</p>
                     </div>
                     <div>
-                        <p>Seat Number: {this.props.
-                            seats}</p>
+                        <p>
+                            <FontAwesomeIcon icon={faChair} />
+                            Seat Number: {this.props.
+                                seats}</p>
                     </div>
                     <div>
-                        <p>Type: {this.props.type}</p>
+                        <p><i className="bi bi-car-front-fill"></i>Type: {this.props.type}</p>
                     </div>
                     <div>
-                        <p>Color: {this.props.colorSpecial && this.props.colorSpecial}</p>
+                        <p> <FontAwesomeIcon icon={faDroplet} />Color: {this.props.colorSpecial && this.props.colorSpecial}</p>
                     </div>
                     <div>
-                        <p>Color Shade: {this.props.colorShadeSpecial && this.props.colorShadeSpecial}</p>
+                        <p><FontAwesomeIcon icon={faBrush} />Color Shade: {this.props.colorShadeSpecial && this.props.colorShadeSpecial}</p>
                     </div>
                     <div>
-                        <p>Land Terrain: {this.props.land_terrain}</p>
+                        <p><FontAwesomeIcon icon={faHillRockslide} />Land Terrain: {this.props.land_terrain}</p>
                     </div>
                     <div>
-                        <p>Car Rating: {this.props.rating}
+                        <p><i className="bi bi-stars"></i>  Rated: {this.props.rating}
                             <FontAwesomeIcon icon={faStar} />
                         </p>
                     </div>
                     <div>
-                        <p>Description: {this.props.description}</p>
+                        <p> <FontAwesomeIcon icon={faNoteSticky}/>Description: {this.props.description}</p>
                     </div>
                     <div>
-                        <p>Price: ${this.props.cost_price}</p>
+                        <p><i className="bi bi-currency-dollar"></i>Price: ${this.props.cost_price}</p>
                     </div>
                     <div>
-                        <p>Engine Name: {this.props.engine_id}</p>
+                        <p><FontAwesomeIcon icon={faPlug}/>Engine Name: {this.props.engine_id}</p>
                     </div>
 
 
 
 
                     <div>
-                        <p>Comfort Features:
+                        <p><FontAwesomeIcon icon={faPlus}/>Comfort Features:
 
-                            {this.props.comfortFeaturesProp?.comfort_features_id.map(c => {
+                            {Array.isArray(this.props.comfortFeaturesProp?.comfort_features_id
+                            ) && this.props.comfortFeaturesProp.comfort_features_id.map(c => {
                                 return <span className='badge bg-secondary ms-2'>
                                     {c}</span>
                             })}</p>
@@ -96,7 +96,7 @@ export default class SeeDetailedPost extends React.Component {
 
 
                     <Button variant='light'
-                            onClick={this.props.changePreviousPage}
+                        onClick={this.props.changePreviousPage}
                     >Back Page</Button>
 
 

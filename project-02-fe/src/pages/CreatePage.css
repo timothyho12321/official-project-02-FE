@@ -14,3 +14,11 @@
     margin-left: 12px;
 }
 
+.display-error-message-style{
+
+    color: red
+}
+
+.accordion-button, .accordion-body{
+    background-color: skyblue;
+}

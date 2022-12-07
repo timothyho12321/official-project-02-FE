@@ -21,19 +21,24 @@ export default class EditCarPost extends React.Component {
                 bg={"secondary"}
                 text={"white"}
                 className="car-card-style mt-3 col-12
-                       col-lg-4 col-md-6"
+                       col-lg-6 col-md-6"
             //    style={{ width: '50vw' }}
             >
-                <Card.Img variant="top" src={this.props.car.image} />
-                <Card.Body>
-                    <Card.Title>Brand: {this.props.car.brand}</Card.Title>
-                    <Card.Text>
-                        <p>Model: {this.props.car.name_of_model}</p>
-                        <p>Type: {this.props.car.type}</p>
+                <Card.Img variant="top"
+                    src={this.props.car.image}
+                    className="card-image-style"
 
-                        <p>Year of Launch: {this.props.car.year_of_launch}</p>
-                        <p>Rating: {this.props.car.rating} Stars</p>
-                        <p>Price: $ {this.props.car.cost_price} </p>
+                />
+                <Card.Body>
+                    <Card.Title>{this.props.car.brand} {this.props.car.name_of_model} </Card.Title>
+                    <Card.Text>
+                        <p><i className="bi bi-stars"></i> Rated: {this.props.car.rating} <i className="bi bi-star-fill me-2"></i> |<i className="bi bi-pencil ms-2"></i> Post by : {this.props.car.username}</p>
+
+                        <p><i className="bi bi-car-front-fill"></i>  {this.props.car.type}</p>
+
+                        <p><i className="bi bi-rocket-takeoff-fill"></i> Launched: {this.props.car.year_of_launch}</p>
+
+                        <p><i className="bi bi-currency-dollar"></i> {this.props.car.cost_price} </p>
                     </Card.Text>
 
                     <div>
@@ -42,19 +47,13 @@ export default class EditCarPost extends React.Component {
                             carStore={this.props.car}
                             searchEmailPost={this.props.searchEmailPost}
                             changeStateToRender={this.props.changeStateToRender}
-                            
+
 
 
 
                         />
 
-                        {/* Second attempt at edit button */}
-                        {/* <Button variant='light'
-                        onClick={props.sendModal3}
-                    >
 
-                        Edit this car
-                    </Button> */}
 
                         <Button variant="light"
                             onClick={this.props.deleteCar}
@@ -62,7 +61,7 @@ export default class EditCarPost extends React.Component {
                             Delete car
                         </Button>
 
-                       
+
                     </div>
 
 
