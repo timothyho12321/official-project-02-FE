@@ -297,10 +297,6 @@ export default class CreatePage extends React.Component {
             this.state.engineNameError === false &&
             this.state.comfortFeaturesError === false
 
-
-
-
-
         ) {
 
             // console.log(this.BASE_API_URL + "newcarandengine")
