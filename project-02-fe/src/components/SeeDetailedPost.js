@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faChair, faDroplet, faBrush, faHillRockslide, faNoteSticky, faPlug, faPlus } from '@fortawesome/free-solid-svg-icons'
 import Button from 'react-bootstrap/Button';
+import CommentPost from './CommentPost';
 
 
 export default class SeeDetailedPost extends React.Component {
@@ -26,7 +27,7 @@ export default class SeeDetailedPost extends React.Component {
 
 
 
-                    <div><h4> Car Details </h4></div>
+                    <div><h4> {this.props.brand} {this.props.name_of_model}  </h4></div>
                     <div>
                         <i className="bi bi-pencil ms-2"></i> Post by: {this.props.username}
 
@@ -72,20 +73,20 @@ export default class SeeDetailedPost extends React.Component {
                         </p>
                     </div>
                     <div>
-                        <p> <FontAwesomeIcon icon={faNoteSticky}/>Description: {this.props.description}</p>
+                        <p> <FontAwesomeIcon icon={faNoteSticky} />Description: {this.props.description}</p>
                     </div>
                     <div>
                         <p><i className="bi bi-currency-dollar"></i>Price: ${this.props.cost_price}</p>
                     </div>
                     <div>
-                        <p><FontAwesomeIcon icon={faPlug}/>Engine Name: {this.props.engine_id}</p>
+                        <p><FontAwesomeIcon icon={faPlug} />Engine Name: {this.props.engine_id}</p>
                     </div>
 
 
 
 
                     <div>
-                        <p><FontAwesomeIcon icon={faPlus}/>Comfort Features:
+                        <p><FontAwesomeIcon icon={faPlus} />Comfort Features:
 
                             {Array.isArray(this.props.comfortFeaturesProp?.comfort_features_id
                             ) && this.props.comfortFeaturesProp.comfort_features_id.map(c => {
@@ -93,6 +94,15 @@ export default class SeeDetailedPost extends React.Component {
                                     {c}</span>
                             })}</p>
                     </div>
+
+                    <div>
+
+
+
+                        <CommentPost />
+                    </div>
+
+                    <div> Add new comments</div>
 
 
                     <Button variant='light'
