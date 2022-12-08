@@ -14,10 +14,14 @@ export default class SeeDetailedPost extends React.Component {
         comfort_features_id: [],
         commentUserName: "",
         commentEmail: "",
-        commentDescription: ""
+        commentDescription: "",
+        changeStateForRender: false
     }
 
     BASE_API_URL = "http://localhost:3080/"
+
+
+
 
     updateFormField = (event) => {
         console.log("update form ran")
@@ -28,8 +32,9 @@ export default class SeeDetailedPost extends React.Component {
     }
 
     submitComment = async () => {
-        alert("Comment submitted")
+        alert("Comment submitted. Reload from search page.")
 
+        
         // console.log(this.BASE_API_URL + "car/" + this.props._id)
         const response = await axios.put(this.BASE_API_URL + "car/" + this.props._id, {
 
@@ -50,17 +55,24 @@ export default class SeeDetailedPost extends React.Component {
             cost_price: this.props.cost_price,
             image: this.props.image,
             engine_name: this.props.engine_id,
-            comfort_features_id: this.props.comfort_features_id,
+            comfort_features_id: this.props.keep_comfort_features_id,
 
+            // comments: {
+            //     "username": this.commentUserName,
+            //     "email": this.commentEmail,
+            //     "other_comment": this.commentDescription
+            // }
             comments: {
-                "username": this.commentUserName,
-                "email": this.commentEmail,
-                "other_comment": this.commentDescription
+                "username": this.state.commentUserName,
+                "email": this.state.commentEmail,
+                "other_comment": this.state.commentDescription
             }
 
 
 
         })
+
+        
         console.log(response)
 
     }
@@ -89,7 +101,7 @@ export default class SeeDetailedPost extends React.Component {
                             style={{
                                 width: "100%",
                                 height: "100%"
-                            }} />
+                            }} alt="car" />
                     </div>
 
                     <div>
@@ -102,8 +114,8 @@ export default class SeeDetailedPost extends React.Component {
                     <div>
                         <p>
                             <FontAwesomeIcon icon={faChair} />
-                            Seat Number: {this.props.
-                                seats}</p>
+                            Seat Number: {
+                                this.props.seats}</p>
                     </div>
                     <div>
                         <p><i className="bi bi-car-front-fill"></i>Type: {this.props.type}</p>
@@ -145,7 +157,7 @@ export default class SeeDetailedPost extends React.Component {
                     <div className='outer-comment-div '>
                         <div>Other Users Comments:</div>
                         <div>
-                            {this.props.comments.map((c) =>
+                            {this.props.comments?.map((c) =>
 
                                 <CommentPost
                                     key={c.email}
@@ -158,7 +170,7 @@ export default class SeeDetailedPost extends React.Component {
                         <div className='d-flex
                     justify-content-center'>
                             <div className='add-comment-div mt-2'>
-                                <div className='mt-2'>Add comment if desired</div>
+                                <div className='mt-2'>Add more comments</div>
                                 <div className='mt-2'>
                                     <label>Username</label>
                                     <input type="text"

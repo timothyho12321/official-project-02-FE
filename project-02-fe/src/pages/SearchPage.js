@@ -26,7 +26,8 @@ export default class SearchPage extends React.Component {
         singleSearchSavedId: null,
         detailedSearchPressed: false,
         singleCarObject: {},
-        saveIDToAllowCompDidUpdate: ""
+        saveIDToAllowCompDidUpdate: "",
+        changeStateForRender: false
 
     }
 
@@ -83,9 +84,9 @@ export default class SearchPage extends React.Component {
             // this.saveIDToAllowCompDidUpdate!=this.state.singleSearchSavedId
 
 
-             Object.keys(this.state.singleCarObject).length === 0
+            Object.keys(this.state.singleCarObject).length === 0
 
-            
+
             // take out  Object.keys(this.state.singleCarObject)._id!= this.state.singleSearchSavedId
         ) {
 
@@ -104,13 +105,13 @@ export default class SearchPage extends React.Component {
             let response = await axios.get(endpoint)
             console.log("CarSearchUpdate", response.data[0])
 
-            let saveIDToAllowCompDidUpdate =  response.data[0]._id
+            let saveIDToAllowCompDidUpdate = response.data[0]._id
             console.log("saveIDToAllowCompDidUpdate", saveIDToAllowCompDidUpdate)
 
             this.setState({
                 singleCarObject: response.data[0],
                 saveIDToAllowCompDidUpdate: saveIDToAllowCompDidUpdate,
-                singleSearchSavedId:saveIDToAllowCompDidUpdate
+                singleSearchSavedId: saveIDToAllowCompDidUpdate
             })
         }
 
@@ -233,7 +234,7 @@ export default class SearchPage extends React.Component {
 
                 // console.log("Before pass",comfortFeaturesProp)
 
-               
+
 
 
             } catch (e) {
@@ -251,7 +252,7 @@ export default class SearchPage extends React.Component {
                         comfortFeaturesProp={comfortFeaturesProp}
                         stringConvert={stringConvert}
                         changePreviousPage={this.changePreviousPage}
-                        
+                        changeStateForRender={this.changeStateForRender}
 
                     />
 
@@ -315,7 +316,7 @@ export default class SearchPage extends React.Component {
                                         changeSearchStateDetailedPost={() => this.changeSearchStateDetailedPost(c._id)}
                                         // changeSearchStateDetailedPost={()=> {this.changeSearchStateDetailedPost}
                                         //     }
-                                        
+
                                         changePreviousPage={this.changePreviousPage}
                                     />)
 
@@ -344,7 +345,7 @@ export default class SearchPage extends React.Component {
         let result = await axios.get(this.BASE_API_URL + "car/" + c);
         console.log("result", result)
 
-        console.log("Check saved carID",c);
+        console.log("Check saved carID", c);
         // console.log("saveId to state worked")
 
         // this.setState({
@@ -366,15 +367,19 @@ export default class SearchPage extends React.Component {
     }
 
     changePreviousPage = () => {
+        
         this.setState({
             page: "general"
         })
 
-
-
     }
 
+    changeStateForRender = () => {
+        this.setState({
+            changeStateForRender: !this.state.changeStateForRender
+        })
 
+    }
 
 
 
