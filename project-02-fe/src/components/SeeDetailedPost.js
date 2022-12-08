@@ -3,17 +3,67 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faChair, faDroplet, faBrush, faHillRockslide, faNoteSticky, faPlug, faPlus } from '@fortawesome/free-solid-svg-icons'
 import Button from 'react-bootstrap/Button';
 import CommentPost from './CommentPost';
+import './SeeDetailedPost.css';
+import axios from 'axios';
 
 
 export default class SeeDetailedPost extends React.Component {
 
     state = {
         data: [],
-        comfort_features_id: []
+        comfort_features_id: [],
+        commentUserName: "",
+        commentEmail: "",
+        commentDescription: ""
     }
 
+    BASE_API_URL = "http://localhost:3080/"
+
+    updateFormField = (event) => {
+        console.log("update form ran")
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+
+    }
+
+    submitComment = async () => {
+        alert("Comment submitted")
+
+        // console.log(this.BASE_API_URL + "car/" + this.props._id)
+        const response = await axios.put(this.BASE_API_URL + "car/" + this.props._id, {
+
+            name_of_model: this.props.name_of_model,
+            year_of_launch: this.props.year_of_launch,
+            brand: this.props.brand,
+            type: this.props.type,
+            seats: this.props.seats,
+            color: {
+                "name": this.props.colorSpecial,
+                "shade": this.props.colorShadeSpecial
+            },
+            land_terrain: this.props.land_terrain,
+            username: this.props.username,
+            email: this.props.email,
+            rating: this.props.rating,
+            description: this.props.description,
+            cost_price: this.props.cost_price,
+            image: this.props.image,
+            engine_name: this.props.engine_id,
+            comfort_features_id: this.props.comfort_features_id,
+
+            comments: {
+                "username": this.commentUserName,
+                "email": this.commentEmail,
+                "other_comment": this.commentDescription
+            }
 
 
+
+        })
+        console.log(response)
+
+    }
 
     render() {
 
@@ -82,9 +132,6 @@ export default class SeeDetailedPost extends React.Component {
                         <p><FontAwesomeIcon icon={faPlug} />Engine Name: {this.props.engine_id}</p>
                     </div>
 
-
-
-
                     <div>
                         <p><FontAwesomeIcon icon={faPlus} />Comfort Features:
 
@@ -95,19 +142,78 @@ export default class SeeDetailedPost extends React.Component {
                             })}</p>
                     </div>
 
-                    <div>
+                    <div className='outer-comment-div '>
+                        <div>Other Users Comments:</div>
+                        <div>
+                            {this.props.comments.map((c) =>
+
+                                <CommentPost
+                                    key={c.email}
+                                    allcomment={c}
+                                />
+
+                            )}
+                        </div>
+
+                        <div className='d-flex
+                    justify-content-center'>
+                            <div className='add-comment-div mt-2'>
+                                <div className='mt-2'>Add comment if desired</div>
+                                <div className='mt-2'>
+                                    <label>Username</label>
+                                    <input type="text"
+                                        name='commentUserName'
+                                        className='form-control'
+                                        value={this.state.commentUserName}
+                                        onChange={this.updateFormField}
+                                    />
+                                </div>
+                                <div className='mt-2'>
+                                    <label>Email</label>
+                                    <input type="text"
+                                        name='commentEmail'
+                                        className='form-control'
+                                        value={this.state.commentEmail}
+                                        onChange={this.updateFormField}
+                                    />
+                                </div>
+                                <div className='mt-2'>
+                                    <label>Comment</label>
+                                    <textarea
+                                        className='form-control'
+                                        name='commentDescription'
+                                        value={this.state.commentDescription}
+                                        onChange={this.updateFormField}
+                                    />
+
+                                </div>
+                                <div className='mt-2 mb-2 ms-2'>
+                                    <Button variant='info'
+                                        onClick={this.submitComment}
+
+                                    >
+                                        Click to submit
+                                    </Button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
 
 
 
-                        <CommentPost />
+
                     </div>
 
-                    <div> Add new comments</div>
 
 
-                    <Button variant='light'
-                        onClick={this.props.changePreviousPage}
-                    >Back Page</Button>
+                    <div className='mt-2'>
+                        <Button variant='light'
+                            onClick={this.props.changePreviousPage}
+                        >Back Page</Button>
+                    </div>
+
 
 
 
@@ -117,7 +223,7 @@ export default class SeeDetailedPost extends React.Component {
 
 
 
-            </React.Fragment>
+            </React.Fragment >
         )
 
     }

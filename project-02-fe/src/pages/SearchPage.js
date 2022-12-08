@@ -251,6 +251,7 @@ export default class SearchPage extends React.Component {
                         comfortFeaturesProp={comfortFeaturesProp}
                         stringConvert={stringConvert}
                         changePreviousPage={this.changePreviousPage}
+                        
 
                     />
 
