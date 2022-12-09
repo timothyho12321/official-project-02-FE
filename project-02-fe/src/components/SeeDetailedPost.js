@@ -37,7 +37,7 @@ export default class SeeDetailedPost extends React.Component {
 
     submitComment = async () => {
         {this.notify()}
-        this.props.testFunctionToAddComment()
+        
 
         
         // console.log(this.BASE_API_URL + "car/" + this.props._id)
@@ -167,6 +167,7 @@ export default class SeeDetailedPost extends React.Component {
                                 <CommentPost
                                     key={c.email}
                                     allcomment={c}
+                                    idForDelete={this.props._id}
                                 />
 
                             )}

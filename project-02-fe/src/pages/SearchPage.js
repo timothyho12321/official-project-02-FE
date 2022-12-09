@@ -312,7 +312,6 @@ export default class SearchPage extends React.Component {
                                         car={c}
                                         changeSearchStateDetailedPost= {this.changeSearchStateDetailedPost}
                                         // changeSearchStateDetailedPost={() => this.changeSearchStateDetailedPost(c._id)}
-                                        // changeSearchStateDetailedPost={() => this.changeSearchStateDetailedPost(c._id)}
                                         // changeSearchStateDetailedPost={()=> {this.changeSearchStateDetailedPost}
                                         //     }
 
@@ -340,7 +339,7 @@ export default class SearchPage extends React.Component {
     }
 
     changeSearchStateDetailedPost = async (c) => {
-        console.log("car id", c)
+        // console.log("car id", c)
         let result = await axios.get(this.BASE_API_URL + "car/" + c);
         console.log("result", result)
 

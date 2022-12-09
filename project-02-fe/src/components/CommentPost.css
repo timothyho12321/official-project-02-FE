@@ -1,0 +1,23 @@
+.comment-box-div {
+
+    position: relative;
+    
+}
+
+.button-height {
+    height: 15px;
+    position: absolute;
+    top: -8px;
+    right: -8px
+}
+
+.comment-close-button {
+    
+    position: absolute;
+    top: 0px;
+    right: 0px
+}
+
+.icon-div{
+    margin: 0px
+}
