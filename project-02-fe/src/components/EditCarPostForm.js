@@ -53,7 +53,7 @@ export default class EditCarPostForm extends React.Component {
 
   }
 
-  BASE_API_URL = "https://project2-timothy-carousel.onrender.com"
+  BASE_API_URL = "https://project2-timothy-carousel.onrender.com/"
 
   async componentDidMount() {
     const response = await axios.get(this.BASE_API_URL + "engine")

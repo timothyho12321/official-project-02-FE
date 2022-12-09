@@ -48,7 +48,7 @@ export default class CreatePage extends React.Component {
 
     }
 
-    BASE_API_URL = "https://project2-timothy-carousel.onrender.com"
+    BASE_API_URL = "https://project2-timothy-carousel.onrender.com/"
 
     async componentDidMount() {
 

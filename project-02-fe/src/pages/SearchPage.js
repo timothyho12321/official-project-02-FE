@@ -31,7 +31,7 @@ export default class SearchPage extends React.Component {
         changeStateForRender: false,
 
     }
-    BASE_API_URL = "https://project2-timothy-carousel.onrender.com"
+    BASE_API_URL = "https://project2-timothy-carousel.onrender.com/"
 
     async componentDidMount() {
 
