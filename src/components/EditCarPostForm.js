@@ -1,14 +1,15 @@
 import React from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar, faTachographDigital, faTruckField } from '@fortawesome/free-solid-svg-icons'
-
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 import axios from 'axios';
 
-import './EditCarPostForm.css'
+import './EditCarPostForm.css';
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default class EditCarPostForm extends React.Component {
   state = {
@@ -150,6 +151,7 @@ export default class EditCarPostForm extends React.Component {
 
   }
 
+  notify = () => toast("Car Edited. See by researching email.")
 
   editCarPost = async () => {
 
@@ -171,7 +173,10 @@ export default class EditCarPostForm extends React.Component {
       this.state.engineNameError === false &&
       this.state.comfortFeaturesError === false) {
       try {
-        alert("Car successfully edited.")
+        
+
+         this.notify() 
+
         let response = await axios.put(this.BASE_API_URL + "car/"
           + this.props.carStore._id, {
 
@@ -299,75 +304,75 @@ export default class EditCarPostForm extends React.Component {
 
 
     // set back to false when form is filled in 
-    if (this.state.editNameOfModel != "") {
+    if (this.state.editNameOfModel !== "") {
       this.setState({
         modelNameError: false
       })
 
     }
-    if (this.state.editYearOfLaunch != null) {
+    if (this.state.editYearOfLaunch !== null) {
 
       this.setState({
         yearLaunchError: false
       })
     }
-    if (this.state.editBrandOfCar != "") {
+    if (this.state.editBrandOfCar !== "") {
       this.setState({
         carBrandError: false
       })
     }
-    if (this.state.editTypeOfCar != "") {
+    if (this.state.editTypeOfCar !== "") {
       this.setState({
         carTypeError: false
       })
     }
-    if (this.state.editColor != "") {
+    if (this.state.editColor !== "") {
       this.setState({
         colorError: false
       })
     }
-    if (this.state.editColorShade!= "") {
+    if (this.state.editColorShade !== "") {
       this.setState({
         colorShadeError: false
       })
     }
-    if (this.state.editLandTerrain != "") {
+    if (this.state.editLandTerrain !== "") {
       this.setState({
         landTerrainError: false
       })
     }
-    if (this.state.editUserName != "") {
+    if (this.state.editUserName !== "") {
       this.setState({
         userNameError: false
       })
     }
-    if (this.state.editRating != null) {
+    if (this.state.editRating !== null) {
       this.setState({
         carRatingError: false
       })
     }
-    if (this.state.editDescription != "") {
+    if (this.state.editDescription !== "") {
       this.setState({
         descriptionError: false
       })
     }
-    if (this.state.editImage != "") {
+    if (this.state.editImage !== "") {
       this.setState({
         imageError: false
       })
     }
-    if (this.state.editPrice != null) {
+    if (this.state.editPrice !== null) {
 
       this.setState({
         priceError: false
       })
     }
-    if (this.state.editEngineName != "") {
+    if (this.state.editEngineName !== "") {
       this.setState({
         engineNameError: false
       })
     }
-    if (this.state.editComfortFeatures.length != 0) {
+    if (this.state.editComfortFeatures.length !== 0) {
       console.log(this.state.editComfortFeatures.length)
 
       this.setState({
@@ -383,8 +388,8 @@ export default class EditCarPostForm extends React.Component {
     return (
       <React.Fragment>
         {this.state.values.map((v, idx) => (
-          <Button key={idx} 
-          className="me-2
+          <Button key={idx}
+            className="me-2
           button-orange-style"
             variant="light"
             onClick={

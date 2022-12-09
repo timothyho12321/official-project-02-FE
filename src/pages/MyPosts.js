@@ -1,7 +1,9 @@
 import axios from 'axios'
 import React from 'react'
 
-import css from './MyPosts.css'
+import './MyPosts.css'
+
+import { toast } from 'react-toastify';
 
 import EditCarPost from '../components/EditCarPost.js'
 import Modal3 from '../components/EditCarPostForm'
@@ -93,14 +95,17 @@ export default class MyPosts extends React.Component {
 
     }
 
+    notify = () => toast("Car is deleted.")
+
     deleteCar = async (c) => {
 
         alert("This car will be deleted")
+        this.notify()
         // console.log(c._id);
         let savedId = c._id;
         // console.log("Saved", savedId)
 
-        //BUG IS HERE. HOW TO KEY IN PARAMS AS ID INTO HEADER..
+        
         let response = await axios.delete(this.BASE_API_URL +
             "car/" + savedId)
 

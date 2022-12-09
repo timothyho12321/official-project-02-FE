@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+Link to live site [CARousel](https://0-carousel-project.netlify.app/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
