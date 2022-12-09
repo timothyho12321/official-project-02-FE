@@ -10,3 +10,28 @@ align-items: center;
 .OffCanvas-div{
     margin-left: 5px
 }
+
+
+
+
+
+.button-brand-green-style {
+background-color: #7389AE !important;
+
+}
+
+
+#card_div_center_margin_media{
+
+    margin-left: 60px
+}
+
+
+
+@media only screen and (max-width: 780px) {
+    #card_div_center_margin_media{
+
+        margin-left: 0px
+    }
+    
+  }

@@ -6,6 +6,7 @@ import OffCanvas from '../components/OffCanvas'
 import css from './SearchPage.css';
 
 import SeeDetailedPost from '../components/SeeDetailedPost';
+import Button from 'react-bootstrap/esm/Button';
 
 export default class SearchPage extends React.Component {
 
@@ -25,10 +26,11 @@ export default class SearchPage extends React.Component {
         page: "general",
         singleSearchSavedId: null,
         detailedSearchPressed: false,
-        singleCarObject: {}
+        singleCarObject: {},
+        saveIDToAllowCompDidUpdate: "",
+        changeStateForRender: false,
 
     }
-
     BASE_API_URL = "http://localhost:3080/"
 
     async componentDidMount() {
@@ -79,8 +81,18 @@ export default class SearchPage extends React.Component {
     async componentDidUpdate() {
         if (this.state.detailedSearchPressed === true
             &&
+            // this.saveIDToAllowCompDidUpdate!=this.state.singleSearchSavedId
+
+
             Object.keys(this.state.singleCarObject).length === 0
+
+
+            // take out  Object.keys(this.state.singleCarObject)._id!= this.state.singleSearchSavedId
         ) {
+
+            console.log("Single Car Object", this.state.singleCarObject)
+            console.log("Single Car Object ID", this.state.singleCarObject?._id)
+            console.log("Need to load this singleSearchSavedId", this.state.singleSearchSavedId)
 
             // console.log(Object.keys(this.state.singleCarObject).length)
             let a = this.state.singleSearchSavedId
@@ -91,10 +103,15 @@ export default class SearchPage extends React.Component {
                 this.state.singleSearchSavedId
 
             let response = await axios.get(endpoint)
-            // console.log("ComponentUpdate", response.data[0])
+            console.log("CarSearchUpdate", response.data[0])
+
+            let saveIDToAllowCompDidUpdate = response.data[0]._id
+            console.log("saveIDToAllowCompDidUpdate", saveIDToAllowCompDidUpdate)
 
             this.setState({
-                singleCarObject: response.data[0]
+                singleCarObject: response.data[0],
+                saveIDToAllowCompDidUpdate: saveIDToAllowCompDidUpdate,
+                singleSearchSavedId: saveIDToAllowCompDidUpdate
             })
         }
 
@@ -217,7 +234,7 @@ export default class SearchPage extends React.Component {
 
                 // console.log("Before pass",comfortFeaturesProp)
 
-               
+
 
 
             } catch (e) {
@@ -235,7 +252,7 @@ export default class SearchPage extends React.Component {
                         comfortFeaturesProp={comfortFeaturesProp}
                         stringConvert={stringConvert}
                         changePreviousPage={this.changePreviousPage}
-
+                        changeStateForRender={this.changeStateForRender}
                     />
 
                 </React.Fragment>
@@ -259,10 +276,14 @@ export default class SearchPage extends React.Component {
                         onChange={this.updateFormField} />
 
                     <div className='button-search-div mt-3'>
-                        <button className='btn btn-primary '
-                            onClick={this.onlyBrandSearch}
 
-                        >Brand Search</button>
+                        <Button variant='light' 
+                            className='button-brand-green-style'
+                            onClick={this.onlyBrandSearch}
+                        >
+                            Brand Search
+                        </Button>
+                        
 
                         <div className='OffCanvas-div'>
 
@@ -288,14 +309,19 @@ export default class SearchPage extends React.Component {
 
                     <div className='container'>
 
-                        <div className='row test_center' >
+                        <div className='row card_div_center'
+                            id='card_div_center_margin_media'
+                        >
                             {
                                 this.state.data.map((c) =>
                                     <CarPost
                                         key={c._id}
                                         car={c}
-
                                         changeSearchStateDetailedPost={this.changeSearchStateDetailedPost}
+                                        // changeSearchStateDetailedPost={() => this.changeSearchStateDetailedPost(c._id)}
+                                        // changeSearchStateDetailedPost={()=> {this.changeSearchStateDetailedPost}
+                                        //     }
+
                                         changePreviousPage={this.changePreviousPage}
                                     />)
 
@@ -319,13 +345,22 @@ export default class SearchPage extends React.Component {
         }
     }
 
-    changeSearchStateDetailedPost = (c) => {
+    changeSearchStateDetailedPost = async (c) => {
+        // console.log("car id", c)
+        let result = await axios.get(this.BASE_API_URL + "car/" + c);
+        console.log("result", result)
 
-
-        // console.log(c);
+        console.log("Check saved carID", c);
         // console.log("saveId to state worked")
+
+        // this.setState({
+        //     "singleSearchSavedId": c,
+        //     "page": "single",
+        //     "detailedSearchPressed": true
+        // })
+
         this.setState({
-            "singleSearchSavedId": c,
+            "singleCarObject": result.data[0],
             "page": "single",
             "detailedSearchPressed": true
         })
@@ -337,15 +372,19 @@ export default class SearchPage extends React.Component {
     }
 
     changePreviousPage = () => {
+
         this.setState({
             page: "general"
         })
 
-
-
     }
 
+    changeStateForRender = () => {
+        this.setState({
+            changeStateForRender: !this.state.changeStateForRender
+        })
 
+    }
 
 
 

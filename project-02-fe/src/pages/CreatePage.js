@@ -297,10 +297,6 @@ export default class CreatePage extends React.Component {
             this.state.engineNameError === false &&
             this.state.comfortFeaturesError === false
 
-
-
-
-
         ) {
 
             // console.log(this.BASE_API_URL + "newcarandengine")
@@ -743,10 +739,13 @@ export default class CreatePage extends React.Component {
                     'create-input-div-space'
                 >
                     <Button variant='light'
-                        onMouseDown={this.checkErrors}
-                        onClick={this.createCarPost
-                        }
-
+                    className='button-orange-style'
+                        // onMouseDown={this.checkErrors}
+                        // onClick={this.createCarPost}
+                        onClick={() => {
+                            this.checkErrors()
+                            this.createCarPost()
+                        }}
                     >
                         Confirm Create Car Post
                     </Button>

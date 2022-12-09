@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearchPlus } from '@fortawesome/free-solid-svg-icons';
 import css from './OffCanvas.css';
 
 export default function OffCanvas(props) {
@@ -11,8 +13,11 @@ export default function OffCanvas(props) {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                Detailed Search
+            <Button className='button-detailed-orange-style' 
+            variant="light" 
+            onClick={handleShow}
+            >
+                Detailed <FontAwesomeIcon icon={faSearchPlus}/>
             </Button>
 
             <Offcanvas show={show} onHide={handleClose}>

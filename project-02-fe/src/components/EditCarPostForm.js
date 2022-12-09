@@ -31,7 +31,25 @@ export default class EditCarPostForm extends React.Component {
     editImage: "",
     editPrice: null,
     editEngineName: "",
-    editComfortFeatures: []
+    editComfortFeatures: [],
+
+    modelNameError: false,
+    yearLaunchError: false,
+    carBrandError: false,
+    carTypeError: false,
+
+    colorError: false,
+    colorShadeError: false,
+    landTerrainError: false,
+    userNameError: false,
+    emailError: false,
+    carRatingError: false,
+    descriptionError: false,
+    imageError: false,
+    priceError: false,
+    engineNameError: false,
+    comfortFeaturesError: false
+
 
   }
 
@@ -135,50 +153,228 @@ export default class EditCarPostForm extends React.Component {
 
   editCarPost = async () => {
 
-     
-
-    try {
-
-      let response = await axios.put(this.BASE_API_URL + "car/"
-        + this.props.carStore._id, {
-
-        name_of_model: this.state.editNameOfModel,
-        year_of_launch: this.state.editYearOfLaunch,
-        brand: this.state.editBrandOfCar,
-        type: this.state.editTypeOfCar,
-        seats: this.state.editSeatNumber,
-        color: {
-          "name": this.state.editColor,
-          "shade": this.state.editColorShade
-        },
-        land_terrain: this.state.editLandTerrain,
-        username: this.state.editUserName,
-        email: this.props.carStore.email,
-        rating: this.state.editRating,
-        description: this.state.editDescription,
-        cost_price: this.state.editPrice,
-        image: this.state.editImage,
-
-        engine_name: this.state.editEngineName,
 
 
-        comfort_features_id: this.state.editComfortFeatures
+    if (this.state.modelNameError === false &&
+      this.state.yearLaunchError === false &&
+      this.state.carBrandError === false &&
+      this.state.carTypeError === false &&
+      this.state.colorError === false &&
+      this.state.colorShadeError === false &&
+      this.state.landTerrainError === false &&
+      this.state.userNameError === false &&
+      this.state.emailError === false &&
+      this.state.carRatingError === false &&
+      this.state.descriptionError === false &&
+      this.state.imageError === false &&
+      this.state.priceError === false &&
+      this.state.engineNameError === false &&
+      this.state.comfortFeaturesError === false) {
+      try {
+        alert("Car successfully edited.")
+        let response = await axios.put(this.BASE_API_URL + "car/"
+          + this.props.carStore._id, {
 
+          name_of_model: this.state.editNameOfModel,
+          year_of_launch: this.state.editYearOfLaunch,
+          brand: this.state.editBrandOfCar,
+          type: this.state.editTypeOfCar,
+          seats: this.state.editSeatNumber,
+          color: {
+            "name": this.state.editColor,
+            "shade": this.state.editColorShade
+          },
+          land_terrain: this.state.editLandTerrain,
+          username: this.state.editUserName,
+          email: this.props.carStore.email,
+          rating: this.state.editRating,
+          description: this.state.editDescription,
+          cost_price: this.state.editPrice,
+          image: this.state.editImage,
+
+          engine_name: this.state.editEngineName,
+
+
+          comfort_features_id: this.state.editComfortFeatures
+
+        }
+
+        )
+
+        console.log(response)
+
+
+
+      } catch (e) {
+
+        console.log(e)
       }
 
-      )
 
-      console.log(response)
-
-      // TO debug and delete
-      // {this.props.searchEmailPost}
-
-    } catch (e) {
-
-      console.log(e)
     }
 
-    
+
+
+
+
+
+  }
+
+  checkErrors = () => {
+
+    if (this.state.editNameOfModel === "") {
+      this.setState({
+        modelNameError: true
+      })
+    }
+    if (this.state.editYearOfLaunch === null) {
+      this.setState({
+        yearLaunchError: true
+      })
+    }
+    if (this.state.editBrandOfCar === "") {
+      this.setState({
+        carBrandError: true
+      })
+    }
+    if (this.state.editTypeOfCar === "") {
+      this.setState({
+        carTypeError: true
+      })
+    }
+    if (this.state.editColor === "") {
+      this.setState({
+        colorError: true
+      })
+    }
+    if (this.state.editColorShade === "") {
+      this.setState({
+        colorShadeError: true
+      })
+    }
+    if (this.state.editLandTerrain === "") {
+      this.setState({
+        landTerrainError: true
+      })
+    }
+    if (this.state.editUserName === "") {
+      this.setState({
+        userNameError: true
+      })
+    }
+
+    if (this.state.editRating === null) {
+      this.setState({
+        carRatingError: true
+      })
+    }
+    if (this.state.editDescription === "") {
+      this.setState({
+        descriptionError: true
+      })
+    }
+    if (this.state.editImage === "") {
+      this.setState({
+        imageError: true
+      })
+    }
+    if (this.state.editPrice === null) {
+      this.setState({
+        priceError: true
+      })
+    }
+    if (this.state.editEngineName === "") {
+      this.setState({
+        engineNameError: true
+      })
+    }
+    if (this.state.editComfortFeatures.length === 0) {
+
+      console.log(this.state.editComfortFeatures.length)
+      this.setState({
+        comfortFeaturesError: true
+      })
+    }
+
+
+
+    // set back to false when form is filled in 
+    if (this.state.editNameOfModel != "") {
+      this.setState({
+        modelNameError: false
+      })
+
+    }
+    if (this.state.editYearOfLaunch != null) {
+
+      this.setState({
+        yearLaunchError: false
+      })
+    }
+    if (this.state.editBrandOfCar != "") {
+      this.setState({
+        carBrandError: false
+      })
+    }
+    if (this.state.editTypeOfCar != "") {
+      this.setState({
+        carTypeError: false
+      })
+    }
+    if (this.state.editColor != "") {
+      this.setState({
+        colorError: false
+      })
+    }
+    if (this.state.editColorShade!= "") {
+      this.setState({
+        colorShadeError: false
+      })
+    }
+    if (this.state.editLandTerrain != "") {
+      this.setState({
+        landTerrainError: false
+      })
+    }
+    if (this.state.editUserName != "") {
+      this.setState({
+        userNameError: false
+      })
+    }
+    if (this.state.editRating != null) {
+      this.setState({
+        carRatingError: false
+      })
+    }
+    if (this.state.editDescription != "") {
+      this.setState({
+        descriptionError: false
+      })
+    }
+    if (this.state.editImage != "") {
+      this.setState({
+        imageError: false
+      })
+    }
+    if (this.state.editPrice != null) {
+
+      this.setState({
+        priceError: false
+      })
+    }
+    if (this.state.editEngineName != "") {
+      this.setState({
+        engineNameError: false
+      })
+    }
+    if (this.state.editComfortFeatures.length != 0) {
+      console.log(this.state.editComfortFeatures.length)
+
+      this.setState({
+        comfortFeaturesError: false
+      })
+    }
+
 
   }
 
@@ -187,7 +383,9 @@ export default class EditCarPostForm extends React.Component {
     return (
       <React.Fragment>
         {this.state.values.map((v, idx) => (
-          <Button key={idx} className="me-2"
+          <Button key={idx} 
+          className="me-2
+          button-orange-style"
             variant="light"
             onClick={
 
@@ -233,6 +431,11 @@ export default class EditCarPostForm extends React.Component {
                     value={this.state.editNameOfModel}
                     onChange={this.updateFormField} />
                 </div>
+                {this.state.modelNameError &&
+                  <div className='display-error-message-style'>
+
+                    Please fill in name of car model.
+                  </div>}
 
                 <div className=
                   'create-input-div-space'
@@ -248,6 +451,12 @@ export default class EditCarPostForm extends React.Component {
                     onChange={this.updateFormNumber}
                   />
                 </div>
+                {this.state.yearLaunchError &&
+                  <div className='display-error-message-style'>
+
+                    Please fill in year of launch.
+                  </div>}
+
 
                 <div className=
                   'create-input-div-space'
@@ -260,6 +469,13 @@ export default class EditCarPostForm extends React.Component {
                     value={this.state.editBrandOfCar}
                     onChange={this.updateFormField} />
                 </div>
+                {this.state.carBrandError &&
+                  <div className='display-error-message-style'>
+
+                    Please fill in brand of car.
+                  </div>}
+
+
                 <div className=
                   'create-input-div-space'
                 >
@@ -272,6 +488,12 @@ export default class EditCarPostForm extends React.Component {
                     value={this.state.editTypeOfCar}
                     onChange={this.updateFormField} />
                 </div>
+                {this.state.carTypeError &&
+                  <div className='display-error-message-style'>
+
+                    Please fill in type of car.
+                  </div>}
+
 
                 <div className=
                   'create-input-div-space'
@@ -313,6 +535,13 @@ export default class EditCarPostForm extends React.Component {
                     value={this.state.editColor}
                     onChange={this.updateFormField} />
                 </div>
+                {this.state.colorError &&
+                  <div className='display-error-message-style'>
+
+                    Please fill in color of car.
+                  </div>}
+
+
                 <div className=
                   'create-input-div-space'
                 >
@@ -324,6 +553,11 @@ export default class EditCarPostForm extends React.Component {
                     value={this.state.editColorShade}
                     onChange={this.updateFormField} />
                 </div>
+                {this.state.colorError &&
+                  <div className='display-error-message-style'>
+
+                    Please fill in color shade of car.
+                  </div>}
 
                 <div className=
                   'create-input-div-space'
@@ -336,6 +570,12 @@ export default class EditCarPostForm extends React.Component {
                     value={this.state.editLandTerrain}
                     onChange={this.updateFormField} />
                 </div>
+                {this.state.landTerrainError &&
+                  <div className='display-error-message-style'>
+
+                    Please fill in land terrain for car.
+                  </div>}
+
                 <div className=
                   'create-input-div-space'
                 >
@@ -348,6 +588,11 @@ export default class EditCarPostForm extends React.Component {
                     value={this.state.editUserName}
                     onChange={this.updateFormField} />
                 </div>
+                {this.state.userNameError &&
+                  <div className='display-error-message-style'>
+
+                    Please fill in a username.
+                  </div>}
 
                 <div className=
                   'create-input-div-space'
@@ -366,6 +611,11 @@ export default class EditCarPostForm extends React.Component {
                     <option value={5}>5</option>
                   </select>
                 </div>
+                {this.state.carRatingError &&
+                  <div className='display-error-message-style'>
+
+                    Please fill in car rating.
+                  </div>}
 
                 <div className=
                   'create-input-div-space'
@@ -379,6 +629,11 @@ export default class EditCarPostForm extends React.Component {
                     value={this.state.editDescription}
                     onChange={this.updateFormField} />
                 </div>
+                {this.state.descriptionError &&
+                  <div className='display-error-message-style'>
+
+                    Please fill in description.
+                  </div>}
 
                 <div className=
                   'create-input-div-space'
@@ -391,6 +646,11 @@ export default class EditCarPostForm extends React.Component {
                     value={this.state.editImage}
                     onChange={this.updateFormField} />
                 </div>
+                {this.state.imageError &&
+                  <div className='display-error-message-style'>
+
+                    Please fill in image url of car.
+                  </div>}
 
                 <div className=
                   'create-input-div-space'
@@ -408,6 +668,11 @@ export default class EditCarPostForm extends React.Component {
 
                   </select>
                 </div>
+                {this.state.imageError &&
+                  <div className='display-error-message-style'>
+
+                    Please select price of car.
+                  </div>}
 
                 <div className=
                   'create-input-div-space'
@@ -430,6 +695,11 @@ export default class EditCarPostForm extends React.Component {
 
                   </select>
                 </div>
+                {this.state.engineNameError &&
+                  <div className='display-error-message-style'>
+
+                    Please select an engine name.
+                  </div>}
 
 
                 <div>
@@ -497,6 +767,12 @@ export default class EditCarPostForm extends React.Component {
                     </div>
 
                   </div>
+                  {this.state.comfortFeaturesError &&
+                    <div className='display-error-message-style'>
+
+                      Please pick one comfort feature.
+                    </div>}
+
 
 
 
@@ -507,6 +783,7 @@ export default class EditCarPostForm extends React.Component {
                   'create-input-div-space'
                 >
                   <button className='btn btn-light'
+                    onMouseDown={this.checkErrors}
                     onClick={this.editCarPost}
                   >Confirm Edit Car Post</button>
                 </div>
