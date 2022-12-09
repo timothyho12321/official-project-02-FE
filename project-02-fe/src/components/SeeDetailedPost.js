@@ -21,7 +21,7 @@ export default class SeeDetailedPost extends React.Component {
         changeStateForRender: false,
     }
 
-    BASE_API_URL = "http://localhost:3080/"
+    BASE_API_URL = "https://project2-timothy-carousel.onrender.com"
 
 
     updateFormField = (event) => {
