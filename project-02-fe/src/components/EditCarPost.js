@@ -19,7 +19,7 @@ export default class EditCarPost extends React.Component {
         return (
             <Card
                 bg={"secondary"}
-                text={"white"}
+                text={"dark"}
                 className="car-card-style mt-3 col-12
                        col-lg-6 col-md-6"
             //    style={{ width: '50vw' }}

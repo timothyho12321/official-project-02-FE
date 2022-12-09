@@ -69,7 +69,7 @@ export default class Main extends React.Component {
         return (
             <React.Fragment>
                 <div className='set-background-color'>
-                    <Navbar collapseOnSelect bg="blue" variant="dark" expand="lg">
+                    <Navbar collapseOnSelect  variant="light" expand="lg">
                         <Container>
                             <Navbar.Brand href="#home">
                                 <div className='div-align-title'>

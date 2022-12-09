@@ -24,9 +24,9 @@ export default class CarPost extends React.Component {
 
                 <Card
                     bg={"secondary"}
-                    text={"white"}
+                    text={"dark"}
                     className="car-card-style mt-3 col-12
-                       col-lg-6 col-md-6"
+                       col-lg-5 col-md-5 shadow"
 
                 >
                     <Card.Img variant="top"
@@ -47,9 +47,10 @@ export default class CarPost extends React.Component {
                         </Card.Text>
 
                         <div>
-                          
 
-                            <Button variant='light'
+
+                            <Button variant='light' 
+                            className='see-detailed-button-style'
                                 carStore={this.props.car}
 
                                 onClick={() => this.props.changeSearchStateDetailedPost(this.props.car._id)}
@@ -62,7 +63,7 @@ export default class CarPost extends React.Component {
                     </Card.Body>
                 </Card>
 
-
+                <div className='col-1'></div>
 
 
 

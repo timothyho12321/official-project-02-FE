@@ -13,7 +13,10 @@ export default function OffCanvas(props) {
 
     return (
         <>
-            <Button variant="success" onClick={handleShow}>
+            <Button className='button-detailed-orange-style' 
+            variant="light" 
+            onClick={handleShow}
+            >
                 Detailed <FontAwesomeIcon icon={faSearchPlus}/>
             </Button>
 

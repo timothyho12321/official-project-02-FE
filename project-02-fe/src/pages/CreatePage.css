@@ -20,5 +20,10 @@
 }
 
 .accordion-button, .accordion-body{
-    background-color: skyblue;
+    background-color: rgba(135, 207, 235, 0);
+}
+
+.button-orange-style{
+    background-color: #ff540a !important;
+    
 }

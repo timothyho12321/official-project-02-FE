@@ -6,6 +6,7 @@ import OffCanvas from '../components/OffCanvas'
 import css from './SearchPage.css';
 
 import SeeDetailedPost from '../components/SeeDetailedPost';
+import Button from 'react-bootstrap/esm/Button';
 
 export default class SearchPage extends React.Component {
 
@@ -275,10 +276,14 @@ export default class SearchPage extends React.Component {
                         onChange={this.updateFormField} />
 
                     <div className='button-search-div mt-3'>
-                        <button className='btn btn-primary '
-                            onClick={this.onlyBrandSearch}
 
-                        >Brand Search</button>
+                        <Button variant='light' 
+                            className='button-brand-green-style'
+                            onClick={this.onlyBrandSearch}
+                        >
+                            Brand Search
+                        </Button>
+                        
 
                         <div className='OffCanvas-div'>
 
@@ -304,13 +309,15 @@ export default class SearchPage extends React.Component {
 
                     <div className='container'>
 
-                        <div className='row test_center' >
+                        <div className='row card_div_center'
+                            id='card_div_center_margin_media'
+                        >
                             {
                                 this.state.data.map((c) =>
                                     <CarPost
                                         key={c._id}
                                         car={c}
-                                        changeSearchStateDetailedPost= {this.changeSearchStateDetailedPost}
+                                        changeSearchStateDetailedPost={this.changeSearchStateDetailedPost}
                                         // changeSearchStateDetailedPost={() => this.changeSearchStateDetailedPost(c._id)}
                                         // changeSearchStateDetailedPost={()=> {this.changeSearchStateDetailedPost}
                                         //     }
@@ -365,7 +372,7 @@ export default class SearchPage extends React.Component {
     }
 
     changePreviousPage = () => {
-        
+
         this.setState({
             page: "general"
         })

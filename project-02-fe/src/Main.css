@@ -1,5 +1,6 @@
 .set-background-color {
-background-color: skyblue;
+background-color: white !important;
+
 }
 .div-align-title{
     display: flex;
@@ -9,5 +10,5 @@ background-color: skyblue;
 .nav-title-spacing{
 
     margin-left: 9px;
-    color: #fff82d
+    color: #ff540a
 }

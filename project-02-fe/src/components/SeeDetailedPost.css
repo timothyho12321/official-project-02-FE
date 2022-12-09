@@ -12,3 +12,19 @@ align-items: space-around
     padding-left: 5px;
     padding-right: 5px;
 }
+
+.button-style{
+
+    background-color: #ff540a !important;
+}
+
+.button-back-page-style{
+
+    background-color: #ff540a !important;
+}
+
+
+.button-detailed-orange-style{
+    background-color: #ff540a !important;
+
+}

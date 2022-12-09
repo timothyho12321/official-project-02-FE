@@ -383,7 +383,9 @@ export default class EditCarPostForm extends React.Component {
     return (
       <React.Fragment>
         {this.state.values.map((v, idx) => (
-          <Button key={idx} className="me-2"
+          <Button key={idx} 
+          className="me-2
+          button-orange-style"
             variant="light"
             onClick={
 

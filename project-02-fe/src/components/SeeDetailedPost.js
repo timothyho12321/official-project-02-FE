@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar, faChair, faDroplet, faBrush, faHillRockslide, faNoteSticky, faPlug, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faStar, faChair, faDroplet, faBrush, faHillRockslide, faNoteSticky, faPlug, faPlus, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 import Button from 'react-bootstrap/Button';
 import CommentPost from './CommentPost';
 import './SeeDetailedPost.css';
@@ -36,10 +36,10 @@ export default class SeeDetailedPost extends React.Component {
 
 
     submitComment = async () => {
-        {this.notify()}
-        
+        { this.notify() }
 
-        
+
+
         // console.log(this.BASE_API_URL + "car/" + this.props._id)
         const response = await axios.put(this.BASE_API_URL + "car/" + this.props._id, {
 
@@ -77,7 +77,7 @@ export default class SeeDetailedPost extends React.Component {
 
         })
 
-        
+
         // console.log(response)
 
     }
@@ -91,7 +91,13 @@ export default class SeeDetailedPost extends React.Component {
 
 
                 <div>
+                    <div className='mt-2 '>
+                        <Button className='button-back-page-style'
 
+                            variant='light'
+                            onClick={this.props.changePreviousPage}
+                        > <FontAwesomeIcon icon={faChevronLeft} />Back Page</Button>
+                    </div>
 
 
                     <div><h4> {this.props.brand} {this.props.name_of_model}  </h4></div>
@@ -165,7 +171,7 @@ export default class SeeDetailedPost extends React.Component {
                             {this.props.comments?.map((c) =>
 
                                 <CommentPost
-                                    key={c.email}
+                                    key={c?.email}
                                     allcomment={c}
                                     idForDelete={this.props._id}
                                 />
@@ -207,6 +213,7 @@ export default class SeeDetailedPost extends React.Component {
                                 </div>
                                 <div className='mt-2 mb-2 ms-2'>
                                     <Button variant='info'
+                                        className='button-style'
                                         onClick={this.submitComment}
 
                                     >
@@ -226,11 +233,7 @@ export default class SeeDetailedPost extends React.Component {
 
 
 
-                    <div className='mt-2'>
-                        <Button variant='light'
-                            onClick={this.props.changePreviousPage}
-                        >Back Page</Button>
-                    </div>
+
 
 
 
