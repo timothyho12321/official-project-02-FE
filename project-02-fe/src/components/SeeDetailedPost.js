@@ -6,6 +6,9 @@ import CommentPost from './CommentPost';
 import './SeeDetailedPost.css';
 import axios from 'axios';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default class SeeDetailedPost extends React.Component {
 
@@ -15,12 +18,10 @@ export default class SeeDetailedPost extends React.Component {
         commentUserName: "",
         commentEmail: "",
         commentDescription: "",
-        changeStateForRender: false
+        changeStateForRender: false,
     }
 
     BASE_API_URL = "http://localhost:3080/"
-
-
 
 
     updateFormField = (event) => {
@@ -31,8 +32,12 @@ export default class SeeDetailedPost extends React.Component {
 
     }
 
+    notify = () => toast("Comment submitted");
+
+
     submitComment = async () => {
-        alert("Comment submitted. Reload from search page.")
+        {this.notify()}
+        this.props.testFunctionToAddComment()
 
         
         // console.log(this.BASE_API_URL + "car/" + this.props._id)
@@ -73,7 +78,7 @@ export default class SeeDetailedPost extends React.Component {
         })
 
         
-        console.log(response)
+        // console.log(response)
 
     }
 

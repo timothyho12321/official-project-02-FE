@@ -27,10 +27,9 @@ export default class SearchPage extends React.Component {
         detailedSearchPressed: false,
         singleCarObject: {},
         saveIDToAllowCompDidUpdate: "",
-        changeStateForRender: false
+        changeStateForRender: false,
 
     }
-
     BASE_API_URL = "http://localhost:3080/"
 
     async componentDidMount() {
@@ -253,7 +252,6 @@ export default class SearchPage extends React.Component {
                         stringConvert={stringConvert}
                         changePreviousPage={this.changePreviousPage}
                         changeStateForRender={this.changeStateForRender}
-
                     />
 
                 </React.Fragment>
@@ -312,8 +310,9 @@ export default class SearchPage extends React.Component {
                                     <CarPost
                                         key={c._id}
                                         car={c}
-
-                                        changeSearchStateDetailedPost={() => this.changeSearchStateDetailedPost(c._id)}
+                                        changeSearchStateDetailedPost= {this.changeSearchStateDetailedPost}
+                                        // changeSearchStateDetailedPost={() => this.changeSearchStateDetailedPost(c._id)}
+                                        // changeSearchStateDetailedPost={() => this.changeSearchStateDetailedPost(c._id)}
                                         // changeSearchStateDetailedPost={()=> {this.changeSearchStateDetailedPost}
                                         //     }
 

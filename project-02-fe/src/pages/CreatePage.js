@@ -739,10 +739,12 @@ export default class CreatePage extends React.Component {
                     'create-input-div-space'
                 >
                     <Button variant='light'
-                        onMouseDown={this.checkErrors}
-                        onClick={this.createCarPost
-                        }
-
+                        // onMouseDown={this.checkErrors}
+                        // onClick={this.createCarPost}
+                        onClick={() => {
+                            this.checkErrors()
+                            this.createCarPost()
+                        }}
                     >
                         Confirm Create Car Post
                     </Button>
