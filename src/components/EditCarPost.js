@@ -28,7 +28,7 @@ export default class EditCarPost extends React.Component {
                 >
                     <Card.Img variant="top"
                         src={this.props.car.image}
-                        className="card-image-style"
+                        className="card-image-edit-style"
 
                     />
                     <Card.Body>

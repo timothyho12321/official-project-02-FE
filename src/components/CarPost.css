@@ -7,21 +7,22 @@ margin-right: 3px;
 
 
 
-.row>*{
+.row>* {
 
-    
+
     padding: 12px !important;
     background-color: white !important;
     border: none !important;
 }
 
-.card-body{
+.card-body {
     /* background-color: rgb(112, 121, 140) !important; */
     background-color: white !important;
 }
 
 
-.card-img, .card-img-top{
+.card-img,
+.card-img-top {
 
     /* gives the image a rounded border */
     /* border-top-left-radius: var(--bs-card-inner-border-radius);
@@ -32,14 +33,26 @@ margin-right: 3px;
 }
 
 
+/* 
+.card-image-style {
+    height: 50%;
+
+
+} */
+
 
 .card-image-style {
-    height:50%;
-    
-    
+    height: 50%;
+    width: 100%;
+    object-fit: fill;
+
+
+
 }
 
-.see-detailed-button-style{
-background-color: #ff540a;
+
+
+.see-detailed-button-style {
+    background-color: #ff540a;
 
 }

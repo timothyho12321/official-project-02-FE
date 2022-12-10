@@ -29,3 +29,11 @@ margin-right: 3px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
 }
+
+
+.card-image-edit-style{
+    height: 50%;
+    width: 100%;
+    object-fit: fill;
+
+}

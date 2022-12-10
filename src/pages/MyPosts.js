@@ -164,7 +164,7 @@ export default class MyPosts extends React.Component {
                             {(this.state.data.length > 0) && this.state.data.map(c =>
 
                                 <EditCarPost
-                                    className="mt-3 col-12 col-lg-4 col-md-6" key={c._id}
+                                    className="mt-3 col-12 col-lg-5 col-md-5" key={c._id}
                                     car={c}
                                     deleteCar={() => {
                                         this.deleteCar(c)
