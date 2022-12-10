@@ -158,7 +158,8 @@ export default class MyPosts extends React.Component {
 
                     <React.Fragment>
 
-                        <div className='row'>
+                        <div className='row'
+                        id='card_div_center_edit_margin_media'>
 
                             {(this.state.data.length > 0) && this.state.data.map(c =>
 
