@@ -28,3 +28,7 @@ align-items: space-around
     background-color: #ff540a !important;
 
 }
+
+.div-error-style{
+    color: red;
+}

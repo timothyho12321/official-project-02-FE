@@ -19,13 +19,16 @@ export default class SeeDetailedPost extends React.Component {
         commentEmail: "",
         commentDescription: "",
         changeStateForRender: false,
+        errorForUserName: false,
+        errorForEmail: false,
+        errorForDescription: false
     }
 
     BASE_API_URL = "https://project2-timothy-carousel.onrender.com/"
 
 
     updateFormField = (event) => {
-        console.log("update form ran")
+        // console.log("update form ran")
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -36,49 +39,91 @@ export default class SeeDetailedPost extends React.Component {
 
 
     submitComment = async () => {
-        { this.notify() }
+
+
+        // Validate that commenter username, email and description is not empty string
+        if (this.state.commentUserName === "") {
+            // console.log("Know comment username is empty string")
+
+            this.setState({
+                errorForUserName: true
+            })
+        }
+
+        if (this.state.commentEmail === "") {
+            // console.log("Know comment email is empty string")
+        
+            this.setState({
+                errorForEmail: true
+            })
+        }
+
+        if (this.state.commentDescription === "") {
+            // console.log("Know comment description is empty string")
+        
+            this.setState({
+                errorForDescription: true
+            })
+        }
+
+
+        else if (
+            this.state.commentUserName !== "" &&
+            this.state.commentEmail !== "" &&
+            this.state.commentDescription !== ""
+        ) {
+
+            console.log("Axios put ran as passed validation")
+
+            { this.notify() }
 
 
 
-        // console.log(this.BASE_API_URL + "car/" + this.props._id)
-        const response = await axios.put(this.BASE_API_URL + "car/" + this.props._id, {
+            // console.log(this.BASE_API_URL + "car/" + this.props._id)
+            const response = await axios.put(this.BASE_API_URL + "car/" + this.props._id, {
 
-            name_of_model: this.props.name_of_model,
-            year_of_launch: this.props.year_of_launch,
-            brand: this.props.brand,
-            type: this.props.type,
-            seats: this.props.seats,
-            color: {
-                "name": this.props.colorSpecial,
-                "shade": this.props.colorShadeSpecial
-            },
-            land_terrain: this.props.land_terrain,
-            username: this.props.username,
-            email: this.props.email,
-            rating: this.props.rating,
-            description: this.props.description,
-            cost_price: this.props.cost_price,
-            image: this.props.image,
-            engine_name: this.props.engine_id,
-            comfort_features_id: this.props.keep_comfort_features_id,
+                name_of_model: this.props.name_of_model,
+                year_of_launch: this.props.year_of_launch,
+                brand: this.props.brand,
+                type: this.props.type,
+                seats: this.props.seats,
+                color: {
+                    "name": this.props.colorSpecial,
+                    "shade": this.props.colorShadeSpecial
+                },
+                land_terrain: this.props.land_terrain,
+                username: this.props.username,
+                email: this.props.email,
+                rating: this.props.rating,
+                description: this.props.description,
+                cost_price: this.props.cost_price,
+                image: this.props.image,
+                engine_name: this.props.engine_id,
+                comfort_features_id: this.props.keep_comfort_features_id,
 
-            // comments: {
-            //     "username": this.commentUserName,
-            //     "email": this.commentEmail,
-            //     "other_comment": this.commentDescription
-            // }
-            comments: {
-                "username": this.state.commentUserName,
-                "email": this.state.commentEmail,
-                "other_comment": this.state.commentDescription
-            }
-
-
-
-        })
+                // comments: {
+                //     "username": this.commentUserName,
+                //     "email": this.commentEmail,
+                //     "other_comment": this.commentDescription
+                // }
+                comments: {
+                    "username": this.state.commentUserName,
+                    "email": this.state.commentEmail,
+                    "other_comment": this.state.commentDescription
+                }
 
 
-        // console.log(response)
+
+            })
+
+
+            console.log(response)
+
+
+        }
+
+
+
 
     }
 
@@ -192,6 +237,14 @@ export default class SeeDetailedPost extends React.Component {
                                         onChange={this.updateFormField}
                                     />
                                 </div>
+
+                                {this.state.errorForUserName ?
+                                    <div className='mt-2 div-error-style'>
+                                        Please fill in a username
+                                    </div>
+                                    : null
+                                }
+
                                 <div className='mt-2'>
                                     <label>Email</label>
                                     <input type="text"
@@ -201,6 +254,14 @@ export default class SeeDetailedPost extends React.Component {
                                         onChange={this.updateFormField}
                                     />
                                 </div>
+
+                                {this.state.errorForEmail ?
+                                    <div className='mt-2 div-error-style'>
+                                        Please fill in an email.
+                                    </div>
+                                    : null
+                                }
+
                                 <div className='mt-2'>
                                     <label>Comment</label>
                                     <textarea
@@ -211,6 +272,14 @@ export default class SeeDetailedPost extends React.Component {
                                     />
 
                                 </div>
+
+                                {this.state.errorForDescription ?
+                                    <div className='mt-2 div-error-style'>
+                                        Please fill in comment description.
+                                    </div>
+                                    : null
+                                }
+
                                 <div className='mt-2 mb-2 ms-2'>
                                     <Button variant='info'
                                         className='button-style'
