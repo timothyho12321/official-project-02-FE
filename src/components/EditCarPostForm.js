@@ -54,7 +54,9 @@ export default class EditCarPostForm extends React.Component {
 
   }
 
-  BASE_API_URL = "https://project2-timothy-carousel.onrender.com/"
+  // BASE_API_URL = "https://project2-timothy-carousel.onrender.com/"
+  BASE_API_URL = "http://localhost:3080/"
+
 
   async componentDidMount() {
     const response = await axios.get(this.BASE_API_URL + "engine")
@@ -177,7 +179,7 @@ export default class EditCarPostForm extends React.Component {
 
          this.notify() 
 
-        let response = await axios.put(this.BASE_API_URL + "car/"
+        let response = await axios.put(this.BASE_API_URL + "car_only/"
           + this.props.carStore._id, {
 
           name_of_model: this.state.editNameOfModel,

@@ -4,7 +4,7 @@ import css from './CreatePage.css'
 import axios from 'axios';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button'
-
+import { toast } from 'react-toastify';
 
 export default class CreatePage extends React.Component {
 
@@ -48,8 +48,9 @@ export default class CreatePage extends React.Component {
 
     }
 
-    BASE_API_URL = "https://project2-timothy-carousel.onrender.com/"
-
+    // BASE_API_URL = "https://project2-timothy-carousel.onrender.com/"
+    BASE_API_URL = "http://localhost:3080/"
+    
     async componentDidMount() {
 
 
@@ -75,10 +76,28 @@ export default class CreatePage extends React.Component {
 
     }
 
+    // updateFormNumber = (event) => {
+    //     this.setState({
+    //         [event.target.name]: parseInt(event.target.value)
+    //     })
+
+    // }
+
     updateFormNumber = (event) => {
-        this.setState({
-            [event.target.name]: parseInt(event.target.value)
-        })
+
+        if (event.target.value === "") {
+            console.log("Take empty string and convert state to null")
+            this.setState({
+                [event.target.name]: null
+            })
+        } else {
+            this.setState({
+                [event.target.name]: parseInt(event.target.value)
+            })
+
+        }
+
+
 
     }
 
@@ -177,15 +196,15 @@ export default class CreatePage extends React.Component {
             })
         }
         if (this.state.comfortFeatures.length === 0) {
-            
-            console.log(this.state.comfortFeatures.length )
+
+            console.log(this.state.comfortFeatures.length)
             this.setState({
                 comfortFeaturesError: true
             })
         }
 
 
-       
+
         // set back to false when form is filled in 
         if (this.state.nameOfModel != "") {
             this.setState({
@@ -214,7 +233,7 @@ export default class CreatePage extends React.Component {
                 colorError: false
             })
         }
-        if (this.state.color != "") {
+        if (this.state.colorShade != "") {
             this.setState({
                 colorShadeError: false
             })
@@ -262,7 +281,7 @@ export default class CreatePage extends React.Component {
             })
         }
         if (this.state.comfortFeatures.length != 0) {
-            console.log(this.state.comfortFeatures.length )
+            // console.log(this.state.comfortFeatures.length )
 
             this.setState({
                 comfortFeaturesError: false
@@ -272,35 +291,65 @@ export default class CreatePage extends React.Component {
     }
 
 
-    
-    
-    
-    
 
 
+
+
+
+    notify = () => toast("Car posted successfully")
 
     createCarPost = async () => {
 
-        if (this.state.modelNameError === false &&
-            this.state.yearLaunchError === false &&
-            this.state.carBrandError === false &&
-            this.state.carTypeError === false &&
-            this.state.colorError === false &&
-            this.state.colorShadeError === false &&
-            this.state.landTerrainError === false &&
-            this.state.userNameError === false &&
-            this.state.emailError === false &&
-            this.state.carRatingError === false &&
-            this.state.descriptionError === false &&
-            this.state.imageError === false &&
-            this.state.priceError === false &&
-            this.state.engineNameError === false &&
-            this.state.comfortFeaturesError === false
+        if (this.state.nameOfModel !== "" &&
+            this.state.yearOfLaunch !== null &&
+            this.state.brandOfCar !== "" &&
+            this.state.typeOfCar !== "" &&
+            this.state.color !== "" &&
+            this.state.colorShade !== "" &&
+            this.state.landTerrain !== "" &&
+            this.state.userName !== "" &&
+            this.state.email !== "" &&
+            this.state.rating !== null &&
+            this.state.description !== "" &&
+            this.state.image !== "" &&
+            this.state.price !== null &&
+            this.state.engineName !== "" &&
+            this.state.comfortFeatures.length !== 0
 
-        ) {
+
+        )
+
+
+        // Use this checking if only there are two event 
+        // handler onMouseDown and onClick
+        // (this.state.modelNameError === false &&
+        //     this.state.yearLaunchError === false &&
+        //     this.state.carBrandError === false &&
+        //     this.state.carTypeError === false &&
+        //     this.state.colorError === false &&
+        //     this.state.colorShadeError === false &&
+        //     this.state.landTerrainError === false &&
+        //     this.state.userNameError === false &&
+        //     this.state.emailError === false &&
+        //     this.state.carRatingError === false &&
+        //     this.state.descriptionError === false &&
+        //     this.state.imageError === false &&
+        //     this.state.priceError === false &&
+        //     this.state.engineNameError === false &&
+        //     this.state.comfortFeaturesError === false
+
+        // ) 
+
+
+        {
 
             // console.log(this.BASE_API_URL + "newcarandengine")
-            alert("Car successfully created.")
+            // alert("Car successfully created.")
+
+
+            console.log(this.state.rating);
+
+            this.notify()
             const response = await axios.post(this.BASE_API_URL + "newcarandengine", {
 
                 name_of_model: this.state.nameOfModel,
@@ -330,6 +379,11 @@ export default class CreatePage extends React.Component {
             })
             console.log(response)
 
+        } else {
+
+
+            console.log(this.state.rating);
+            console.log("Validation did not pass. Car not posted.")
         }
 
 
@@ -346,7 +400,7 @@ export default class CreatePage extends React.Component {
                 <h3>Create a new  car post with this form.</h3>
 
 
-                <Accordion  defaultActiveKey="0">
+                <Accordion defaultActiveKey="0">
                     <Accordion.Item eventKey="0">
                         <Accordion.Header>Main Car Details</Accordion.Header>
                         <Accordion.Body>
@@ -481,7 +535,7 @@ export default class CreatePage extends React.Component {
                                     value={this.state.colorShade}
                                     onChange={this.updateFormField} />
                             </div>
-                            {this.state.colorError &&
+                            {this.state.colorShadeError &&
                                 <div className='display-error-message-style'>
 
                                     Please fill in color shade of car.
@@ -554,7 +608,7 @@ export default class CreatePage extends React.Component {
                                     value={this.state.rating}
                                     onChange={this.updateFormNumber}
                                 >
-                                    <option>Select one</option>
+                                    <option value={""}>Select one</option>
                                     <option value={1}>1</option>
                                     <option value={2}>2</option>
                                     <option value={3}>3</option>
@@ -618,6 +672,7 @@ export default class CreatePage extends React.Component {
                                     value={parseInt(this.state.price)}
                                     onChange={this.updateFormNumber}
                                 >
+                                    <option value={""}>Select one</option>
                                     <option value={40000}>Max $40,000</option>
                                     <option value={60000}>Max $60,000</option>
                                     <option value={80000}>Max $80,000</option>
@@ -626,7 +681,7 @@ export default class CreatePage extends React.Component {
 
                                 </select>
                             </div>
-                            {this.state.imageError &&
+                            {this.state.priceError &&
                                 <div className='display-error-message-style'>
 
                                     Please select price of car.
@@ -641,7 +696,7 @@ export default class CreatePage extends React.Component {
                                     onChange={this.updateFormField}
                                     className="space-engine-dropdown-tab"
                                 >
-                                    <option> Please select one</option>
+                                    <option value={""}> Please select one</option>
                                     {this.state.currentEngineDB.map(e =>
                                         <option value={e.engine_name} key={e._id}>
                                             Engine Name: {e.engine_name} |
@@ -739,9 +794,11 @@ export default class CreatePage extends React.Component {
                     'create-input-div-space'
                 >
                     <Button variant='light'
-                    className='button-orange-style'
+                        className='button-orange-style'
                         // onMouseDown={this.checkErrors}
                         // onClick={this.createCarPost}
+
+
                         onClick={() => {
                             this.checkErrors()
                             this.createCarPost()
