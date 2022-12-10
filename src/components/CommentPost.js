@@ -61,8 +61,8 @@ export default class CommentPost extends React.Component {
                         "backgroundColor": "beige"
                     }}
                 >
-                    <div className="ms-2">Commenter: {this.props.allcomment.username}</div>
-                    <div className="ms-2 mb-1">{this.props.allcomment.other_comment}</div>
+                    <div className="ms-2">Commenter: {this.props.allcomment?.username}</div>
+                    <div className="ms-2 mb-1">{this.props.allcomment?.other_comment}</div>
                     <div className="comment-close-button">
                         <Button className="button-height"
                             variant="transparent"
