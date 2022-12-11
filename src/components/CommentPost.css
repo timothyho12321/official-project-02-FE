@@ -21,3 +21,12 @@
 .icon-div{
     margin: 0px
 }
+
+.commentor-email-div-style{
+    background-color: rgba(128, 128, 128, 0.361);
+}
+
+.delete-comment-button{
+    background-color: #ff540a;
+    border: none 
+}

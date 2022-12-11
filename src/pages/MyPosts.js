@@ -101,7 +101,7 @@ export default class MyPosts extends React.Component {
 
     deleteCar = async (c) => {
 
-        alert("This car will be deleted")
+        // alert("This car will be deleted")
         this.notify()
         // console.log(c._id);
         let savedId = c._id;
