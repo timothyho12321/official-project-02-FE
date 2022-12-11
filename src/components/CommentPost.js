@@ -7,7 +7,7 @@ import Button from "react-bootstrap/esm/Button";
 
 import './CommentPost.css'
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -19,9 +19,9 @@ export default class CommentPost extends React.Component {
 
 
 
-    BASE_API_URL = "https://project2-timothy-carousel.onrender.com/"
+    // BASE_API_URL = "https://project2-timothy-carousel.onrender.com/"
 
-    // BASE_API_URL = "http://localhost:3080/"
+    BASE_API_URL = "http://localhost:3080/"
 
     
     deleteComment = async () => {
@@ -33,7 +33,7 @@ export default class CommentPost extends React.Component {
         // console.log(this.BASE_API_URL+"delete-comment/"+ this.props.idForDelete)
         try {
 
-            {this.notify()}
+            this.notify()
 
             let response = await axios.put(this.BASE_API_URL
                 +"delete-comment/" + this.props.idForDelete, {

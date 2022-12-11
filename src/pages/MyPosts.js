@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 import EditCarPost from '../components/EditCarPost.js'
 import Modal3 from '../components/EditCarPostForm'
-
+import { Player } from '@lottiefiles/react-lottie-player';
 
 export default class MyPosts extends React.Component {
 
@@ -18,7 +18,8 @@ export default class MyPosts extends React.Component {
         eachCarYear: null,
         editYearOfLaunch: null,
         changeValueToRender: null,
-        invalidEmailKeyed: false
+        invalidEmailKeyed: false,
+        isLoaded: false
     }
 
     updateFormField = (event) => {
@@ -32,8 +33,8 @@ export default class MyPosts extends React.Component {
     }
 
 
-    BASE_API_URL = "https://project2-timothy-carousel.onrender.com/"
-    // BASE_API_URL = "http://localhost:3080/"
+    // BASE_API_URL = "https://project2-timothy-carousel.onrender.com/"
+    BASE_API_URL = "http://localhost:3080/"
 
     changeStateToRender = () => {
         this.setState({
@@ -68,7 +69,8 @@ export default class MyPosts extends React.Component {
                 this.setState({
                     data: response.data,
                     searchByEmailSuccess: true,
-                    invalidEmailKeyed: false
+                    invalidEmailKeyed: false,
+                    isLoaded: true
                 })
 
             } catch (error) {
@@ -105,7 +107,7 @@ export default class MyPosts extends React.Component {
         let savedId = c._id;
         // console.log("Saved", savedId)
 
-        
+
         let response = await axios.delete(this.BASE_API_URL +
             "car/" + savedId)
 
@@ -115,6 +117,62 @@ export default class MyPosts extends React.Component {
     }
 
 
+    checkIfLoaded = () => {
+
+        // console.log("checkIfLoaded ran")
+        // console.log(this.state.isLoaded)
+
+        if (!this.state.isLoaded) {
+            return(
+            <Player
+                src='https://assets5.lottiefiles.com/packages/lf20_gv7Ovi.json'
+                className='car-loading-animation-style'
+                loop
+                autoplay
+            />)
+
+        } else {
+            return (
+                < React.Fragment >
+
+                    <div className='row'
+                        id='card_div_center_edit_margin_media'>
+
+                        {(this.state.data.length > 0) && this.state.data.map(c =>
+
+                            <EditCarPost
+                                className="mt-3 col-12 col-lg-5 col-md-5" key={c._id}
+                                car={c}
+                                deleteCar={() => {
+                                    this.deleteCar(c)
+                                }
+                                }
+
+
+                                updateFormField={this.updateFormField}
+
+                                // To delete if unable to utilise
+                                searchEmailPost={this.searchEmailPost}
+
+                            // sendModal3={this.sendModal3}
+                            />
+
+
+
+                        )}
+                    </div>
+
+
+
+
+                </React.Fragment>
+            )
+
+        }
+
+
+
+    }
 
 
 
@@ -156,40 +214,14 @@ export default class MyPosts extends React.Component {
 
                 {this.state.searchByEmailSuccess ?
 
-                    <React.Fragment>
-
-                        <div className='row'
-                        id='card_div_center_edit_margin_media'>
-
-                            {(this.state.data.length > 0) && this.state.data.map(c =>
-
-                                <EditCarPost
-                                    className="mt-3 col-12 col-lg-5 col-md-5" key={c._id}
-                                    car={c}
-                                    deleteCar={() => {
-                                        this.deleteCar(c)
-                                    }
-                                    }
-
-
-                                    updateFormField={this.updateFormField}
-
-                                    // To delete if unable to utilise
-                                    searchEmailPost={this.searchEmailPost}
-
-                                // sendModal3={this.sendModal3}
-                                />
+                    this.checkIfLoaded()
 
 
 
-                            )}
-                        </div>
 
 
-                    </React.Fragment>
-
-
-                    : ""}
+                    : ""
+                }
 
 
             </React.Fragment>
