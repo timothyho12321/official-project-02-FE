@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import EditCarPost from '../components/EditCarPost.js'
 import Modal3 from '../components/EditCarPostForm'
 import { Player } from '@lottiefiles/react-lottie-player';
+import Button from 'react-bootstrap/Button';
 
 export default class MyPosts extends React.Component {
 
@@ -123,13 +124,13 @@ export default class MyPosts extends React.Component {
         // console.log(this.state.isLoaded)
 
         if (!this.state.isLoaded) {
-            return(
-            <Player
-                src='https://assets5.lottiefiles.com/packages/lf20_gv7Ovi.json'
-                className='car-loading-animation-style'
-                loop
-                autoplay
-            />)
+            return (
+                <Player
+                    src='https://assets5.lottiefiles.com/packages/lf20_gv7Ovi.json'
+                    className='car-loading-animation-style'
+                    loop
+                    autoplay
+                />)
 
         } else {
             return (
@@ -180,7 +181,7 @@ export default class MyPosts extends React.Component {
 
         return (
             <React.Fragment>
-                <h1>Change your posts</h1>
+                <h1>Change your car post</h1>
 
 
                 <label>Enter your account email</label>
@@ -193,9 +194,16 @@ export default class MyPosts extends React.Component {
                     />
 
 
-                    <button className='btn btn-light search-button'
+                    <Button variant="dark"
+                        className='search-button-style'
+                        onClick={this.searchEmailPost}>
+
+                        Search
+                    </Button>
+
+                    {/* <button className='btn btn-light search-button'
                         onClick={this.searchEmailPost}
-                    >Search</button>
+                    >Search</button> */}
 
 
                 </div>

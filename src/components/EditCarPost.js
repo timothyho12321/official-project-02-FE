@@ -24,7 +24,7 @@ export default class EditCarPost extends React.Component {
                     text={"dark"}
                     className="car-card-style mt-3 col-12
                        col-lg-5 col-md-5 shadow"
-                //    style={{ width: '50vw' }}
+
                 >
                     <Card.Img variant="top"
                         src={this.props.car.image}
@@ -57,7 +57,8 @@ export default class EditCarPost extends React.Component {
 
 
 
-                            <Button variant="light"
+                            <Button variant="dark"
+                                className='delete-button-style'
                                 onClick={this.props.deleteCar}
                             >
                                 Delete car

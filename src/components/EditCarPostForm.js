@@ -175,9 +175,9 @@ export default class EditCarPostForm extends React.Component {
       this.state.engineNameError === false &&
       this.state.comfortFeaturesError === false) {
       try {
-        
 
-         this.notify() 
+
+        this.notify()
 
         let response = await axios.put(this.BASE_API_URL + "car_only/"
           + this.props.carStore._id, {
@@ -502,35 +502,54 @@ export default class EditCarPostForm extends React.Component {
                   </div>}
 
 
+                <label>
+                  Seat Number
+                </label>
+
                 <div className=
-                  'create-input-div-space'
+                  'create-input-div-space form-check-inline ms-2'
                 >
-                  <div>
-                    Seat Number</div>
+
                   <input type="radio"
                     name="editSeatNumber"
+                    className='form-check-input'
                     value={2}
                     checked={parseInt(this.state.editSeatNumber) === 2}
                     onClick={this.updateFormNumber}
                   />
-                  <label >2</label>
+                  <label className='radio-label-style'>2</label>
+
+                </div>
+                <div className=
+                  'create-input-div-space form-check-inline'
+                >
                   <input type="radio"
                     name="editSeatNumber"
+                    className='form-check-input'
                     value={4}
                     checked={parseInt(this.state.editSeatNumber) === 4}
                     onClick={this.updateFormNumber}
-                    className="radio-button-style" />
-                  <label >4</label>
+                  />
+                  <label className='radio-label-style'>4</label>
+
+                </div>
+
+                <div className=
+                  'create-input-div-space form-check-inline'
+                >
                   <input type="radio"
                     name="editSeatNumber"
+                    className='form-check-input'
                     value={6}
                     checked={parseInt(this.state.editSeatNumber) === 6}
                     onClick={this.updateFormNumber}
-                    className="radio-button-style" />
-                  <label >6</label>
+                  />
+                  <label className='radio-label-style'>6</label>
 
 
                 </div>
+
+
                 <div className=
                   'create-input-div-space'
                 >
@@ -605,10 +624,12 @@ export default class EditCarPostForm extends React.Component {
                   'create-input-div-space'
                 >
                   <label >
-                    Car rating:</label>
+                    Car rating
+                  </label>
                   <select name="editRating"
                     value={this.state.editRating}
                     onChange={this.updateFormNumber}
+                    className="form-control"
                   >
                     <option>Select one</option>
                     <option value={1}>1</option>
@@ -662,10 +683,11 @@ export default class EditCarPostForm extends React.Component {
                 <div className=
                   'create-input-div-space'
                 >
-                  <label>Select Price Estimate</label>
+                  <label>Price Estimate</label>
                   <select name="editPrice"
                     value={parseInt(this.state.editPrice)}
                     onChange={this.updateFormNumber}
+                    className="form-control"
                   >
                     <option value={40000}>Max $40,000</option>
                     <option value={60000}>Max $60,000</option>
@@ -685,11 +707,11 @@ export default class EditCarPostForm extends React.Component {
                   'create-input-div-space'
                 >
 
-                  <label>Engine Name (with performance specification)</label>
+                  <label>Engine Name (with performance)</label>
                   <select name="editEngineName"
                     value={this.state.editEngineName}
                     onChange={this.updateFormField}
-                    className="space-engine-dropdown-tab"
+                    className="space-engine-dropdown-tab form-control"
                   >
                     <option> Please select one</option>
                     {this.state.currentEngineDB.map(e =>
@@ -709,90 +731,125 @@ export default class EditCarPostForm extends React.Component {
                   </div>}
 
 
-                <div>
-                  <div className=
-                    'create-input-div-space'
-                  >
-                    <input type="checkbox"
-                      name="editComfortFeatures"
-                      value="637b79c39b9228988ebddfdd"
-                      checked={this.state.editComfortFeatures.includes
-                        ("637b79c39b9228988ebddfdd")}
-                      onChange={this.updateCheckBoxes}
-                    />
-                    <label>Blind Spot Monitoring</label>
-                    <input type="checkbox"
-                      name="editComfortFeatures"
-                      className='checkbox-style'
-                      value="637b79c39b9228988ebddfde"
-                      checked={this.state.editComfortFeatures.includes
-                        ("637b79c39b9228988ebddfde")}
-                      onChange={this.updateCheckBoxes}
-                    />
-                    <label>Premium Sound System</label>
-
-                    <div>
-                      <input type="checkbox"
-                        name="editComfortFeatures"
-                        value="637b79c39b9228988ebddfdf"
-                        checked={this.state.editComfortFeatures.includes
-                          ("637b79c39b9228988ebddfdf")}
-                        onChange={this.updateCheckBoxes}
-                      />
-                      <label>Wireless Connectivity</label>
-
-                      <input type="checkbox"
-                        name="editComfortFeatures"
-                        className='checkbox-style'
-                        value="637b79c39b9228988ebddfe0"
-                        checked={this.state.editComfortFeatures.includes
-                          ("637b79c39b9228988ebddfe0")}
-                        onChange={this.updateCheckBoxes}
-                      />
-                      <label>Digital Keys</label>
-                    </div>
-
-                    <div>
-                      <input type="checkbox"
-                        name="editComfortFeatures"
-                        value="637b79c39b9228988ebddfe1"
-                        checked={this.state.editComfortFeatures.includes
-                          ("637b79c39b9228988ebddfe1")}
-                        onChange={this.updateCheckBoxes}
-                      />
-                      <label>AI Bot Alexa Enabled</label>
-                      <input type="checkbox"
-                        name="editComfortFeatures"
-                        className='checkbox-style'
-                        value="637b79c39b9228988ebddfe2"
-                        checked={this.state.editComfortFeatures.includes
-                          ("637b79c39b9228988ebddfe2")}
-                        onChange={this.updateCheckBoxes}
-                      />
-                      <label>Ventilated Seats</label>
-
-                    </div>
-
-                  </div>
-                  {this.state.comfortFeaturesError &&
-                    <div className='display-error-message-style'>
-
-                      Please pick one comfort feature.
-                    </div>}
-
-
-
-
-
-                </div>
 
                 <div className=
                   'create-input-div-space'
                 >
-                  <button className='btn btn-light'
+
+                  <label>Comfort Features</label>
+
+                </div>
+
+                <div className="form-check
+                                create-input-div-space"
+                >
+
+                  <input className='form-check-input'
+                    type="checkbox"
+                    name="editComfortFeatures"
+                    value="637b79c39b9228988ebddfdd"
+                    checked={this.state.editComfortFeatures.includes
+                      ("637b79c39b9228988ebddfdd")}
+                    onChange={this.updateCheckBoxes}
+                  />
+                  <label>Blind Spot Monitoring</label>
+
+                </div>
+
+                <div className="form-check">
+
+                  <input type="checkbox"
+                    name="editComfortFeatures"
+                    className='form-check-input'
+                    value="637b79c39b9228988ebddfde"
+                    checked={this.state.editComfortFeatures.includes
+                      ("637b79c39b9228988ebddfde")}
+                    onChange={this.updateCheckBoxes}
+                  />
+                  <label>Premium Sound System</label>
+                </div>
+
+                <div className="form-check">
+                  <input type="checkbox"
+                    name="editComfortFeatures"
+                    className='form-check-input'
+                    value="637b79c39b9228988ebddfdf"
+                    checked={this.state.editComfortFeatures.includes
+                      ("637b79c39b9228988ebddfdf")}
+                    onChange={this.updateCheckBoxes}
+                  />
+                  <label>Wireless Connectivity</label>
+
+                </div>
+
+                <div className="form-check">
+
+                  <input type="checkbox"
+                    name="editComfortFeatures"
+                    className='form-check-input'
+                    value="637b79c39b9228988ebddfe0"
+                    checked={this.state.editComfortFeatures.includes
+                      ("637b79c39b9228988ebddfe0")}
+                    onChange={this.updateCheckBoxes}
+                  />
+                  <label>Digital Keys</label>
+                </div>
+
+                <div className='form-check'>
+                  <input type="checkbox"
+                    name="editComfortFeatures"
+                    className='form-check-input'
+                    value="637b79c39b9228988ebddfe1"
+                    checked={this.state.editComfortFeatures.includes
+                      ("637b79c39b9228988ebddfe1")}
+                    onChange={this.updateCheckBoxes}
+                  />
+                  <label>AI Bot Alexa Enabled</label>
+
+                </div>
+                <div className='form-check'>
+
+                  <input type="checkbox"
+                    name="editComfortFeatures"
+                    className='form-check-input'
+                    value="637b79c39b9228988ebddfe2"
+                    checked={this.state.editComfortFeatures.includes
+                      ("637b79c39b9228988ebddfe2")}
+                    onChange={this.updateCheckBoxes}
+                  />
+                  <label>Ventilated Seats</label>
+
+                </div>
+
+
+                {this.state.comfortFeaturesError &&
+                  <div className='display-error-message-style'>
+
+                    Please pick one comfort feature.
+                  </div>}
+
+
+
+
+
+
+
+                <div className=
+                  'create-input-div-space'
+                >
+
+                  <Button className='button-orange-style'
+                    variant='light'
+                    onMouseDown={this.checkErrors}
+                    onClick={this.editCarPost}>
+                    Confirm Change
+                  </Button>
+
+                  {/* <button className='btn btn-light'
                     onMouseDown={this.checkErrors}
                     onClick={this.editCarPost}
-                  >Confirm Edit Car Post</button>
+                  >Confirm Edit Car Post</button> */}
+
                 </div>
 
 

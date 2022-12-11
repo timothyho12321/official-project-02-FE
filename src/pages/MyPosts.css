@@ -6,8 +6,10 @@
     margin-top: 8px;
 }
 
-.search-button {
+.search-button-style {
     margin-left: 8px;
+    background-color: #7389AE;
+    border: none
 }
 
 /* CSS for card when search posts by user email */

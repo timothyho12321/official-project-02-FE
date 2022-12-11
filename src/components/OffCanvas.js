@@ -13,11 +13,11 @@ export default function OffCanvas(props) {
 
     return (
         <>
-            <Button className='button-detailed-orange-style' 
-            variant="light" 
-            onClick={handleShow}
+            <Button className='button-detailed-orange-style'
+                variant="light"
+                onClick={handleShow}
             >
-                Detailed <FontAwesomeIcon icon={faSearchPlus}/>
+                Detailed <FontAwesomeIcon icon={faSearchPlus} />
             </Button>
 
             <Offcanvas show={show} onHide={handleClose}>
@@ -69,8 +69,9 @@ export default function OffCanvas(props) {
 
 
                     <div className=' mt-3'>
-                        <label>Select Minimum Price</label>
+                        <label >Min Price</label>
                         <select name="minPrice"
+                            className='ms-2'
                             value={parseInt(props.minPrice)}
                             onChange={props.updateFormField}
                         >
@@ -87,8 +88,9 @@ export default function OffCanvas(props) {
                     </div>
 
                     <div className=' mt-3'>
-                        <label>Select Maximum Price</label>
-                        <select name="maxPrice"
+                        <label>Max Price</label>
+                        <select className='ms-2'
+                            name="maxPrice"
                             value={parseInt(props.maxPrice)}
                             onChange={props.updateFormField}
                         >
@@ -121,10 +123,20 @@ export default function OffCanvas(props) {
                         </select></div>
 
 
-                    <button className='btn btn-primary mt-3'
+                    <Button className='mt-3
+                                       detailed-search-button-style'
+                        variant='light'
+
+                        onClick={props.filterSearch}
+                    >
+                        Detailed Search
+
+                    </Button>
+
+                    {/* <button className='btn btn-primary mt-3'
                         onClick={props.filterSearch}
 
-                    >Submit Search</button>
+                    >Submit Search</button> */}
 
                 </Offcanvas.Body>
             </Offcanvas>
