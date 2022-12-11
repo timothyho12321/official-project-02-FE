@@ -397,7 +397,7 @@ export default class CreatePage extends React.Component {
 
         return (
             <React.Fragment>
-                <h3>Create a new  car post with this form.</h3>
+                <h1>Add a car</h1>
 
 
                 <Accordion defaultActiveKey="0">

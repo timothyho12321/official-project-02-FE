@@ -837,10 +837,19 @@ export default class EditCarPostForm extends React.Component {
                 <div className=
                   'create-input-div-space'
                 >
-                  <button className='btn btn-light'
+
+                  <Button className='button-orange-style'
+                    variant='light'
+                    onMouseDown={this.checkErrors}
+                    onClick={this.editCarPost}>
+                    Confirm Change
+                  </Button>
+
+                  {/* <button className='btn btn-light'
                     onMouseDown={this.checkErrors}
                     onClick={this.editCarPost}
-                  >Confirm Edit Car Post</button>
+                  >Confirm Edit Car Post</button> */}
+
                 </div>
 
 

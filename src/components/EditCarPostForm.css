@@ -4,22 +4,28 @@
 }
 
 
-.display-error-message-style{
+.display-error-message-style {
 
     color: red
 }
 
-.button-orange-style{
+.button-orange-style {
 
     background-color: #ff540a !important;
 }
 
 .car-card-style {
     width: 98%;
-    
+
 }
 
-.radio-label-style{
+.radio-label-style {
 
     margin-left: 5px;
+}
+
+.delete-button-style {
+
+    background-color: #7389AE;
+    border: none
 }

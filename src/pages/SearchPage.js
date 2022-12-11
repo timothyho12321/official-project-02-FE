@@ -275,7 +275,7 @@ export default class SearchPage extends React.Component {
                 return (
 
                     <React.Fragment>
-                        <h1>Find your car today!</h1>
+                        <h1>Find your car</h1>
 
 
                         <label>Brand</label>
@@ -333,7 +333,7 @@ export default class SearchPage extends React.Component {
             } else {
                 return (
                     <React.Fragment>
-                        <h1>Find your car today!</h1>
+                        <h1>Find your car</h1>
 
 
                         <label>Brand</label>
