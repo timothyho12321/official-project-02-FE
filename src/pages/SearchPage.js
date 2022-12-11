@@ -8,6 +8,9 @@ import css from './SearchPage.css';
 import SeeDetailedPost from '../components/SeeDetailedPost';
 import Button from 'react-bootstrap/esm/Button';
 
+import { Player } from '@lottiefiles/react-lottie-player';
+
+
 export default class SearchPage extends React.Component {
 
     state = {
@@ -32,7 +35,7 @@ export default class SearchPage extends React.Component {
         isLoaded: false
 
     }
-    
+
     // BASE_API_URL = "https://project2-timothy-carousel.onrender.com/"
     BASE_API_URL = "http://localhost:3080/"
 
@@ -66,7 +69,8 @@ export default class SearchPage extends React.Component {
         this.setState({
             data: response.data,
             existingCarTypes: existingCarTypes,
-            existingCarBrand: existingCarBrand
+            existingCarBrand: existingCarBrand,
+            isLoaded: true
         })
         // console.log(this.state.data)
 
@@ -159,11 +163,6 @@ export default class SearchPage extends React.Component {
     filterSearch = async () => {
 
 
-        // Make yearError come out if number greater than current year is 
-        // keyed in 
-        // if ((parseInt(this.state.searchYear) >= this.state.makeAutoYear) 
-        // || parseInt(this.state.searchYear).length !== 4 )
-
         if (parseInt(this.state.searchYear) > this.state.makeAutoYear) {
 
 
@@ -205,7 +204,8 @@ export default class SearchPage extends React.Component {
 
         console.log(response.data)
         this.setState({
-            data: response.data
+            data: response.data,
+            isLoaded: true
         })
 
     }
@@ -266,83 +266,152 @@ export default class SearchPage extends React.Component {
 
 
         } else if (this.state.page === "general") {
-            return (
-                <React.Fragment>
-                    <h1>Find your car today!</h1>
+
+            //Display loading animation if not loaded yet 
+            if (!this.state.isLoaded) {
 
 
-                    <label>Brand</label>
-                    <input type="text"
-                        className='form-control'
-                        value={this.state.searchBrand}
-                        name="searchBrand"
-                        onChange={this.updateFormField} />
 
-                    <div className='button-search-div mt-3'>
+                return (
 
-                        <Button variant='light' 
-                            className='button-brand-green-style'
-                            onClick={this.onlyBrandSearch}
-                        >
-                            Brand Search
-                        </Button>
-                        
-
-                        <div className='OffCanvas-div'>
-
-                            <OffCanvas
-                                searchBrand={this.state.searchBrand}
-                                searchType={this.state.searchType}
-                                searchYear={this.state.searchYear}
-                                minPrice={this.state.minPrice}
-                                maxPrice={this.state.maxPrice}
-                                searchRating={this.state.searchRating}
-                                updateFormField={this.updateFormField}
-                                filterSearch={this.filterSearch}
-                                yearGreaterError={this.state.yearGreaterError}
-                                yearLengthError={this.state.yearLengthError}
-                                makeAutoYear={this.state.makeAutoYear}
-                                existingCarTypes={this.state.existingCarTypes}
-                                existingCarBrand={this.state.existingCarBrand}
-                            />
-
-                        </div>
-
-                    </div>
-
-                    <div className='container'>
-
-                        <div className='row card_div_center'
-                            id='card_div_center_margin_media'
-                        >
-                            {
-                                this.state.data.map((c) =>
-                                    <CarPost
-                                        key={c._id}
-                                        car={c}
-                                        changeSearchStateDetailedPost={this.changeSearchStateDetailedPost}
-                                        // changeSearchStateDetailedPost={() => this.changeSearchStateDetailedPost(c._id)}
-                                        // changeSearchStateDetailedPost={()=> {this.changeSearchStateDetailedPost}
-                                        //     }
-
-                                        changePreviousPage={this.changePreviousPage}
-                                    />)
+                    <React.Fragment>
+                        <h1>Find your car today!</h1>
 
 
-                            }
+                        <label>Brand</label>
+                        <input type="text"
+                            className='form-control'
+                            value={this.state.searchBrand}
+                            name="searchBrand"
+                            onChange={this.updateFormField} />
+
+                        <div className='button-search-div mt-3'>
+
+                            <Button variant='light'
+                                className='button-brand-green-style'
+                                onClick={this.onlyBrandSearch}
+                            >
+                                Brand Search
+                            </Button>
+
+
+                            <div className='OffCanvas-div'>
+
+                                <OffCanvas
+                                    searchBrand={this.state.searchBrand}
+                                    searchType={this.state.searchType}
+                                    searchYear={this.state.searchYear}
+                                    minPrice={this.state.minPrice}
+                                    maxPrice={this.state.maxPrice}
+                                    searchRating={this.state.searchRating}
+                                    updateFormField={this.updateFormField}
+                                    filterSearch={this.filterSearch}
+                                    yearGreaterError={this.state.yearGreaterError}
+                                    yearLengthError={this.state.yearLengthError}
+                                    makeAutoYear={this.state.makeAutoYear}
+                                    existingCarTypes={this.state.existingCarTypes}
+                                    existingCarBrand={this.state.existingCarBrand}
+                                />
+
+                            </div>
 
                         </div>
 
 
+                        <Player
+                            src='https://assets5.lottiefiles.com/packages/lf20_gv7Ovi.json'
+                            className='car-loading-animation-style'
+                            loop
+                            autoplay
+                        />
+                    </React.Fragment>
 
-                    </div>
+                )
+
+
+
+            } else {
+                return (
+                    <React.Fragment>
+                        <h1>Find your car today!</h1>
+
+
+                        <label>Brand</label>
+                        <input type="text"
+                            className='form-control'
+                            value={this.state.searchBrand}
+                            name="searchBrand"
+                            onChange={this.updateFormField} />
+
+                        <div className='button-search-div mt-3'>
+
+                            <Button variant='light'
+                                className='button-brand-green-style'
+                                onClick={this.onlyBrandSearch}
+                            >
+                                Brand Search
+                            </Button>
+
+
+                            <div className='OffCanvas-div'>
+
+                                <OffCanvas
+                                    searchBrand={this.state.searchBrand}
+                                    searchType={this.state.searchType}
+                                    searchYear={this.state.searchYear}
+                                    minPrice={this.state.minPrice}
+                                    maxPrice={this.state.maxPrice}
+                                    searchRating={this.state.searchRating}
+                                    updateFormField={this.updateFormField}
+                                    filterSearch={this.filterSearch}
+                                    yearGreaterError={this.state.yearGreaterError}
+                                    yearLengthError={this.state.yearLengthError}
+                                    makeAutoYear={this.state.makeAutoYear}
+                                    existingCarTypes={this.state.existingCarTypes}
+                                    existingCarBrand={this.state.existingCarBrand}
+                                />
+
+                            </div>
+
+                        </div>
+
+                        <div className='container'>
+
+                            <div className='row card_div_center'
+                                id='card_div_center_margin_media'
+                            >
+                                {
+                                    this.state.data.map((c) =>
+                                        <CarPost
+                                            key={c._id}
+                                            car={c}
+                                            changeSearchStateDetailedPost={this.changeSearchStateDetailedPost}
+                                            // changeSearchStateDetailedPost={() => this.changeSearchStateDetailedPost(c._id)}
+                                            // changeSearchStateDetailedPost={()=> {this.changeSearchStateDetailedPost}
+                                            //     }
+
+                                            changePreviousPage={this.changePreviousPage}
+                                        />)
+
+
+                                }
+
+                            </div>
+
+
+
+                        </div>
 
 
 
 
 
-                </React.Fragment>
-            )
+                    </React.Fragment>
+                )
+
+            }
+
+
 
 
         }
