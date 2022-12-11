@@ -7,14 +7,15 @@ import Button from "react-bootstrap/esm/Button";
 
 import './CommentPost.css'
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
 export default class CommentPost extends React.Component {
 
     state = {
-
+        commentorEmail: "",
+        isEmailRight: false
     }
 
 
@@ -23,7 +24,12 @@ export default class CommentPost extends React.Component {
 
     // BASE_API_URL = "http://localhost:3080/"
 
-    
+    updateFormField = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
     deleteComment = async () => {
 
         // console.log(this.props.idForDelete);
@@ -31,24 +37,42 @@ export default class CommentPost extends React.Component {
         // console.log(this.props.allcomment.email);
 
         // console.log(this.BASE_API_URL+"delete-comment/"+ this.props.idForDelete)
-        try {
 
-            {this.notify()}
 
-            let response = await axios.put(this.BASE_API_URL
-                +"delete-comment/" + this.props.idForDelete, {
-                "email": this.props.allcomment.email
+        if (this.state.commentorEmail !== this.props.allcomment.email) {
+            console.log("Detected entered email is wrong")
+        } else {
+            console.log("Entered email is right. Post deleted.")
 
-            })
-            console.log(response);
+            try {
 
-        } catch (e) {
-            console.log(e)
+                this.notify()
+
+                let response = await axios.put(this.BASE_API_URL
+                    + "delete-comment/" + this.props.idForDelete, {
+                    "email": this.props.allcomment.email
+
+                })
+                console.log(response);
+
+                this.setState({
+                    isEmailRight: false
+                })
+
+            } catch (e) {
+                console.log(e)
+            }
+
+
         }
 
 
+    }
 
-
+    renderKeyEmail = () => {
+        this.setState({
+            isEmailRight: true
+        })
 
     }
 
@@ -69,7 +93,10 @@ export default class CommentPost extends React.Component {
                     <div className="comment-close-button">
                         <Button className="button-height"
                             variant="transparent"
-                            onClick={this.deleteComment}
+                            // onClick={this.deleteComment}
+
+                            onClick={this.renderKeyEmail}
+
                         >
                             <FontAwesomeIcon className="icon-div"
                                 icon={faTimesSquare} />
@@ -77,6 +104,42 @@ export default class CommentPost extends React.Component {
                         </Button>
 
                     </div>
+
+
+                    {this.state.isEmailRight ?
+
+                        <React.Fragment>
+                            <div className="commentor-email-div-style">
+                                <div className="ms-2 ">
+                                    <label>Enter commentor email to confirm delete</label>
+                                    <input type="text"
+                                        className="form-control mb-2"
+                                        value={this.state.commentorEmail}
+                                        onChange={this.updateFormField}
+                                        name="commentorEmail"
+                                        style={{ "width": "80%" }}
+                                    />
+                                    <Button
+
+                                        className="mb-2 delete-comment-button"
+                                        variant='light'
+                                        onClick={this.deleteComment}>
+                                        Delete Comment
+                                    </Button>
+                                </div>
+
+                            </div>
+
+
+
+                        </React.Fragment>
+
+
+                        : ""}
+
+
+
+
                 </div>
 
 
