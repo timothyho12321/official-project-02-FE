@@ -50,7 +50,7 @@ export default class CreatePage extends React.Component {
 
     BASE_API_URL = "https://project2-timothy-carousel.onrender.com/"
     // BASE_API_URL = "http://localhost:3080/"
-    
+
     async componentDidMount() {
 
 
@@ -478,33 +478,51 @@ export default class CreatePage extends React.Component {
                     <Accordion.Item eventKey="1">
                         <Accordion.Header>Properties</Accordion.Header>
                         <Accordion.Body>
+                            <label>
+                                Seat Number
+                            </label>
                             <div className=
-                                'create-input-div-space'
+                                'create-input-div-space form-check-inline ms-2'
                             >
-                                <div>
-                                    Seat Number</div>
+
                                 <input type="radio"
                                     name="seatNumber"
+                                    className='form-check-input'
                                     value={2}
                                     checked={parseInt(this.state.seatNumber) === 2}
                                     onClick={this.updateFormField}
                                 />
-                                <label >2</label>
+                                <label className='radio-label-style'>2</label>
+                            </div>
+
+                            <div className=
+                                'create-input-div-space form-check-inline'
+                            >
+
                                 <input type="radio"
                                     name="seatNumber"
+                                    className='form-check-input'
                                     value={4}
                                     checked={parseInt(this.state.seatNumber) === 4}
                                     onClick={this.updateFormField}
-                                    className="radio-button-style" />
-                                <label >4</label>
+                                />
+                                <label className='radio-label-style'>4</label>
+
+                            </div>
+
+                            <div className=
+                                'create-input-div-space form-check-inline'
+                            >
+
                                 <input type="radio"
                                     name="seatNumber"
+                                    className="form-check-input"
                                     value={6}
                                     checked={parseInt(this.state.seatNumber) === 6}
                                     onClick={this.updateFormField}
-                                    className="radio-button-style" />
-                                <label >6</label>
+                                />
 
+                                <label className='radio-label-style'>6</label>
 
                             </div>
                             <div className=
@@ -603,10 +621,11 @@ export default class CreatePage extends React.Component {
                                 'create-input-div-space'
                             >
                                 <label >
-                                    Car rating:</label>
+                                    Car rating </label>
                                 <select name="rating"
                                     value={this.state.rating}
                                     onChange={this.updateFormNumber}
+                                    className="form-control"
                                 >
                                     <option value={""}>Select one</option>
                                     <option value={1}>1</option>
@@ -667,12 +686,13 @@ export default class CreatePage extends React.Component {
                             <div className=
                                 'create-input-div-space'
                             >
-                                <label>Select Price Estimate</label>
+                                <label>Price Estimate</label>
                                 <select name="price"
                                     value={parseInt(this.state.price)}
                                     onChange={this.updateFormNumber}
+                                    className="form-control"
                                 >
-                                    <option value={""}>Select one</option>
+                                    <option value={""}>Please select one</option>
                                     <option value={40000}>Max $40,000</option>
                                     <option value={60000}>Max $60,000</option>
                                     <option value={80000}>Max $80,000</option>
@@ -694,15 +714,16 @@ export default class CreatePage extends React.Component {
                                 <select name="engineName"
                                     value={this.state.engineName}
                                     onChange={this.updateFormField}
-                                    className="space-engine-dropdown-tab"
+                                    className="engine-dropdown-tab-style
+                                    form-control"
                                 >
                                     <option value={""}> Please select one</option>
                                     {this.state.currentEngineDB.map(e =>
                                         <option value={e.engine_name} key={e._id}>
                                             Engine Name: {e.engine_name} |
-                                            Top Speed: {e.top_speed} |
-                                            Engine Power: {e.engine_power} |
-                                            Oil Consumption: {e.oil_consumption}
+                                            Speed: {e.top_speed} |
+                                            Power: {e.engine_power} |
+                                            Oil: {e.oil_consumption}
                                         </option>)}
 
                                 </select>
@@ -713,71 +734,93 @@ export default class CreatePage extends React.Component {
                                     Please select an engine name.
                                 </div>}
 
+
+
                             <div className=
                                 'create-input-div-space'
                             >
-                                <input type="checkbox"
+
+                                <label>Comfort Features</label>
+                            </div>
+
+                            <div className="form-check
+                                create-input-div-space"
+                            >
+                                <input className='form-check-input'
+                                    type="checkbox"
                                     name="comfortFeatures"
                                     value="637b79c39b9228988ebddfdd"
                                     checked={this.state.comfortFeatures.includes
                                         ("637b79c39b9228988ebddfdd")}
                                     onChange={this.updateCheckBoxes}
                                 />
-                                <label>Blind Spot Monitoring</label>
+                                <label >Blind Spot Monitoring</label>
+                            </div>
+
+                            <div className="form-check">
                                 <input type="checkbox"
                                     name="comfortFeatures"
-                                    className='checkbox-style'
+                                    className='form-check-input'
                                     value="637b79c39b9228988ebddfde"
                                     checked={this.state.comfortFeatures.includes
                                         ("637b79c39b9228988ebddfde")}
                                     onChange={this.updateCheckBoxes}
                                 />
                                 <label>Premium Sound System</label>
+                            </div>
 
-                                <div>
-                                    <input type="checkbox"
-                                        name="comfortFeatures"
-                                        value="637b79c39b9228988ebddfdf"
-                                        checked={this.state.comfortFeatures.includes
-                                            ("637b79c39b9228988ebddfdf")}
-                                        onChange={this.updateCheckBoxes}
-                                    />
-                                    <label>Wireless Connectivity</label>
-
-                                    <input type="checkbox"
-                                        name="comfortFeatures"
-                                        className='checkbox-style'
-                                        value="637b79c39b9228988ebddfe0"
-                                        checked={this.state.comfortFeatures.includes
-                                            ("637b79c39b9228988ebddfe0")}
-                                        onChange={this.updateCheckBoxes}
-                                    />
-                                    <label>Digital Keys</label>
-                                </div>
-
-                                <div>
-                                    <input type="checkbox"
-                                        name="comfortFeatures"
-                                        value="637b79c39b9228988ebddfe1"
-                                        checked={this.state.comfortFeatures.includes
-                                            ("637b79c39b9228988ebddfe1")}
-                                        onChange={this.updateCheckBoxes}
-                                    />
-                                    <label>AI Bot Alexa Enabled</label>
-                                    <input type="checkbox"
-                                        name="comfortFeatures"
-                                        className='checkbox-style'
-                                        value="637b79c39b9228988ebddfe2"
-                                        checked={this.state.comfortFeatures.includes
-                                            ("637b79c39b9228988ebddfe2")}
-                                        onChange={this.updateCheckBoxes}
-                                    />
-                                    <label>Ventilated Seats</label>
-
-                                </div>
-
+                            <div className="form-check">
+                                <input type="checkbox"
+                                    name="comfortFeatures"
+                                    className='form-check-input'
+                                    value="637b79c39b9228988ebddfdf"
+                                    checked={this.state.comfortFeatures.includes
+                                        ("637b79c39b9228988ebddfdf")}
+                                    onChange={this.updateCheckBoxes}
+                                />
+                                <label>Wireless Connectivity</label>
 
                             </div>
+                            <div className='form-check'>
+
+                                <input type="checkbox"
+                                    name="comfortFeatures"
+                                    className='form-check-input'
+                                    value="637b79c39b9228988ebddfe0"
+                                    checked={this.state.comfortFeatures.includes
+                                        ("637b79c39b9228988ebddfe0")}
+                                    onChange={this.updateCheckBoxes}
+                                />
+                                <label>Digital Keys</label>
+                            </div>
+
+                            <div className='form-check'>
+                                <input type="checkbox"
+                                    name="comfortFeatures"
+                                    className='form-check-input'
+                                    value="637b79c39b9228988ebddfe1"
+                                    checked={this.state.comfortFeatures.includes
+                                        ("637b79c39b9228988ebddfe1")}
+                                    onChange={this.updateCheckBoxes}
+                                />
+                                <label>AI Bot Alexa Enabled</label>
+                            </div>
+
+                            <div className='form-check'>
+                                <input type="checkbox"
+                                    name="comfortFeatures"
+                                    className='form-check-input'
+                                    value="637b79c39b9228988ebddfe2"
+                                    checked={this.state.comfortFeatures.includes
+                                        ("637b79c39b9228988ebddfe2")}
+                                    onChange={this.updateCheckBoxes}
+                                />
+                                <label>Ventilated Seats</label>
+
+                            </div>
+
+
+
                             {this.state.comfortFeaturesError &&
                                 <div className='display-error-message-style'>
 
