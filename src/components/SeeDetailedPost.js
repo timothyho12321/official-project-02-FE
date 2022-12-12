@@ -136,7 +136,7 @@ export default class SeeDetailedPost extends React.Component {
 
 
                 <div>
-                    <div className='mt-2 '>
+                    <div className='mt-2 mb-2'>
                         <Button className='button-back-page-style'
 
                             variant='light'

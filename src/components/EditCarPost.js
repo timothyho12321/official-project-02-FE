@@ -22,7 +22,7 @@ export default class EditCarPost extends React.Component {
                 <Card
                     bg={"secondary"}
                     text={"dark"}
-                    className="car-card-style mt-3 col-12
+                    className="car-card-edit-style mt-3 col-12
                        col-lg-5 col-md-5 shadow"
 
                 >
