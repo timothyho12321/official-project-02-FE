@@ -131,7 +131,7 @@ like passwords
 4. [Netlify](https://www.netlify.com/) for deployment of React app
 
 ### Logos and Images
-1. Logo used is designed using canva [Canva](https://www.canva.com/q/pro/)
+1. Car logo is attributed to [Canva](https://www.canva.com/icons/MACB3YTa1g4-orange-car-isometric/)
 2. Landing page background photo is by [Garrett Parker](https://unsplash.com/@garrettpsystems) downloaded from [Unsplash](https://unsplash.com)
 
    
