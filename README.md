@@ -39,12 +39,12 @@ I usually get information on cars by reading car magazines or showroom website d
       - Create posting on cars they want to review
    
    - Demographics and Characteristics:
-       - Working young people
+       - Working young professional
        - Interest in car
        - Enjoys reading review websites 
    
    - Pain point:
-       - want to know the specifications of a car
+       - Want to know the specifications of a car
        - Want to see the look of a car
        - Want to know other user’s opinions of the car
 
@@ -53,8 +53,7 @@ I usually get information on cars by reading car magazines or showroom website d
 User Stories | Acceptance Criteria(s)
 ------------ | -------------
 As a car hobbyist, I want to share my reviews about a car with other user | Website must allow creating of post and adding details of car. 
-As a car hobbyist, I want to learn more about new cars by viewing others review post on car
-| Website must allow searching and display of information of car to users
+As a car hobbyist, I want to learn more about new cars by viewing others review post on car| Website must allow searching and display of information of car to users
 As a car hobbyist, I would like to comment and ask user about car | Website must allow user to ask questions or comment on other's reviews.  
 As a car hobbyist, I require a search rating of car and car name | Website should allow search of car by name and current rating by reviewer
 Know specific features of a car | Website must display the features of the car so users know whether this is the car of their choice
@@ -85,7 +84,7 @@ The content about cars is contributed by the public. Users can view the overview
 
 
 ### Skeleton
-The initial design draft are detailed here. The initial design was a rough sketch and changes were made in the subsequent stages of website deploying. 
+The initial design drafts are detailed here. The initial design was a first draft and changes were made in the subsequent stages of website deploying. 
 
 These are the images![Design1](./src/images/initial-sketch1.jpg)![Design2](./src/images/initial-sketch2.jpg)![Design3](./src/images/initial-sketch3.jpg)![Design4](./src/images/initial-sketch4.jpg)
 
@@ -105,7 +104,7 @@ when viewing cars.
 ---
 
 ## Testing
-Test Cases can be found [here](./src/Testcases.pdf)
+Test Cases can be found [here](./src/images/testing-case.pdf)
 
 ---
 
