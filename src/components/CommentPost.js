@@ -15,7 +15,8 @@ export default class CommentPost extends React.Component {
 
     state = {
         commentorEmail: "",
-        isEmailRight: false
+        isEmailRight: false,
+        emailError: false
     }
 
 
@@ -41,6 +42,10 @@ export default class CommentPost extends React.Component {
 
         if (this.state.commentorEmail !== this.props.allcomment.email) {
             console.log("Detected entered email is wrong")
+
+            this.setState({
+                emailError: true
+            })
         } else {
             console.log("Entered email is right. Post deleted.")
 
@@ -119,6 +124,8 @@ export default class CommentPost extends React.Component {
                                         name="commentorEmail"
                                         style={{ "width": "80%" }}
                                     />
+
+                                    {this.state.emailError &&<div className="error-message-email-style mb-2">Wrong email entered.</div>}
                                     <Button
 
                                         className="mb-2 delete-comment-button"
@@ -126,6 +133,8 @@ export default class CommentPost extends React.Component {
                                         onClick={this.deleteComment}>
                                         Delete Comment
                                     </Button>
+
+
                                 </div>
 
                             </div>
@@ -135,7 +144,11 @@ export default class CommentPost extends React.Component {
                         </React.Fragment>
 
 
-                        : ""}
+                        : ""
+
+
+
+                    }
 
 
 

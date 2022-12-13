@@ -30,3 +30,8 @@
     background-color: #ff540a;
     border: none 
 }
+
+.error-message-email-style{
+
+    color: red;
+}
