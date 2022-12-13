@@ -87,12 +87,12 @@ The content about cars is contributed by the public. Users can view the overview
 ### Skeleton
 The initial design draft are detailed here. The initial design was a rough sketch and changes were made in the subsequent stages of website deploying. 
 
-These are the images![Design1](./src/images/initial1B.jpg)![Design3](./src/images/initial3B.jpg)![Design2](./src/images/initial2.jpg)![Design3](./src/images/initial3B.jpg)![Design4](./src/images/initial4.jpg)
+These are the images![Design1](./src/images/initial-sketch1.jpg)![Design2](./src/images/initial-sketch2.jpg)![Design3](./src/images/initial-sketch3.jpg)![Design4](./src/images/initial-sketch4.jpg)
 
 
 #### Color Scheme
 
-![Colour-Scheme](./src/Images/project2_colour_theme.jpg)
+![Colour-Scheme](./src/images/color-scheme.png)
 
 - Orange color is a fresh and eye catching color to draw people attention 
 when viewing cars.
