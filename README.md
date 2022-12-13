@@ -86,7 +86,8 @@ The content about cars is contributed by the public. Users can view the overview
 ### Skeleton
 The initial design drafts are detailed here. The initial design was a first draft and changes were made in the subsequent stages of website deploying. 
 
-These are the images![Design1](./src/images/initial-sketch1.jpg)![Design2](./src/images/initial-sketch2.jpg)![Design3](./src/images/initial-sketch3.jpg)![Design4](./src/images/initial-sketch4.jpg)
+These are the images
+![Design1](./src/images/initial-sketch1.jpg)![Design2](./src/images/initial-sketch2.jpg)![Design3](./src/images/initial-sketch3.jpg)![Design4](./src/images/initial-sketch4.jpg)
 
 
 #### Color Scheme
@@ -96,8 +97,9 @@ These are the images![Design1](./src/images/initial-sketch1.jpg)![Design2](./src
 - Orange color is a fresh and eye catching color to draw people attention 
 when viewing cars.
 - Grey is a contrasting color that complements orange and can be used for subsidiary functions.
--White is used to give a modern and clean look.
+- White is used to give a modern and clean look.
 - Black is used to display font clearly.
+- Olive Green is used to encourage participation from users to click and type.
 
 #### Font
 - The font chosen was Rubik to ensure a clean and modern look. It is also easy to read to help users find information easily. 
@@ -132,7 +134,7 @@ like passwords
 
 ### Logos and Images
 1. Car logo is attributed to [Canva](https://www.canva.com/icons/MACB3YTa1g4-orange-car-isometric/)
-2. Landing page background photo is by [Garrett Parker](https://unsplash.com/@garrettpsystems) downloaded from [Unsplash](https://unsplash.com)
+2. Landing page background photo is by [ZeroEightstd Canva Creator](https://www.canva.com/) downloaded from [Canva](https://www.canva.com/)
 
    
 ### Other Attributions
@@ -160,7 +162,6 @@ Steps to publish:
 2. Render will update changes with new pushses.
 
 ### Frontend Deployment
-[![Netlify Status](https://www.netlify.com/)
 
 The React app is hosted using [Netlify](https://www.netlify.com/).
 
