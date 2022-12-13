@@ -17,16 +17,12 @@ export default class HomePage extends React.Component {
                 <h1 className='header-style'
                 >Welcome to CARousel</h1>
                 <div className='div-for-car-image'>
-                    {/* <img src={Car}
-                        className="car-image-style"
-                        alt="Banner image car svg"
+                   
 
-                    /> */}
 
-                    <img src={require('./car.png')}
+                <img src={require('./car.png')}
                          className="car-image-style"
                          alt="Banner car image" />
-                
 
                 </div>
 
