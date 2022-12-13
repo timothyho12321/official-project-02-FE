@@ -1,72 +1,177 @@
-# Getting Started with Create React App
 
-Link to live site [CARousel](https://0-carousel-project.netlify.app/)
+# CARousel
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Access live demo site [CARousel](https://0-carousel-project.netlify.app/)
 
-## Available Scripts
+![Mock-up]()
 
-In the project directory, you can run:
+## Background
 
-### `npm start`
+There are many car buyers and hobbyists. They enjoying learning and looking at different kinds of cars. However, there is not a website that allows users to crowdsource different types of cars and create reviews about it. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Project Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Prospective car buyers or hobbyists usually find information on the car showroom website. They want to know the look, price, functionalities and features of the car. 
 
-### `npm test`
+Looking at the rating of cars from other users are useful for them to determine if this is a well-received car. 
+Sharing these information allow them to know about the potential of buying a certain car they have in mind. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## The Five Planes of UI/UX
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Strategy
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Organization's Goals
+I usually get information on cars by reading car magazines or showroom website description. This car review site centralises all the information of different brands of cars and gives users a convenient and unbiased description of cars that they may be interested in. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Users' Goals
+ The users of this site are usually aged 25 -35, use the internet for researching items they want to buy and enjoy reading other's reviews of using certain products. They would like to know the benefits of a certain car, compare with other types of cars, and see the reception of other users toward the functionality of a car. 
 
-### `npm run eject`
+1. **Organisation**
+   - Objective: To aggregate users postings and reviews about different types of cars onto a website
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **Users: Travellers**
+   - Objective: To find a certain type of car they want to know more about and get more details on the specific functions of the car 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   - Needs:
+      - Search about the car they may be interested in 
+      - Create posting on cars they want to review
+   
+   - Demographics and Characteristics:
+       - Working young people
+       - Interest in car
+       - Enjoys reading review websites 
+   
+   - Pain point:
+       - want to know the specifications of a car
+       - Want to see the look of a car
+       - Want to know other user’s opinions of the car
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+User Stories | Acceptance Criteria(s)
+------------ | -------------
+As a car hobbyist, I want to share my reviews about a car with other user | Website must allow creating of post and adding details of car. 
+As a car hobbyist, I want to learn more about new cars by viewing others review post on car
+| Website must allow searching and display of information of car to users
+As a car hobbyist, I would like to comment and ask user about car | Website must allow user to ask questions or comment on other's reviews.  
+As a car hobbyist, I require a search rating of car and car name | Website should allow search of car by name and current rating by reviewer
+Know specific features of a car | Website must display the features of the car so users know whether this is the car of their choice
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Scope
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Database
 
-### Code Splitting
+An Express server is used to store the information and access endpoints on a MongoDB. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Content
+The content about cars is contributed by the public. Users can view the overview of the site on the main landing page. 
 
-### Analyzing the Bundle Size
+#### Functional
+- Search current car posting by name, feature, rating
+- Create new article function
+- Edit and Delete each car posting 
+- Require to create account with email and login in order to edit car review. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Non-functional
+- Mobile responsiveness: Able to navigate on the handphone and access website features
+- Accessibility: Clear readable font in specific size and color to enable concise communication. 
+- Performance: Ensure the website does not have jerky transition while data is loading and once it has been loaded. 
 
-### Making a Progressive Web App
+### Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![Site-map]()
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Skeleton
+Initial prototyping is seen here ![prototype1](./src/Images/wireframe1.jpg)![prototype2](./src/Images/wireframe2.jpg)
 
-### Deployment
+The prototype is done with a mobile first approach and throughout the project it have been re-visited several times while working on the project and styling across devices. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+#### Color Scheme
 
-### `npm run build` fails to minify
+![Colour-Scheme](./src/Images/project2_colour_theme.jpg)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Orange color is a fresh and eye catching color to draw people attention 
+when viewing cars.
+- Grey is a contrasting color that complements orange and can be used for subsidiary functions.
+-White is used to give a modern and clean look.
+- Black is used to display font clearly.
+
+#### Font
+The font chosen was Rubik to ensure a clean and modern look. It is also easy to read to help users find information easily. 
+---
+
+## Testing
+Test Cases can be found [here](./src/Testcases.pdf)
+
+---
+
+## Dependencies and Sources
+
+### Backend
+1. [Express](https://expressjs.com/) provide route to API endpoints
+2. [MongoDB Node Driver](https://www.mongodb.com/docs/drivers/node/current/) database to call on for the API 
+3. [cors](https://www.npmjs.com/package/cors) enable CORS
+4. [dotenv](https://www.npmjs.com/package/dotenv) to store away information 
+like passwords
+5. [Yup](https://github.com/jquense/yup) utilised for backend validation
+### Frontend
+1. [React](https://reactjs.org/) interface to display front end
+2. [Axios](https://axios-http.com/) client that consumes endpoints
+3. [React-Bootstrap](https://react-bootstrap.github.io/) to style the site, forms and provide interactive features
+
+
+
+### Platforms and Software
+1. [VSC]() IDE to edit code
+2. [GitHub](http://github.com) for the repository
+3. [Render]() to deploy Backend server
+4. [Netlify](https://www.netlify.com/) for deployment of React app
+
+### Logos and Images
+1. Car logo is attributed to [Canva](https://www.canva.com/icons/MACB3YTa1g4-orange-car-isometric/)
+2. Landing page background photo is by [Garrett Parker](https://unsplash.com/@garrettpsystems) downloaded from [Unsplash](https://unsplash.com)
+
+   
+### Other Attributions
+1. [Paul Chor](https://github.com/kunxin-chor) tutorial in providing guidance on creating app
+2. [Jun Hao]() reference for ReadMe file and backend structuring
+
+---
+
+## Deployment
+
+### Build
+Build using Node.js and Express on the Backend. React Frontend is built through the create-react-app.
+
+### Backend Deployment
+Express server is deployed using [Render]().
+
+Prerequisites:
+- Github account is authorised on Render deployment.
+- Backend Github folder is synced with Render deployment.
+- Auto updates to Render is triggered when changes are pushed to 
+Github repository. 
+
+Steps to publish:
+1. Push changes to Github to ensure latest version is deployed on Render.
+2. Render will update changes with new pushses.
+
+### Frontend Deployment
+[![Netlify Status]()
+
+The React app is hosted using [Netlify](https://www.netlify.com/).
+
+Prerequisites:
+-  Github account is authorised on Render deployment.
+- Frontend Github folder is synced with Netlify deployment.
+- Auto updates to Netlify is triggered when changes are pushed to 
+Github frontend repository. 
+
+Steps to publish:
+1. Push changes to Github to ensure latest version is deployed on Netlify.
+2. Netlify will update changes with new pushses.
+
+---

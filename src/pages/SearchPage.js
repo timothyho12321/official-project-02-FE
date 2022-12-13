@@ -288,7 +288,7 @@ export default class SearchPage extends React.Component {
                         <div className='button-search-div mt-3'>
 
                             <Button variant='light'
-                                className='button-brand-green-style'
+                                className='button-brand-search-style'
                                 onClick={this.onlyBrandSearch}
                             >
                                 Brand Search
@@ -346,7 +346,7 @@ export default class SearchPage extends React.Component {
                         <div className='button-search-div mt-3'>
 
                             <Button variant='light'
-                                className='button-brand-green-style'
+                                className='button-brand-search-style'
                                 onClick={this.onlyBrandSearch}
                             >
                                 Brand Search

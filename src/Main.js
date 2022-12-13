@@ -7,7 +7,8 @@ import SearchPage from './pages/SearchPage';
 import CreatePage from './pages/CreatePage';
 import MyPosts from './pages/MyPosts';
 import SeeDetailedPost from './components/SeeDetailedPost';
-import carlogo from './pages/carlogo.png';
+
+import carlogo from './pages/car-192x192.png';
 import './Main.css';
 
 export default class Main extends React.Component {
@@ -73,7 +74,7 @@ export default class Main extends React.Component {
                         <Container>
                             <Navbar.Brand href="#home">
                                 <div className='div-align-title'>
-                                    <img src={carlogo} alt="site car logo" />
+                                    <img className='car-logo-style' src={carlogo} alt="site car logo" />
                                     <span className='nav-title-spacing'>CARousel</span>
                                 </div>
 

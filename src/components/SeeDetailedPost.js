@@ -136,7 +136,7 @@ export default class SeeDetailedPost extends React.Component {
 
 
                 <div>
-                    <div className='mt-2 '>
+                    <div className='mt-2 mb-2'>
                         <Button className='button-back-page-style'
 
                             variant='light'
@@ -157,10 +157,11 @@ export default class SeeDetailedPost extends React.Component {
                             style={{
                                 width: "100%",
                                 height: "100%"
-                            }} alt="car" />
+                            }} alt="car" 
+                            className='mt-2'/>
                     </div>
 
-                    <div>
+                    <div className='mt-2'>
                         <p><i className="bi bi-rocket-takeoff-fill"></i> Launch year: {this.props.year_of_launch}</p>
                     </div>
 
