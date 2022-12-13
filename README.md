@@ -3,7 +3,7 @@
 
 Access live demo site [CARousel](https://0-carousel-project.netlify.app/)
 
-![Mock-up]()
+![Carousel Demo](./src/images/websitemockup.jpg)
 
 ## Background
 
@@ -81,13 +81,14 @@ The content about cars is contributed by the public. Users can view the overview
 
 ### Structure
 
-![Site-map]()
+![Overview of site](./src/images/site_overview.jpg)
 
 
 ### Skeleton
-Initial prototyping is seen here ![prototype1](./src/Images/wireframe1.jpg)![prototype2](./src/Images/wireframe2.jpg)
+The initial design draft are detailed here. The initial design was a rough sketch and changes were made in the subsequent stages of website deploying. 
 
-The prototype is done with a mobile first approach and throughout the project it have been re-visited several times while working on the project and styling across devices. 
+These are the images![Design1](./src/images/initial1.jpg)![Design2](./src/images/initial2.jpg)![Design3](./src/images/initial3.jpg)![Design4](./src/images/initial4.jpg)
+
 
 #### Color Scheme
 
@@ -100,7 +101,7 @@ when viewing cars.
 - Black is used to display font clearly.
 
 #### Font
-The font chosen was Rubik to ensure a clean and modern look. It is also easy to read to help users find information easily. 
+- The font chosen was Rubik to ensure a clean and modern look. It is also easy to read to help users find information easily. 
 ---
 
 ## Testing
@@ -125,7 +126,7 @@ like passwords
 
 
 ### Platforms and Software
-1. [VSC]() IDE to edit code
+1. [VSC](https://code.visualstudio.com/) IDE to edit code
 2. [GitHub](http://github.com) for the repository
 3. [Render]() to deploy Backend server
 4. [Netlify](https://www.netlify.com/) for deployment of React app
@@ -137,7 +138,7 @@ like passwords
    
 ### Other Attributions
 1. [Paul Chor](https://github.com/kunxin-chor) tutorial in providing guidance on creating app
-2. [Jun Hao]() reference for ReadMe file and backend structuring
+2. [Jun Hao](https://github.com/JunHao-k/wanderlust_fe) reference for ReadMe file and backend deployment advice
 
 ---
 
@@ -147,7 +148,7 @@ like passwords
 Build using Node.js and Express on the Backend. React Frontend is built through the create-react-app.
 
 ### Backend Deployment
-Express server is deployed using [Render]().
+Express server is deployed using [Render](https://render.com/).
 
 Prerequisites:
 - Github account is authorised on Render deployment.
@@ -160,7 +161,7 @@ Steps to publish:
 2. Render will update changes with new pushses.
 
 ### Frontend Deployment
-[![Netlify Status]()
+[![Netlify Status](https://www.netlify.com/)
 
 The React app is hosted using [Netlify](https://www.netlify.com/).
 
